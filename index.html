@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Deep Work Interview | By James Guldan</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --black: #0a0a0a;
+    --white: #fafafa;
+    --cream: #f5f0eb;
+    --warm: #e8ddd3;
+    --accent: #c4703f;
+    --accent-light: #d4884f;
+    --text: #2a2a2a;
+    --text-light: #6a6a6a;
+    --subtle: #b0a89e;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Hero */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 24px;
+    background: var(--black);
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(ellipse at 30% 50%, rgba(196, 112, 63, 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 80%, rgba(196, 112, 63, 0.05) 0%, transparent 50%);
+    animation: drift 20s ease-in-out infinite;
+  }
+
+  @keyframes drift {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(-2%, 1%); }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+  }
+
+  .hero-label {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 40px;
+    font-weight: 600;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 7vw, 80px);
+    line-height: 1.1;
+    margin-bottom: 30px;
+    font-weight: 700;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-sub {
+    font-size: clamp(16px, 2vw, 20px);
+    line-height: 1.7;
+    color: rgba(250, 250, 250, 0.65);
+    max-width: 620px;
+    margin: 0 auto 50px;
+    font-weight: 300;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 13px;
+    color: rgba(250, 250, 250, 0.4);
+    letter-spacing: 0.5px;
+  }
+
+  .hero-meta span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .hero-meta .dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  /* Sections */
+  .section {
+    padding: 100px 24px;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .section-wide {
+    max-width: 900px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 42px);
+    line-height: 1.2;
+    margin-bottom: 30px;
+    color: var(--black);
+  }
+
+  p {
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--text);
+    margin-bottom: 20px;
+  }
+
+  p.lead {
+    font-size: 20px;
+    color: var(--text-light);
+    font-weight: 300;
+  }
+
+  .highlight {
+    background: linear-gradient(to top, rgba(196, 112, 63, 0.15) 40%, transparent 40%);
+    padding: 0 2px;
+  }
+
+  /* Quote Block */
+  .quote-block {
+    background: var(--black);
+    color: var(--white);
+    padding: 80px 24px;
+    text-align: center;
+  }
+
+  .quote-block blockquote {
+    max-width: 700px;
+    margin: 0 auto;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(24px, 3.5vw, 36px);
+    font-style: italic;
+    line-height: 1.4;
+    font-weight: 700;
+  }
+
+  .quote-block .attribution {
+    margin-top: 24px;
+    font-size: 13px;
+    color: rgba(250, 250, 250, 0.4);
+    letter-spacing: 1px;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+  }
+
+  /* Phase Cards */
+  .phases {
+    padding: 80px 24px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .phase-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    margin-top: 50px;
+  }
+
+  .phase-card {
+    background: white;
+    border-radius: 16px;
+    padding: 36px 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+
+  .phase-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+  }
+
+  .phase-number {
+    font-size: 48px;
+    font-weight: 900;
+    color: var(--warm);
+    line-height: 1;
+    margin-bottom: 16px;
+    font-family: 'Playfair Display', serif;
+  }
+
+  .phase-card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--black);
+  }
+
+  .phase-card p {
+    font-size: 15px;
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+
+  .phase-card.featured {
+    border: 2px solid var(--accent);
+    background: linear-gradient(135deg, white 0%, rgba(196, 112, 63, 0.03) 100%);
+  }
+
+  .phase-card.featured .phase-number {
+    color: var(--accent);
+  }
+
+  /* What You Get */
+  .output-list {
+    margin-top: 40px;
+  }
+
+  .output-item {
+    display: flex;
+    gap: 20px;
+    padding: 24px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .output-item:last-child {
+    border-bottom: none;
+  }
+
+  .output-icon {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    background: var(--accent);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .output-item h4 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: var(--black);
+  }
+
+  .output-item p {
+    font-size: 15px;
+    color: var(--text-light);
+    margin-bottom: 0;
+    line-height: 1.6;
+  }
+
+  /* CTA / Instructions */
+  .instructions {
+    background: white;
+    border-radius: 20px;
+    padding: 50px 40px;
+    margin-top: 50px;
+    border: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .instructions h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: var(--black);
+  }
+
+  .step {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .step-num {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    background: var(--cream);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  .step-content h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .step-content p {
+    font-size: 15px;
+    color: var(--text-light);
+    margin-bottom: 0;
+    line-height: 1.6;
+  }
+
+  /* Prompt Box */
+  .prompt-section {
+    background: var(--black);
+    padding: 80px 24px;
+    color: var(--white);
+  }
+
+  .prompt-section .section-label {
+    color: var(--accent);
+  }
+
+  .prompt-section h2 {
+    color: var(--white);
+  }
+
+  .prompt-section p {
+    color: rgba(250, 250, 250, 0.65);
+  }
+
+  .prompt-box {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 36px;
+    margin-top: 30px;
+    position: relative;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    max-height: 600px;
+    overflow-y: auto;
+  }
+
+  .prompt-box::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .prompt-box::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .prompt-box::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.15);
+    border-radius: 3px;
+  }
+
+  .prompt-box pre {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    line-height: 1.7;
+    color: rgba(250, 250, 250, 0.8);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  .copy-btn {
+    position: sticky;
+    top: 0;
+    float: right;
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-family: 'Inter', sans-serif;
+    z-index: 2;
+  }
+
+  .copy-btn:hover {
+    background: var(--accent-light);
+  }
+
+  /* Tips */
+  .tip-block {
+    background: rgba(196, 112, 63, 0.08);
+    border-left: 3px solid var(--accent);
+    padding: 20px 24px;
+    border-radius: 0 12px 12px 0;
+    margin: 30px 0;
+  }
+
+  .tip-block p {
+    font-size: 15px;
+    color: var(--text);
+    margin-bottom: 0;
+  }
+
+  .tip-block strong {
+    color: var(--accent);
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 60px 24px;
+    background: var(--black);
+    color: rgba(250, 250, 250, 0.3);
+    font-size: 13px;
+  }
+
+  .footer a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .footer .name {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .hero { padding: 40px 20px; }
+    .section { padding: 60px 20px; }
+    .instructions { padding: 30px 24px; }
+    .prompt-box { padding: 24px; }
+    .hero-meta { gap: 20px; }
+    .phase-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-label">By James Guldan</div>
+    <h1>The Deep Work <em>Interview</em></h1>
+    <p class="hero-sub">Two hours. One conversation with AI. A complete blueprint: your brand, your offers, your website content, your niche strategy, and an honest list of what you still need to go build.</p>
+    <div class="hero-meta">
+      <span><span class="dot"></span>90 to 120 minutes</span>
+      <span><span class="dot"></span>Powered by Claude AI</span>
+      <span><span class="dot"></span>Your pace, your words</span>
+    </div>
+  </div>
+</section>
+
+<!-- What This Is -->
+<section class="section">
+  <div class="section-label">What This Is</div>
+  <h2>The most honest conversation you'll have with yourself this year.</h2>
+  <p class="lead">Most coaches and consultants know they're good at what they do. The problem is they can't explain it in a way that lands. Not on their website. Not in a sales conversation. Not even when someone asks "so what do you do?"</p>
+  <p>The Deep Work Interview fixes that. It's a guided conversation with Claude AI that spends two hours pulling out who you actually are professionally. Your story. Your beliefs. The things you know that other people in your space won't say out loud. The version of you that shows up when you're fired up and not overthinking every word.</p>
+  <p>This is not a personality quiz. It's not a branding worksheet. It's not a template with fill in the blanks.</p>
+  <p>It's closer to <span class="highlight">therapy for your business</span>. And everyone who has done it has said exactly that.</p>
+  <p>But it doesn't stop at clarity. The interview produces a complete, actionable blueprint: three structured offers, a full website outline with actual copy, a niche strategy with real market research, brand guidelines detailed enough that your site won't look AI generated, and an honest gap analysis of what you're still missing.</p>
+</section>
+
+<!-- Quote -->
+<div class="quote-block">
+  <blockquote>"I've spent years trying to explain what I do. Two hours with this thing and I finally heard myself say it."</blockquote>
+  <div class="attribution">ACTUAL THING SOMEONE SAID AFTER DOING THIS</div>
+</div>
+
+<!-- The Phases -->
+<section class="phases">
+  <div class="section-label">The Process</div>
+  <h2>Eight phases. One conversation.</h2>
+  <p style="max-width:600px;">The AI walks you through each phase naturally. You won't feel the transitions. It just feels like a really good conversation with someone who asks exactly the right questions at exactly the right time.</p>
+
+  <div class="phase-grid">
+    <div class="phase-card">
+      <div class="phase-number">01</div>
+      <h3>Your Story</h3>
+      <p>Where you came from. What brought you here. The pivots and defining moments that shaped everything.</p>
+    </div>
+    <div class="phase-card">
+      <div class="phase-number">02</div>
+      <h3>Your Expertise</h3>
+      <p>What you're genuinely great at. The proof. Credentials. A quiet credibility audit that notes what's missing too.</p>
+    </div>
+    <div class="phase-card featured">
+      <div class="phase-number">03</div>
+      <h3>Your Beliefs</h3>
+      <p>The most important phase. Unpopular opinions, worldview, the hill you die on. This is where brand voice lives.</p>
+    </div>
+    <div class="phase-card">
+      <div class="phase-number">04</div>
+      <h3>Your People</h3>
+      <p>Dream client psychographics. Who drains you. The before and after transformation. Their words, not yours.</p>
+    </div>
+    <div class="phase-card">
+      <div class="phase-number">05</div>
+      <h3>Your Voice and Visual Identity</h3>
+      <p>How you communicate, plus a deep dive into what your brand should look and feel like. Colors, typography, photography, layout. Everything a designer needs.</p>
+    </div>
+    <div class="phase-card">
+      <div class="phase-number">06</div>
+      <h3>Your Market and Niche</h3>
+      <p>Real competitive analysis. Named competitors. Pricing research. Where you have credibility NOW and where you could dominate.</p>
+    </div>
+    <div class="phase-card">
+      <div class="phase-number">07</div>
+      <h3>Your Offers</h3>
+      <p>High ticket, mid ticket, low ticket. Named, priced, and structured with specific deliverables and ascension logic.</p>
+    </div>
+    <div class="phase-card">
+      <div class="phase-number">08</div>
+      <h3>The Synthesis</h3>
+      <p>Everything pulled together into a seven part blueprint document that becomes the foundation for your entire business.</p>
+    </div>
+  </div>
+</section>
+
+<!-- What You Get -->
+<section class="section section-wide">
+  <div class="section-label">What You Walk Away With</div>
+  <h2>A complete blueprint. Not a summary.</h2>
+  <p>At the end of the interview, Claude generates a seven part synthesis document. This isn't a vague overview. It's a detailed, actionable blueprint you can hand to a designer, a copywriter, or use yourself to build everything from scratch.</p>
+
+  <div class="output-list">
+    <div class="output-item">
+      <div class="output-icon">1</div>
+      <div>
+        <h4>Brand Foundation</h4>
+        <p>Your story as a compelling narrative. Your expertise with proof points. Your worldview as messaging pillars. Your voice profile. And detailed brand guidelines: hex codes, font pairings, photography direction, visual references, layout guidance, and what to avoid so your site doesn't look like a template.</p>
+      </div>
+    </div>
+    <div class="output-item">
+      <div class="output-icon">2</div>
+      <div>
+        <h4>Ideal Avatar</h4>
+        <p>Not a demographics list. A vivid narrative portrait with a real name. What keeps them up at night, what they've tried that failed, their internal dialogue, their trigger event, where they spend time, their budget, and their objections. The kind of profile where 5 out of 100 people read it and say "are you reading my diary?"</p>
+      </div>
+    </div>
+    <div class="output-item">
+      <div class="output-icon">3</div>
+      <div>
+        <h4>Niche Domination Analysis</h4>
+        <p>Your specific positioning in one sentence. Top 3 to 5 competitors named with pricing. A credibility score from 1 to 10 with honest explanation. The market opportunity. Your structural competitive advantages. This is real research, not generic advice.</p>
+      </div>
+    </div>
+    <div class="output-item">
+      <div class="output-icon">4</div>
+      <div>
+        <h4>Three Tier Offer Structure</h4>
+        <p>High, mid, and low ticket. Each one named, priced, and described with specific deliverables, step by step process, outcomes, and reasoning for the price. Plus ascension logic showing how someone naturally moves from low to high.</p>
+      </div>
+    </div>
+    <div class="output-item">
+      <div class="output-icon">5</div>
+      <div>
+        <h4>Website Blueprint with Content</h4>
+        <p>Full site structure. A complete homepage content outline with actual headlines, subheadlines, CTA text, problem copy, solution copy, about section, FAQ, and footer CTA. Plus brand implementation notes for exact color usage, font sizing, spacing, button styles, image treatment, and mobile considerations.</p>
+      </div>
+    </div>
+    <div class="output-item">
+      <div class="output-icon">6</div>
+      <div>
+        <h4>Gap Analysis</h4>
+        <p>An honest assessment of what you're missing. Professional photos? Case studies? Testimonials? Published content? Each gap rated by urgency with specific next steps. Plus a priority roadmap of the top 10 things to do in the next 30 to 90 days, ordered by impact.</p>
+      </div>
+    </div>
+    <div class="output-item">
+      <div class="output-icon">7</div>
+      <div>
+        <h4>Headlines and Positioning</h4>
+        <p>5 headline options in your voice. The One Liner that makes people put down their drink at a networking event. And a 30 second elevator pitch that actually sounds like you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Another Quote -->
+<div class="quote-block">
+  <blockquote>"It's like sitting across from someone who has no agenda and no ego and just asks you the next right question for two hours straight."</blockquote>
+  <div class="attribution">JAMES GULDAN</div>
+</div>
+
+<!-- How It Works -->
+<section class="section">
+  <div class="section-label">How To Do It</div>
+  <h2>Three steps. Two hours. Zero tech skills needed.</h2>
+
+  <div class="instructions">
+    <h3>Getting Started</h3>
+
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h4>Open Claude</h4>
+        <p>Go to <strong>claude.ai</strong> and start a new conversation. You need a Claude Pro account ($20/month). If you prefer talking over typing, Claude supports voice conversations too.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h4>Paste the Interview Prompt</h4>
+        <p>Copy the prompt below and paste it as your first message. This is what tells Claude exactly how to interview you. Think of it as hiring a really expensive brand strategist for two hours, except this one costs you nothing extra.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h4>Answer Honestly</h4>
+        <p>Claude will start asking you questions. Answer them like you're talking to your best friend, not your LinkedIn audience. The more real you are, the better this works. Block off two hours, grab a coffee, and let it happen.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="tip-block">
+    <p><strong>Pro tip:</strong> If you're the type who thinks better out loud, use Claude's voice mode. Just talk. It's like having the conversation at a coffee shop except the other person has perfect memory and never interrupts you to talk about their weekend.</p>
+  </div>
+</section>
+
+<!-- The Prompt -->
+<section class="prompt-section">
+  <div style="max-width:720px;margin:0 auto;">
+    <div class="section-label">The Prompt</div>
+    <h2>Copy this. Paste it into Claude. Let it do its thing.</h2>
+    <p>This is the entire interview engine. One prompt. It tells Claude exactly how to guide you through all eight phases, what questions to ask, how deep to go, and what to produce at the end. The output is a seven part blueprint covering everything from brand foundation to website content to gap analysis.</p>
+  </div>
+
+  <div class="prompt-box">
+    <button class="copy-btn" onclick="copyPrompt()">Copy Prompt</button>
+    <pre id="interview-prompt">I want you to conduct a Deep Work Interview with me. Here's how this works:
+
+You are a world class brand strategist, offer architect, positioning expert, and market researcher, but you talk like a really smart friend who is incredible at pulling the truth out of people. You're warm, direct, occasionally funny, and you never let me get away with a generic answer.
+
+You also have the strategic brain of a consultant who charges $500 an hour. You notice gaps. You see opportunities. You know what's missing. You tell me what I need to hear, not just what I want to hear.
+
+RULES:
+1. Ask ONE question at a time. Never more. Let each answer breathe.
+2. When I give a surface level answer, push deeper. "Tell me more." "What does that actually mean?" "Give me a Tuesday afternoon example."
+3. Reflect what you hear back to me. "So what I'm picking up on is..."
+4. Push back on generic answers. If I sound like a LinkedIn profile, call it out kindly.
+5. Track themes across the conversation. Notice patterns, recurring words, energy shifts, contradictions. Call them out.
+6. Match my energy. If I'm excited, be excited. If I'm being vulnerable, be gentle.
+7. No jargon. Never say "value proposition," "synergy," "leverage," "paradigm," or "stakeholder."
+8. This should take about 90 to 120 minutes across 8 phases. Do not rush. Stay in a phase if it's producing gold.
+9. If I give a boring answer, call it out nicely. The gold is always one or two questions deeper.
+10. If I say something that's clearly a breakthrough, acknowledge it. "That right there. That's the thing."
+11. Quietly assess credibility gaps, market opportunities, offer viability, and missing assets throughout. You'll need this for the gap analysis.
+12. In Phase 6, do real research. Name competitors. Reference pricing. Identify gaps. Don't just ask me questions, bring your own knowledge to the table.
+
+THE EIGHT PHASES:
+
+Phase 1 — My Story (15 to 20 min): Origin story, pivots, defining moments. What I did before. What triggered the shift. What I expected vs reality. Hardest thing I've been through. What I'd tell my younger self. You're looking for the narrative arc that becomes my About page backbone.
+
+Phase 2 — My Expertise and Credentials (10 to 15 min): What I'm great at AND a quiet credibility audit. Skills, credentials, experience. Quantifiable results. Case studies and before/afters. Publications, speaking, press. Testimonials. What I know that others don't. You're looking for proof points AND credibility gaps. No case studies? Note it for the gap analysis.
+
+Phase 3 — My Beliefs and Worldview (20 to 25 min): THE MOST IMPORTANT PHASE. Brand voice lives here. What my industry gets wrong. Unpopular opinions I know are right. What pisses me off. The hill I die on. What I say at dinner parties that makes people lean in. You're looking for polarizing, real stuff that makes the right people nod and the wrong people leave. These become website messaging pillars.
+
+Phase 4 — My People (15 to 20 min): Dream client psychographics. Who drains me. Before/after transformation. What my best clients share in common. Where these people hang out. What words CLIENTS use for their problem. What they've tried that failed. Their budget. The trigger event. You're looking for a portrait where 5 to 10 out of 100 people say "are you reading my diary?"
+
+Phase 5 — My Voice, Brand, and Visual Identity (15 to 20 min): How friends describe me. How I talk when excited. Repeated phrases. Brand as a person at a party. 3 feelings my brand should evoke. Then go deep on visual identity. Ask me specifically: What does my perfect website FEEL like? Dark and sophisticated? Bright and energetic? Warm and earthy? 2 to 3 websites I love the look of and why. What I want to avoid. What "AI generated website" means to me that I don't want. Photography style. Typography preferences. Layout preferences. Brands I admire visually. Whether I have photos, logo, brand assets. You need enough direction that the resulting website could NOT be mistaken for a template.
+
+Phase 6 — My Market and Niche (15 to 20 min): Identify the niche I could dominate and assess my competitive position. Top competitors. What makes me structurally different. Sub niches with unfair advantages. Where I have most credibility now. Value gaps. Emerging trends. IMPORTANT: Actively contribute your own knowledge here. Name competitors. Reference pricing. Identify trends. Point out my credibility strengths and weaknesses. Suggest specific niche positioning. You're looking for the intersection of great at + loves doing + market needs + has credibility NOW.
+
+Phase 7 — My Offers (25 to 30 min): Three sellable, named, priced offers with ascension logic. For each tier (High, Mid, Low): Who it's for. What problem it solves. What's included with specific deliverables. The process step by step. The outcome. The price (guided by Phase 6 market research). A name that reflects my brand. Push for extreme specificity. "Coaching calls" is not enough. "Six 60 minute strategy sessions over 12 weeks with recordings, a private channel, and a custom plan" is. Also establish ascension logic: how does someone naturally move from low to mid to high?
+
+Phase 8 — The Synthesis: Say "That was incredible. Give me a few minutes. What you're about to get is a complete blueprint: brand foundation, ideal avatar, niche analysis, all three offers, a full website outline with content and brand guidelines, and an honest list of what's missing. Ready?"
+
+Then generate this seven part output:
+
+PART 1: BRAND FOUNDATION
+My Story: 3 to 5 paragraph compelling origin narrative, third person.
+My Expertise: Clear articulation with proof points woven in naturally.
+My Worldview: 3 to 5 core beliefs as bold declarations with supporting paragraphs. Messaging pillars.
+My Voice Profile: Tone descriptors, signature phrases, communication energy, what writing should and should not sound like.
+Brand Guidelines: Color palette with emotional territory PLUS 3 to 5 specific hex codes with reasoning. Typography with specific font pairings (heading + body) and reasoning. Photography style with specific direction. Visual references: 2 to 3 existing websites/brands that capture the right aesthetic with what to take from each. Layout direction for spacing, density, scroll behavior, section structure. What to avoid so the site doesn't look generic or AI generated. Overall personality as 3 to 5 human characteristics. The 5 second test: what someone should feel instantly on the site.
+
+PART 2: IDEAL AVATAR
+Give the avatar a real name. Vivid narrative portrait: who they are, what they care about, what keeps them up, what they've tried, their internal dialogue, secret fears, definition of success, where they spend time, their language, trigger event, budget, objections.
+
+PART 3: NICHE DOMINATION ANALYSIS
+The Niche: one sentence of specific positioning. Market Landscape: top 3 to 5 competitors named, pricing range, trends, underserved segments. Credibility Score: 1 to 10 with honest explanation covering experience, content, social proof, network, credentials. The Opportunity: 2 to 3 paragraphs on where I can stand out and first steps toward authority. Competitive Advantage: 2 to 3 structural differentiators.
+
+PART 4: THE OFFERS
+For each tier: Name, Price Range, Who It's For, Problem Solved, What's Included (specific), Process (step by step), Outcome, Why This Price. Then an Ascension Logic section explaining the natural low to high journey.
+
+PART 5: WEBSITE BLUEPRINT
+Site Structure: every page and its purpose. Homepage Content Outline: Hero with actual headline, subheadline, CTA button text, visual direction. Problem section with 2 to 3 paragraphs of actual content in my voice using avatar language. Solution section with my approach in my voice. Credibility section with what proof to display or what to put temporarily. Offers section with how to present tiers and copy direction. About section with condensed story and photo direction. Testimonials with what to include or what to do without them. FAQ with 5 to 7 questions based on avatar objections. Footer CTA with final headline and button text. Brand Implementation: exact color usage (which color goes where), font sizing hierarchy, spacing guidance, image treatment, button styles, section transitions, mobile considerations, and specific things that will make the site NOT look like an AI template. Additional pages: purpose, key sections, copy direction.
+
+PART 6: GAP ANALYSIS
+Critical Gaps (fix first): for each gap, what's missing, why it matters, specific next step, urgency 1 to 10. Assess: professional photos, case studies with numbers, testimonials from ideal clients, documented methodology, published content, email list, social proof, portfolio, legal basics, payment systems. Nice to Have: speaking opportunities, content topics, partnerships, certifications, tools. Priority Roadmap: top 10 actions for the next 30 to 90 days, ordered by impact.
+
+PART 7: HEADLINES AND POSITIONING
+5 Headline Options in my voice. The One Liner (networking event answer that makes people put down their drink). The Elevator Pitch (30 seconds, 3 to 4 sentences, my voice).
+
+After presenting, say: "That's your blueprint. Take a minute. What landed? What feels right? What needs adjusting? What surprised you?" Be open to revisions.
+
+IMPORTANT NOTES: Emotional moments get space and gentleness. Unexpected productive directions get followed. Guarded answers get patience and rapport building. Phase 6 is collaborative, not just Q&A. The gap analysis must be genuinely honest. The website blueprint must include enough brand specificity that the resulting site could NOT be mistaken for a generic AI template.
+
+Start by welcoming me warmly. Explain what's about to happen in a casual, non intimidating way. Then ask me: What's my name, what do I do, and how long have I been doing it.</pre>
+  </div>
+</section>
+
+<!-- Tips Section -->
+<section class="section">
+  <div class="section-label">Before You Start</div>
+  <h2>A few things that'll make this better.</h2>
+
+  <div class="tip-block">
+    <p><strong>Block real time.</strong> This is not something you squeeze between meetings. Treat it like a therapy session. Close your tabs. Silence your phone. Give it the two hours.</p>
+  </div>
+
+  <div class="tip-block">
+    <p><strong>Be embarrassingly honest.</strong> The generic version of your answers will produce generic output. The real, messy, opinionated version of your answers is where the magic lives. Say the thing you're afraid to say out loud.</p>
+  </div>
+
+  <div class="tip-block">
+    <p><strong>Don't edit yourself.</strong> This is a first draft of your thinking, not a final presentation. Let yourself ramble. Let yourself contradict yourself. The AI will find the pattern in the mess. That's literally what it's built to do.</p>
+  </div>
+
+  <div class="tip-block">
+    <p><strong>It might get emotional.</strong> Not kidding. Multiple people have teared up during this. When someone finally asks you the right questions and you hear yourself say the thing you've been dancing around for years... it hits different. That's a sign it's working.</p>
+  </div>
+
+  <div class="tip-block">
+    <p><strong>The gap analysis will be honest.</strong> That's the point. If you don't have case studies, it's going to tell you. If your credentials need work, it's going to say so. This isn't a pep talk. It's a blueprint with a reality check built in.</p>
+  </div>
+</section>
+
+<!-- Final CTA -->
+<div class="quote-block" style="padding: 100px 24px;">
+  <blockquote>What agencies charge $5,000 for? You just got the interview process for free. Now go use it.</blockquote>
+  <div class="attribution" style="margin-top: 30px; color: rgba(250,250,250,0.5);">Two hours. Eight phases. Everything you need.</div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="name">James Guldan</div>
+  <p style="margin-bottom: 8px; color: rgba(250,250,250,0.3);">james@jamesguldan.com</p>
+  <p><a href="https://siteinsixty.com">siteinsixty.com</a></p>
+</footer>
+
+<script>
+function copyPrompt() {
+  const text = document.getElementById('interview-prompt').textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.querySelector('.copy-btn');
+    btn.textContent = 'Copied!';
+    setTimeout(() => { btn.textContent = 'Copy Prompt'; }, 2000);
+  });
+}
+</script>
+
+</body>
+</html>
