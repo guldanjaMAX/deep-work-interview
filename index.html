@@ -14,15 +14,21 @@
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://deepwork.jamesguldan.com/">
-<meta property="og:title" content="The Deep Work Interview | AI Guided Brand Strategy">
-<meta property="og:description" content="Two hours. One conversation with AI. A complete blueprint: your brand, your offers, your website content, your niche strategy, and an honest list of what you still need to go build.">
-<meta property="og:site_name" content="The Deep Work Interview">
+<meta property="og:title" content="The Deep Work Interview">
+<meta property="og:description" content="Two hours with AI. A complete business blueprint: brand, offers, website copy, niche strategy, and an honest gap analysis. Free for coaches and consultants.">
+<meta property="og:site_name" content="James Guldan">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://deepwork.jamesguldan.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Deep Work Interview: a free AI guided brand strategy session for coaches and consultants">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="The Deep Work Interview | AI Guided Brand Strategy">
-<meta name="twitter:description" content="Two hours. One conversation with AI. A complete blueprint: your brand, your offers, your website content, your niche strategy, and an honest list of what you still need to go build.">
+<meta name="twitter:title" content="The Deep Work Interview">
+<meta name="twitter:description" content="Two hours with AI. A complete business blueprint: brand, offers, website copy, niche strategy, and an honest gap analysis. Free.">
+<meta name="twitter:image" content="https://deepwork.jamesguldan.com/og-image.png">
+<meta name="twitter:image:alt" content="The Deep Work Interview: a free AI guided brand strategy session for coaches and consultants">
 
 <!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230a0a0a'/%3E%3Ctext x='50' y='68' font-family='Georgia,serif' font-size='60' font-weight='bold' font-style='italic' fill='%23c4703f' text-anchor='middle'%3ED%3C/text%3E%3C/svg%3E">
@@ -511,10 +517,103 @@
     color: var(--accent);
   }
 
+  /* Hero CTA */
+  .hero-cta {
+    display: inline-block;
+    margin-top: 40px;
+    padding: 16px 40px;
+    background: var(--accent);
+    color: white;
+    text-decoration: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    transition: background 0.2s, transform 0.2s;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .hero-cta:hover {
+    background: var(--accent-light);
+    transform: translateY(-2px);
+  }
+
+  .hero-free {
+    display: block;
+    margin-top: 14px;
+    font-size: 13px;
+    color: rgba(250, 250, 250, 0.35);
+    letter-spacing: 0.5px;
+  }
+
+  /* Anchor Nav */
+  .anchor-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(245, 240, 235, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    padding: 12px 24px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .anchor-nav a {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-light);
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 20px;
+    transition: all 0.2s;
+    letter-spacing: 0.3px;
+  }
+
+  .anchor-nav a:hover {
+    color: var(--accent);
+    background: rgba(196, 112, 63, 0.08);
+  }
+
+  /* Back to Top */
+  .back-to-top {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 44px;
+    height: 44px;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s, transform 0.2s;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  }
+
+  .back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .back-to-top:hover {
+    transform: translateY(-3px);
+    background: var(--accent-light);
+  }
+
   /* Footer */
   .footer {
     text-align: center;
-    padding: 60px 24px;
+    padding: 60px 24px 40px;
     background: var(--black);
     color: rgba(250, 250, 250, 0.3);
     font-size: 13px;
@@ -525,11 +624,21 @@
     text-decoration: none;
   }
 
+  .footer a:hover {
+    text-decoration: underline;
+  }
+
   .footer .name {
     font-size: 16px;
     font-weight: 600;
     color: var(--white);
     margin-bottom: 8px;
+  }
+
+  .footer .copyright {
+    margin-top: 24px;
+    font-size: 12px;
+    color: rgba(250, 250, 250, 0.2);
   }
 
   /* Skip to Content (Accessibility) */
@@ -560,7 +669,12 @@
     .prompt-box { padding: 24px; }
     .hero-meta { gap: 20px; }
     .phase-grid { grid-template-columns: 1fr; }
+    .anchor-nav { gap: 4px; padding: 10px 16px; }
+    .anchor-nav a { font-size: 11px; padding: 5px 10px; }
+    .back-to-top { bottom: 20px; right: 20px; width: 40px; height: 40px; font-size: 18px; }
   }
+
+  html { scroll-behavior: smooth; }
 </style>
 </head>
 <body>
@@ -579,12 +693,24 @@
       <span><span class="dot"></span>Powered by Claude AI</span>
       <span><span class="dot"></span>Your pace, your words</span>
     </div>
+    <a href="#the-prompt" class="hero-cta">Get the Prompt</a>
+    <span class="hero-free">Completely free. No email required.</span>
   </div>
 </section>
 
+<!-- Anchor Nav -->
+<nav class="anchor-nav" id="top">
+  <a href="#what-this-is">What This Is</a>
+  <a href="#the-process">The Process</a>
+  <a href="#what-you-get">What You Get</a>
+  <a href="#how-to-do-it">How To Do It</a>
+  <a href="#the-prompt">The Prompt</a>
+  <a href="#before-you-start">Before You Start</a>
+</nav>
+
 <!-- What This Is -->
 <main id="main-content">
-<section class="section">
+<section class="section" id="what-this-is">
   <div class="section-label">What This Is</div>
   <h2>The most honest conversation you'll have with yourself this year.</h2>
   <p class="lead">Most coaches and consultants know they're good at what they do. The problem is they can't explain it in a way that lands. Not on their website. Not in a sales conversation. Not even when someone asks "so what do you do?"</p>
@@ -601,7 +727,7 @@
 </div>
 
 <!-- The Phases -->
-<section class="phases">
+<section class="phases" id="the-process">
   <div class="section-label">The Process</div>
   <h2>Eight phases. One conversation.</h2>
   <p style="max-width:600px;">The AI walks you through each phase naturally. You won't feel the transitions. It just feels like a really good conversation with someone who asks exactly the right questions at exactly the right time.</p>
@@ -651,7 +777,7 @@
 </section>
 
 <!-- What You Get -->
-<section class="section section-wide">
+<section class="section section-wide" id="what-you-get">
   <div class="section-label">What You Walk Away With</div>
   <h2>A complete blueprint. Not a summary.</h2>
   <p>At the end of the interview, Claude generates a seven part synthesis document. This isn't a vague overview. It's a detailed, actionable blueprint you can hand to a designer, a copywriter, or use yourself to build everything from scratch.</p>
@@ -716,7 +842,7 @@
 </div>
 
 <!-- How It Works -->
-<section class="section">
+<section class="section" id="how-to-do-it">
   <div class="section-label">How To Do It</div>
   <h2>Three steps. Two hours. Zero tech skills needed.</h2>
 
@@ -727,7 +853,7 @@
       <div class="step-num">1</div>
       <div class="step-content">
         <h4>Open Claude</h4>
-        <p>Go to <strong>claude.ai</strong> and start a new conversation. You need a Claude Pro account ($20/month). If you prefer talking over typing, Claude supports voice conversations too.</p>
+        <p>Go to <a href="https://claude.ai" target="_blank" rel="noopener" style="color: var(--accent); font-weight: 600; text-decoration: none;"><strong>claude.ai</strong></a> and start a new conversation. You need a Claude Pro account ($20/month). If you prefer talking over typing, Claude supports voice conversations too.</p>
       </div>
     </div>
 
@@ -754,7 +880,7 @@
 </section>
 
 <!-- The Prompt -->
-<section class="prompt-section">
+<section class="prompt-section" id="the-prompt">
   <div style="max-width:720px;margin:0 auto;">
     <div class="section-label">The Prompt</div>
     <h2>Copy this. Paste it into Claude. Let it do its thing.</h2>
@@ -837,7 +963,7 @@ Start by welcoming me warmly. Explain what's about to happen in a casual, non in
 </section>
 
 <!-- Tips Section -->
-<section class="section">
+<section class="section" id="before-you-start">
   <div class="section-label">Before You Start</div>
   <h2>A few things that'll make this better.</h2>
 
@@ -873,9 +999,13 @@ Start by welcoming me warmly. Explain what's about to happen in a casual, non in
 <!-- Footer -->
 <footer class="footer">
   <div class="name">James Guldan</div>
-  <p style="margin-bottom: 8px; color: rgba(250,250,250,0.3);">james@jamesguldan.com</p>
-  <p><a href="https://siteinsixty.com">siteinsixty.com</a></p>
+  <p style="margin-bottom: 8px; color: rgba(250,250,250,0.3);"><a href="mailto:james@jamesguldan.com" style="color: rgba(250,250,250,0.3);">james@jamesguldan.com</a></p>
+  <p><a href="https://siteinsixty.com" target="_blank" rel="noopener">siteinsixty.com</a></p>
+  <p class="copyright">&copy; 2026 James Guldan. All rights reserved.</p>
 </footer>
+
+<!-- Back to Top -->
+<button class="back-to-top" onclick="window.scrollTo({top:0})" aria-label="Back to top">&uarr;</button>
 
 <script>
 function copyPrompt() {
@@ -886,6 +1016,16 @@ function copyPrompt() {
     setTimeout(() => { btn.textContent = 'Copy Prompt'; }, 2000);
   });
 }
+
+// Back to top visibility
+const backToTop = document.querySelector('.back-to-top');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 600) {
+    backToTop.classList.add('visible');
+  } else {
+    backToTop.classList.remove('visible');
+  }
+}, { passive: true });
 </script>
 
 </body>
