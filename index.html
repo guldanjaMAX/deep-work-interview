@@ -674,6 +674,52 @@
     .back-to-top { bottom: 20px; right: 20px; width: 40px; height: 40px; font-size: 18px; }
   }
 
+  /* Testimonial Card */
+  .testimonial-section {
+    background: var(--black);
+    color: var(--white);
+    padding: 80px 24px;
+  }
+
+  .testimonial-card {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .testimonial-photo {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 28px;
+    border: 3px solid var(--accent);
+    box-shadow: 0 4px 20px rgba(196, 112, 63, 0.3);
+  }
+
+  .testimonial-card blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(20px, 3vw, 28px);
+    font-style: italic;
+    line-height: 1.5;
+    font-weight: 700;
+    margin-bottom: 28px;
+  }
+
+  .testimonial-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 4px;
+    letter-spacing: 0.5px;
+  }
+
+  .testimonial-title {
+    font-size: 13px;
+    color: rgba(250, 250, 250, 0.4);
+    letter-spacing: 0.5px;
+  }
+
   html { scroll-behavior: smooth; }
 </style>
 </head>
@@ -721,11 +767,15 @@
   <p>After that, you can keep ignoring it if you want. But you can't pretend you don't know anymore.</p>
 </section>
 
-<!-- Quote -->
-<div class="quote-block">
-  <blockquote>"I've spent years trying to explain what I do. Two hours with this thing and I finally heard myself say it."</blockquote>
-  <div class="attribution">ACTUAL THING SOMEONE SAID AFTER DOING THIS</div>
-</div>
+<!-- Testimonial -->
+<section class="testimonial-section">
+  <div class="testimonial-card">
+    <img src="chris-testimonial.jpg" alt="Chris, Creative Director" class="testimonial-photo" width="90" height="90">
+    <blockquote>"I spent all day on this. Better than working with business coaches I have paid to talk with me on the phone. I've got real clarity on the next direction."</blockquote>
+    <div class="testimonial-name">Chris</div>
+    <div class="testimonial-title">Creative Director &amp; Strategic Media Partner</div>
+  </div>
+</section>
 
 <!-- The Phases -->
 <section class="phases" id="the-process">
