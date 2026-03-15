@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>You're In | The Deep Work Interview</title>
+<meta name="robots" content="noindex, nofollow">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --accent: #BF6D2A;
+    --accent-hover: #D4883F;
+    --bg-primary: #0A0A0A;
+    --bg-secondary: #111111;
+    --bg-card: #161616;
+    --text-primary: #F5F0EB;
+    --text-secondary: #A89F95;
+    --text-muted: #6B6560;
+    --border: rgba(191, 109, 42, 0.15);
+    --max-width: 680px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .hero {
+    padding: 100px 0 60px;
+    text-align: center;
+  }
+
+  .checkmark {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgba(191, 109, 42, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 28px;
+  }
+
+  .checkmark svg {
+    width: 32px;
+    height: 32px;
+    stroke: var(--accent);
+  }
+
+  h1 {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+
+  h1 em {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .hero p {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  /* Instructions */
+  .instructions {
+    padding: 60px 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .instructions h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 28px;
+  }
+
+  .step-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 16px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .step-num {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--accent);
+    background: rgba(191, 109, 42, 0.1);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .step-card strong {
+    display: block;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+  }
+
+  .step-card span {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+  }
+
+  .step-card a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .step-card a:hover {
+    text-decoration: underline;
+  }
+
+  /* The Prompt Box */
+  .prompt-section {
+    padding: 60px 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .prompt-section h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  .prompt-note {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+  }
+
+  .prompt-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    position: relative;
+    max-height: 400px;
+    overflow-y: auto;
+  }
+
+  .prompt-box pre {
+    font-family: 'DM Sans', monospace;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    line-height: 1.6;
+  }
+
+  .copy-btn {
+    position: sticky;
+    top: 0;
+    float: right;
+    padding: 8px 20px;
+    background: var(--accent);
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    z-index: 2;
+  }
+
+  .copy-btn:hover {
+    background: var(--accent-hover);
+  }
+
+  /* Upsell */
+  .upsell {
+    padding: 60px 0;
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+
+  .upsell-eyebrow {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+
+  .upsell h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  .upsell h2 em {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .upsell p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    max-width: 520px;
+    margin: 0 auto 24px;
+  }
+
+  .upsell-price {
+    font-family: 'Outfit', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 24px;
+  }
+
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 36px;
+    background: var(--accent);
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.25s ease;
+  }
+
+  .cta-button:hover {
+    background: var(--accent-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 30px rgba(191, 109, 42, 0.3);
+  }
+
+  .upsell-note {
+    margin-top: 12px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  footer {
+    text-align: center;
+    padding: 40px 0;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
+  }
+
+  footer a {
+    color: var(--text-muted);
+    text-decoration: none;
+  }
+
+  footer a:hover {
+    color: var(--accent);
+  }
+
+  @media (max-width: 640px) {
+    .hero { padding: 72px 0 48px; }
+    .cta-button { width: 100%; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="container">
+    <div class="checkmark">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <h1>You're in. Let's go <em>deep.</em></h1>
+    <p>Your purchase is confirmed. Below is everything you need to start the Deep Work Interview right now.</p>
+  </div>
+</section>
+
+<section class="instructions">
+  <div class="container">
+    <h2>Getting started.</h2>
+    <div class="step-card">
+      <div class="step-num">1</div>
+      <div>
+        <strong>Open Claude</strong>
+        <span>Go to <a href="https://claude.ai" target="_blank">claude.ai</a> and start a new conversation. The free tier works perfectly.</span>
+      </div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">2</div>
+      <div>
+        <strong>Copy the Interview prompt below</strong>
+        <span>Use the copy button on the prompt box below. Paste the entire thing into Claude as your first message.</span>
+      </div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">3</div>
+      <div>
+        <strong>Answer honestly and go deep</strong>
+        <span>The Interview is 10 phases. Each one builds on the last. Set aside 90 minutes to 2 hours. Don't rush it. The depth is what makes this work.</span>
+      </div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">4</div>
+      <div>
+        <strong>Save your results</strong>
+        <span>At the end, Claude produces your complete positioning blueprint. Copy it somewhere safe. You own it forever.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="prompt-section" id="the-prompt">
+  <div class="container">
+    <h2>Your Interview prompt.</h2>
+    <p class="prompt-note">Click copy, paste into Claude, and begin.</p>
+    <div class="prompt-box">
+      <button class="copy-btn" onclick="copyPrompt()">Copy Prompt</button>
+      <pre id="prompt-text"><!-- PROMPT WILL BE INSERTED HERE - placeholder for the full interview prompt -->
+The Deep Work Interview prompt will be loaded here after purchase verification.
+
+Please contact james@jamesguldan.com if you're seeing this message after purchasing.</pre>
+    </div>
+  </div>
+</section>
+
+<!-- UPSELL: REVIEW CALL -->
+<section class="upsell">
+  <div class="container">
+    <div class="upsell-eyebrow">One More Thing</div>
+    <h2>Want me to review your results <em>personally?</em></h2>
+    <p>Once you finish the Interview, book a live 1 hour call with me. I'll walk through your blueprint, pressure test your positioning, sharpen your offers, and tell you exactly what to build first.</p>
+    <div class="upsell-price">$297</div>
+    <a href="https://buy.stripe.com/aFa28rb94c1c9lJ9mx6c006" class="cta-button">
+      Add the Review Call
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+    <p class="upsell-note">Optional. The Interview is powerful on its own. This just makes it sharper.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    &copy; 2026 James Guldan &middot; <a href="https://jamesguldan.com">jamesguldan.com</a> &middot; <a href="mailto:james@jamesguldan.com">james@jamesguldan.com</a>
+  </div>
+</footer>
+
+<script>
+function copyPrompt() {
+  var text = document.getElementById('prompt-text').textContent;
+  navigator.clipboard.writeText(text).then(function() {
+    var btn = document.querySelector('.copy-btn');
+    btn.textContent = 'Copied!';
+    setTimeout(function() { btn.textContent = 'Copy Prompt'; }, 2000);
+  });
+}
+</script>
+
+</body>
+</html>
