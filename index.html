@@ -93,6 +93,45 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<!-- Countdown Timer Banner - Free until Friday March 20, 2026 5pm MST -->
+<div id="countdown-banner" style="position:fixed;top:0;left:0;right:0;z-index:9999;background:linear-gradient(135deg,#BF6D2A,#D4883F);color:#fff;padding:12px 24px;text-align:center;font-family:'Inter','DM Sans',sans-serif;font-size:0.95rem;font-weight:600;letter-spacing:0.02em;box-shadow:0 2px 12px rgba(0,0,0,0.15);display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;">
+  <span style="opacity:0.95;">This tool is free until Friday at 5pm MST. After that, it becomes a paid product.</span>
+  <span id="countdown-timer" style="background:rgba(0,0,0,0.2);padding:6px 14px;border-radius:6px;font-variant-numeric:tabular-nums;letter-spacing:0.05em;white-space:nowrap;"></span>
+  <a href="#the-prompt" style="background:#fff;color:#BF6D2A;padding:6px 16px;border-radius:6px;text-decoration:none;font-weight:700;font-size:0.85rem;white-space:nowrap;">Get It Free Now</a>
+</div>
+<script>
+(function(){
+  var deadline = new Date('2026-03-20T17:00:00-07:00').getTime();
+  var timerEl = document.getElementById('countdown-timer');
+  var bannerEl = document.getElementById('countdown-banner');
+  function update(){
+    var now = Date.now();
+    var diff = deadline - now;
+    if(diff <= 0){
+      // Deadline passed - switch to paid CTA
+      bannerEl.innerHTML = '<span style="opacity:0.95;">The free period has ended. Get the Deep Work Interview for $67.</span>' +
+        '<a href="https://buy.stripe.com/dRmfZh4KG5COapN9mx6c005" style="background:#fff;color:#BF6D2A;padding:6px 16px;border-radius:6px;text-decoration:none;font-weight:700;font-size:0.85rem;white-space:nowrap;">Buy Now - $67</a>';
+      return;
+    }
+    var d = Math.floor(diff / 86400000);
+    var h = Math.floor((diff % 86400000) / 3600000);
+    var m = Math.floor((diff % 3600000) / 60000);
+    var s = Math.floor((diff % 60000) / 1000);
+    var parts = [];
+    if(d > 0) parts.push(d + 'd');
+    parts.push(h + 'h');
+    parts.push(m + 'm');
+    parts.push(s + 's');
+    timerEl.textContent = parts.join(' ');
+    setTimeout(update, 1000);
+  }
+  update();
+  // Push body content down to avoid overlap
+  document.body.style.paddingTop = '56px';
+})();
+</script>
+<!-- End Countdown Timer Banner -->
+
 
 <!-- Skip to Content -->
 <a href="#main-content" class="skip-link">Skip to content</a>
