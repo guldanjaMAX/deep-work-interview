@@ -37,30 +37,31 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', 'XXXXXXXXXX');
 fbq('track', 'PageView');
-// CONVERSION: Lead event fires on thank-you page load (confirms email was captured)
-fbq('track', 'Lead', {
+// CONVERSION: Purchase event fires on thank-you page load (confirms $67 DWI purchase)
+fbq('track', 'Purchase', {
   content_name: 'Deep Work Interview',
-  content_category: 'Email Capture',
-  value: 0,
+  content_category: 'Digital Product',
+  value: 67.00,
   currency: 'USD'
 });
 </script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=XXXXXXXXXX&ev=PageView&noscript=1"/></noscript>
 
-<!-- GA4 Conversion Event: Lead confirmed on page load -->
+<!-- GA4 Conversion Event: Purchase confirmed on page load -->
 <script>
-  gtag('event', 'generate_lead', {
-    event_category: 'Lead Capture',
-    event_label: 'DWI Thank You Page',
-    value: 0,
-    currency: 'USD'
+  gtag('event', 'purchase', {
+    transaction_id: 'dwi_' + Date.now(),
+    value: 67.00,
+    currency: 'USD',
+    items: [{ item_name: 'Deep Work Interview', price: 67.00, quantity: 1 }]
   });
   // GTM data layer
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({
-    event: 'lead_confirmed',
-    lead_source: 'Deep Work Interview',
+    event: 'purchase_confirmed',
+    product: 'Deep Work Interview',
+    value: 67.00,
     page_type: 'thank_you'
   });
 </script>

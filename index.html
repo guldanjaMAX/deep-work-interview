@@ -117,7 +117,7 @@ body {
 }
 
 /* ============================================
-   HERO — Full viewport, single focus: capture email
+   HERO — Full viewport, single focus: drive to checkout
 ============================================ */
 .hero {
   min-height: 100vh;
@@ -178,61 +178,68 @@ body {
   margin: 0 auto 36px;
 }
 
-/* Email Capture Form */
-.capture-form {
-  max-width: 440px;
+/* Buy CTA */
+.hero-cta {
   margin: 0 auto 20px;
+  text-align: center;
 }
 
-.capture-form .form-row {
-  display: flex;
-  gap: 10px;
+.price-block {
+  margin-bottom: 20px;
 }
 
-.capture-form input[type="email"] {
-  flex: 1;
-  padding: 16px 20px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  color: var(--text);
+.price-was {
   font-family: 'DM Sans', sans-serif;
-  font-size: 1rem;
-  outline: none;
-  transition: border-color 0.2s;
-}
-
-.capture-form input[type="email"]::placeholder {
+  font-size: 0.85rem;
   color: var(--text-dim);
+  text-decoration: line-through;
+  margin-bottom: 4px;
 }
 
-.capture-form input[type="email"]:focus {
-  border-color: var(--accent);
+.price-now {
+  font-family: 'Outfit', sans-serif;
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: var(--text);
 }
 
-.capture-form button {
-  padding: 16px 28px;
+.price-now span {
+  color: var(--accent);
+}
+
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 48px;
   background: var(--accent);
   color: #fff;
   border: none;
   border-radius: 8px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.95rem;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.1rem;
   font-weight: 700;
   cursor: pointer;
-  white-space: nowrap;
-  transition: background 0.2s, transform 0.1s;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
 }
 
-.capture-form button:hover {
+.cta-button:hover {
   background: #D4883F;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(191,109,42,0.3);
 }
 
-.capture-note {
+.cta-note {
   font-size: 0.8rem;
   color: var(--text-dim);
   margin-top: 12px;
+}
+
+.cta-guarantee {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-top: 8px;
 }
 
 .hero-proof {
@@ -562,7 +569,7 @@ body {
   z-index: 1;
 }
 
-.final-cta .capture-form {
+.final-cta .hero-cta {
   position: relative;
   z-index: 1;
 }
@@ -592,11 +599,10 @@ footer a:hover { color: var(--accent); }
    MOBILE
 ============================================ */
 @media (max-width: 550px) {
-  .capture-form .form-row {
-    flex-direction: column;
-  }
-  .capture-form button {
+  .cta-button {
     width: 100%;
+    justify-content: center;
+    padding: 18px 24px;
   }
   .hero-proof {
     gap: 16px;
@@ -617,15 +623,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h1>Find Your Niche.<br>Build Your Offers.<br><em>Stop guessing.</em></h1>
     <p class="hero-sub">A two hour AI interview that pulls apart your entire business and gives you an empirical, researched answer about exactly what niche you could dominate. Named competitors. Pricing data. Three structured offers. A complete blueprint.</p>
 
-    <div class="capture-form">
-      <!-- GHL FORM PLACEHOLDER: Replace this with GHL embedded form once account is live -->
-      <form id="lead-form" action="#" method="POST">
-        <div class="form-row">
-          <input type="email" name="email" placeholder="Your best email" required>
-          <button type="submit">Get the Interview Free</button>
-        </div>
-      </form>
-      <p class="capture-note">No spam. No pitch. Just the interview prompt delivered to your inbox.</p>
+    <div class="hero-cta">
+      <div class="price-block">
+        <div class="price-was">Previously $5,000 as a private consulting engagement</div>
+        <div class="price-now"><span>$</span>67</div>
+      </div>
+      <!-- GHL ORDER FORM LINK: Replace # with GHL checkout URL once account is live -->
+      <a href="#" class="cta-button" id="hero-buy-btn">Get the Interview Now</a>
+      <p class="cta-note">Instant access. No subscriptions. Yours forever.</p>
     </div>
 
     <div class="hero-proof">
@@ -726,8 +731,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="step">
     <div class="step-num">01</div>
     <div>
-      <h3>Enter your email above</h3>
-      <p>You'll get the full interview prompt delivered instantly. No fluff, no drip sequence. Just the prompt.</p>
+      <h3>Purchase and get instant access</h3>
+      <p>You'll get the full interview prompt delivered immediately on the next page. No waiting, no drip sequence. Just the prompt, ready to go.</p>
     </div>
   </div>
 
@@ -775,14 +780,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <h2>You already know what <em>needs to change.</em></h2>
   <p class="sub">This interview will tell you exactly what to do about it.</p>
 
-  <div class="capture-form">
-    <form action="#" method="POST">
-      <div class="form-row">
-        <input type="email" name="email" placeholder="Your best email" required>
-        <button type="submit">Get the Interview Free</button>
-      </div>
-    </form>
-    <p class="capture-note">Two hours. Ten phases. A complete blueprint. Free.</p>
+  <div class="hero-cta" style="position:relative;z-index:1;">
+    <div class="price-block">
+      <div class="price-now"><span>$</span>67</div>
+    </div>
+    <a href="#" class="cta-button" id="bottom-buy-btn">Get the Interview Now</a>
+    <p class="cta-note">Two hours. Ten phases. A complete blueprint.</p>
+    <p class="cta-guarantee">100% satisfaction or your money back. No questions.</p>
   </div>
 </section>
 
@@ -798,43 +802,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 ============================================ -->
 <script>
 (function() {
-  // Get all lead capture forms on the page
-  var forms = document.querySelectorAll('.capture-form form');
+  // Track buy button clicks (both hero and bottom CTA)
+  var buyBtns = document.querySelectorAll('.cta-button');
+  buyBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var location = btn.id === 'hero-buy-btn' ? 'hero' : 'bottom_cta';
 
-  forms.forEach(function(form) {
-    // Inject hidden UTM fields into form (for GHL to capture)
-    var utmKeys = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid','gclid'];
-    utmKeys.forEach(function(key) {
-      var val = window._utmData && window._utmData[key];
-      if (val) {
-        var hidden = document.createElement('input');
-        hidden.type = 'hidden';
-        hidden.name = key;
-        hidden.value = val;
-        form.appendChild(hidden);
-      }
-    });
-
-    // Track form submission
-    form.addEventListener('submit', function(e) {
-      var email = form.querySelector('input[type="email"]').value;
-
-      // Facebook Pixel: Lead event
+      // Facebook Pixel: InitiateCheckout event
       if (typeof fbq === 'function') {
-        fbq('track', 'Lead', {
+        fbq('track', 'InitiateCheckout', {
           content_name: 'Deep Work Interview',
-          content_category: 'Email Capture',
-          value: 0,
+          content_category: 'Product',
+          value: 67,
           currency: 'USD'
         });
       }
 
-      // GA4: generate_lead event
+      // GA4: begin_checkout event
       if (typeof gtag === 'function') {
-        gtag('event', 'generate_lead', {
-          event_category: 'Lead Capture',
-          event_label: 'DWI Cold Traffic',
-          value: 0,
+        gtag('event', 'begin_checkout', {
+          items: [{ item_name: 'Deep Work Interview', price: 67 }],
+          value: 67,
           currency: 'USD'
         });
       }
@@ -842,17 +830,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       // GTM data layer push
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
-        event: 'form_submit',
-        form_id: 'dwi_lead_capture',
-        form_name: 'Deep Work Interview Email Capture',
-        form_location: form.closest('section').className,
+        event: 'initiate_checkout',
+        product: 'Deep Work Interview',
+        value: 67,
+        button_location: location,
         lead_source: window._utmData && window._utmData.utm_source || 'direct',
         lead_medium: window._utmData && window._utmData.utm_medium || 'none',
         lead_campaign: window._utmData && window._utmData.utm_campaign || 'none'
       });
 
-      // Note: When GHL form replaces this, GHL handles the redirect.
-      // This tracking still fires because the event listener runs before navigation.
+      // Append UTM params to checkout URL so GHL captures attribution
+      if (window._utmData && Object.keys(window._utmData).length > 0) {
+        var url = new URL(btn.href, window.location.origin);
+        Object.keys(window._utmData).forEach(function(key) {
+          url.searchParams.set(key, window._utmData[key]);
+        });
+        btn.href = url.toString();
+      }
     });
   });
 
