@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Deep Work Interview | Find Your Niche in Two Hours</title>
+<title>The Deep Work Interview | By James Guldan</title>
 
-<meta name="description" content="A two hour AI interview that pulls apart your entire business and tells you exactly what niche you could dominate. Named competitors. Pricing data. Three structured offers. A complete blueprint.">
+<meta name="description" content="You know what's broken. You've known for a while. Two hours from now, you'll know exactly what to fix and how. The same process I used to charge $5,000 for. Now $67.">
 <meta name="author" content="James Guldan">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://deepwork.jamesguldan.com/">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://deepwork.jamesguldan.com/">
-<meta property="og:title" content="The Deep Work Interview | Find Your Niche in Two Hours">
-<meta property="og:description" content="A two hour AI interview that pulls apart your entire business. Named competitors. Pricing data. A credibility score. Three structured offers. A complete blueprint.">
+<meta property="og:title" content="The Deep Work Interview | By James Guldan">
+<meta property="og:description" content="Your business doesn't match who you've become. Two hours from now, you'll know exactly what to fix and how.">
 <meta property="og:site_name" content="James Guldan">
 <meta property="og:image" content="https://deepwork.jamesguldan.com/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -21,14 +21,14 @@
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="The Deep Work Interview">
-<meta name="twitter:description" content="A two hour AI interview that pulls apart your entire business and tells you exactly what niche you could dominate.">
+<meta name="twitter:description" content="You know what's broken. You've known for a while. Two hours from now, you'll know exactly what to fix and how.">
 <meta name="twitter:image" content="https://deepwork.jamesguldan.com/og-image.png">
 
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230a0a0a'/%3E%3Ctext x='50' y='68' font-family='Georgia,serif' font-size='60' font-weight='bold' font-style='italic' fill='%23c4703f' text-anchor='middle'%3ED%3C/text%3E%3C/svg%3E">
 <meta name="theme-color" content="#0a0a0a">
 
 <!-- ============================================
-     TRACKING: Google Tag Manager (manages GA4, FB Pixel, future tags)
+     TRACKING: Google Tag Manager
      Replace GTM-XXXXXXX with your GTM container ID
 ============================================ -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -37,7 +37,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
 
-<!-- Google Analytics 4 (direct fallback if GTM isn't set up yet) -->
+<!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-DCD0E6KVCV"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -65,7 +65,6 @@ src="https://www.facebook.com/tr?id=XXXXXXXXXX&ev=PageView&noscript=1"/></noscri
 <!-- UTM Parameter Capture + Data Layer Setup -->
 <script>
 (function() {
-  // Capture UTM params from URL and store in sessionStorage + dataLayer
   var params = new URLSearchParams(window.location.search);
   var utmKeys = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid','gclid'];
   var utmData = {};
@@ -78,12 +77,10 @@ src="https://www.facebook.com/tr?id=XXXXXXXXXX&ev=PageView&noscript=1"/></noscri
       try { var stored = sessionStorage.getItem(key); if (stored) utmData[key] = stored; } catch(e) {}
     }
   });
-  // Push UTMs to data layer for GTM
   if (Object.keys(utmData).length > 0) {
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({ event: 'utm_captured', utm_params: utmData });
   }
-  // Make UTMs available globally for form submission
   window._utmData = utmData;
 })();
 </script>
@@ -105,7 +102,6 @@ src="https://www.facebook.com/tr?id=XXXXXXXXXX&ev=PageView&noscript=1"/></noscri
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-
 html { scroll-behavior: smooth; }
 
 body {
@@ -117,7 +113,7 @@ body {
 }
 
 /* ============================================
-   HERO — Full viewport, single focus: drive to checkout
+   HERO
 ============================================ */
 .hero {
   min-height: 100vh;
@@ -160,7 +156,7 @@ body {
   font-size: clamp(2.2rem, 5vw, 3.4rem);
   font-weight: 800;
   line-height: 1.08;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .hero h1 em {
@@ -173,20 +169,17 @@ body {
 .hero-sub {
   font-size: 1.1rem;
   color: var(--text-muted);
-  line-height: 1.6;
+  line-height: 1.7;
   max-width: 560px;
-  margin: 0 auto 36px;
+  margin: 0 auto 40px;
 }
 
-/* Buy CTA */
 .hero-cta {
   margin: 0 auto 20px;
   text-align: center;
 }
 
-.price-block {
-  margin-bottom: 20px;
-}
+.price-block { margin-bottom: 20px; }
 
 .price-was {
   font-family: 'DM Sans', sans-serif;
@@ -203,9 +196,7 @@ body {
   color: var(--text);
 }
 
-.price-now span {
-  color: var(--accent);
-}
+.price-now span { color: var(--accent); }
 
 .cta-button {
   display: inline-flex;
@@ -251,9 +242,7 @@ body {
   flex-wrap: wrap;
 }
 
-.hero-proof .stat {
-  text-align: center;
-}
+.hero-proof .stat { text-align: center; }
 
 .hero-proof .stat-num {
   font-family: 'Outfit', sans-serif;
@@ -278,9 +267,9 @@ body {
 }
 
 /* ============================================
-   WHAT YOU GET — Brief, punchy
+   THE PATTERN — Problem identification
 ============================================ */
-.outcomes {
+.the-pattern {
   padding: 100px 24px;
   max-width: 900px;
   margin: 0 auto;
@@ -293,6 +282,145 @@ body {
   text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 16px;
+}
+
+.the-pattern h2 {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 48px;
+}
+
+.pattern-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.pattern-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px 24px;
+}
+
+.pattern-card h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.pattern-card p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+@media (max-width: 700px) {
+  .pattern-grid { grid-template-columns: 1fr; }
+}
+
+/* ============================================
+   QUOTE BREAK
+============================================ */
+.quote-break {
+  padding: 80px 24px;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.quote-break blockquote {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  color: var(--text);
+  line-height: 1.5;
+  max-width: 640px;
+  margin: 0 auto 16px;
+}
+
+.quote-break .author {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+/* ============================================
+   THE COST — Urgency section
+============================================ */
+.the-cost {
+  padding: 100px 24px;
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.the-cost p {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+.the-cost .bold-line {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1.3;
+  margin-bottom: 24px;
+}
+
+/* ============================================
+   THE TRUTH — "You don't need another strategy"
+============================================ */
+.the-truth {
+  padding: 80px 24px;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.the-truth h2 {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 24px;
+}
+
+.the-truth h2 em {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.the-truth p {
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.the-truth .highlight {
+  font-size: 1.05rem;
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* ============================================
+   WHAT YOU GET — Deliverables
+============================================ */
+.outcomes {
+  padding: 100px 24px;
+  max-width: 900px;
+  margin: 0 auto;
+  border-top: 1px solid var(--border);
 }
 
 .outcomes h2 {
@@ -374,7 +502,33 @@ body {
   font-size: clamp(1.6rem, 3vw, 2rem);
   font-weight: 800;
   text-align: center;
+  margin-bottom: 16px;
+}
+
+.proof-stats {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
   margin-bottom: 48px;
+  flex-wrap: wrap;
+}
+
+.proof-stat { text-align: center; }
+
+.proof-stat .num {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--text);
+}
+
+.proof-stat .num span { color: var(--accent); }
+
+.proof-stat .label {
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-dim);
 }
 
 .testimonial-grid {
@@ -413,15 +567,71 @@ body {
 
 @media (max-width: 700px) {
   .testimonial-grid { grid-template-columns: 1fr; }
+  .proof-stats { gap: 24px; }
 }
 
 /* ============================================
-   HOW IT WORKS — Simple 3 step
+   WHAT CHANGES — Case studies
+============================================ */
+.what-changes {
+  padding: 100px 24px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.what-changes h2 {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  font-weight: 800;
+  margin-bottom: 48px;
+}
+
+.case-study {
+  margin-bottom: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid var(--border);
+}
+
+.case-study:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.case-study .name {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.case-study .title {
+  font-size: 0.82rem;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.case-study p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+.case-study .result {
+  font-size: 0.95rem;
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* ============================================
+   HOW IT WORKS
 ============================================ */
 .how-it-works {
   padding: 100px 24px;
   max-width: 700px;
   margin: 0 auto;
+  border-top: 1px solid var(--border);
 }
 
 .how-it-works h2 {
@@ -461,25 +671,14 @@ body {
 }
 
 /* ============================================
-   WHO IS THIS FOR
-============================================ */
-.who-section {
-  padding: 80px 24px;
-  background: var(--surface);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-/* ============================================
-   ABOUT JAMES — Brief credibility
+   ABOUT JAMES
 ============================================ */
 .about-brief {
   padding: 80px 24px;
   max-width: 700px;
   margin: 0 auto;
   text-align: center;
+  border-top: 1px solid var(--border);
 }
 
 .about-brief .section-eyebrow { text-align: center; }
@@ -499,7 +698,25 @@ body {
   margin: 0 auto 12px;
 }
 
-.about-brief .cred-stats {
+.logo-bar {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.logo-bar span {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.cred-stats {
   display: flex;
   justify-content: center;
   gap: 40px;
@@ -507,20 +724,18 @@ body {
   flex-wrap: wrap;
 }
 
-.about-brief .cred-stat {
-  text-align: center;
-}
+.cred-stat { text-align: center; }
 
-.about-brief .cred-stat .num {
+.cred-stat .num {
   font-family: 'Outfit', sans-serif;
   font-size: 1.8rem;
   font-weight: 900;
   color: var(--text);
 }
 
-.about-brief .cred-stat .num span { color: var(--accent); }
+.cred-stat .num span { color: var(--accent); }
 
-.about-brief .cred-stat .label {
+.cred-stat .label {
   font-size: 0.7rem;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -549,7 +764,7 @@ body {
   font-size: clamp(1.8rem, 4vw, 2.6rem);
   font-weight: 800;
   line-height: 1.1;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
   position: relative;
   z-index: 1;
 }
@@ -564,7 +779,8 @@ body {
 .final-cta .sub {
   font-size: 1rem;
   color: var(--text-muted);
-  margin-bottom: 36px;
+  max-width: 520px;
+  margin: 0 auto 36px;
   position: relative;
   z-index: 1;
 }
@@ -604,9 +820,7 @@ footer a:hover { color: var(--accent); }
     justify-content: center;
     padding: 18px 24px;
   }
-  .hero-proof {
-    gap: 16px;
-  }
+  .hero-proof { gap: 16px; }
   .hero-proof .divider { display: none; }
 }
 </style>
@@ -619,24 +833,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
-    <div class="hero-eyebrow">By James Guldan</div>
-    <h1>Find Your Niche.<br>Build Your Offers.<br><em>Stop guessing.</em></h1>
-    <p class="hero-sub">A two hour AI interview that pulls apart your entire business and gives you an empirical, researched answer about exactly what niche you could dominate. Named competitors. Pricing data. Three structured offers. A complete blueprint.</p>
+    <div class="hero-eyebrow">Deep Work</div>
+    <h1>You know what's broken.<br><em>You've known for a while.</em></h1>
+    <p class="hero-sub">Your business doesn't match who you've become. The positioning is off. The offers don't land. And nobody around you can see it clearly enough to tell you what's actually wrong. Two hours from now, you'll know exactly what to fix and how.</p>
 
     <div class="hero-cta">
       <div class="price-block">
         <div class="price-was">Previously $5,000 as a private consulting engagement</div>
         <div class="price-now"><span>$</span>67</div>
       </div>
-      <!-- GHL ORDER FORM LINK: Replace # with GHL checkout URL once account is live -->
-      <a href="https://buy.stripe.com/28EaEXfpkaX855tcyJ6c009" class="cta-button" id="hero-buy-btn">Get the Interview Now</a>
-      <p class="cta-note">Instant access. No subscriptions. Yours forever.</p>
+      <a href="https://buy.stripe.com/28EaEXfpkaX855tcyJ6c009" class="cta-button" id="hero-buy-btn">Start the Deep Work Interview</a>
+      <p class="cta-note">Two hours. A complete blueprint. Yours forever.</p>
     </div>
 
     <div class="hero-proof">
       <div class="stat">
-        <div class="stat-num">4<span>+</span></div>
-        <div class="stat-label">People Cried</div>
+        <div class="stat-num">132<span>+</span></div>
+        <div class="stat-label">Entrepreneurs</div>
       </div>
       <div class="divider"></div>
       <div class="stat">
@@ -645,34 +858,76 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div class="divider"></div>
       <div class="stat">
-        <div class="stat-num">9<span> Part</span></div>
-        <div class="stat-label">Blueprint Output</div>
+        <div class="stat-num"><span>$</span>1B+</div>
+        <div class="stat-label">Client Revenue</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- WHAT YOU WALK AWAY WITH -->
+<!-- THE PATTERN -->
+<section class="the-pattern">
+  <div class="section-eyebrow">The Pattern</div>
+  <h2>Everyone who comes to me has the same problem.</h2>
+
+  <div class="pattern-grid">
+    <div class="pattern-card">
+      <h3>You've Outgrown Your Brand</h3>
+      <p>You built something that worked. Then you grew. Now your website, your offers, and your positioning reflect the person you were two years ago. Not who you are now.</p>
+    </div>
+    <div class="pattern-card">
+      <h3>You're Stuck Between Identities</h3>
+      <p>The old you built the business. The new you knows it needs to change. But you can't see what comes next because you're standing too close to it.</p>
+    </div>
+    <div class="pattern-card">
+      <h3>Nobody Will Tell You The Truth</h3>
+      <p>Your team agrees with you. Your friends encourage you. Your coach validates you. Nobody sits across from you and says "that's the thing that's broken."</p>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE BREAK -->
+<section class="quote-break">
+  <blockquote>"Your ability to simplify without shrinking someone's ambition is rare. It's not just strategy. It's stewardship."</blockquote>
+  <div class="author">Joshua B Lee, The Dopamine Dealer of LinkedIn</div>
+</section>
+
+<!-- THE COST -->
+<section class="the-cost">
+  <p>Every week you operate with the wrong positioning, you lose deals you never even see. The prospect who Googled you and left. The referral who couldn't explain what you do. The client who said "I need to think about it" because your offer didn't match your value.</p>
+  <p>That gap has a dollar amount. And it compounds.</p>
+  <div class="bold-line">The question isn't whether you can afford to do this work. It's how much longer you can afford not to.</div>
+</section>
+
+<!-- THE TRUTH -->
+<section class="the-truth">
+  <h2>You don't need another strategy.<br>You need <em>the truth</em> about yours.</h2>
+  <p>You've probably tried the agencies, the courses, the masterminds. And they probably helped, a little. But something still feels off. The brand doesn't quite fit. The offers don't reflect what you actually do best. And you can feel it in every sales conversation that should have closed but didn't.</p>
+  <p>That gap between who you are and how your business shows up in the world? That's the thing nobody can see from the inside. It's why your coach keeps saying "you're undercharging" but can't tell you what to charge for. It's why your website feels wrong even though the copy is "good."</p>
+  <p class="highlight">The Deep Work Interview pulls apart your entire business in two hours and gives you empirical, researched answers about what niche you could dominate. Named competitors. Pricing data. A credibility score. Three structured offers. Not theory. Not inspiration. Answers you can act on today.</p>
+</section>
+
+<!-- WHAT YOU GET -->
 <section class="outcomes">
-  <div class="section-eyebrow">What You Get</div>
-  <h2>Not a vague overview.<br>A real blueprint.</h2>
-  <p class="lead">In two hours, the AI interviews you across ten phases and produces a nine part document covering everything from brand positioning to a 90 day sales plan.</p>
+  <div class="section-eyebrow">Inside the Interview</div>
+  <h2>These are the questions nobody else will ask you.</h2>
+  <p class="lead">Two hours. No small talk. Just the questions that cut straight to the thing you've been avoiding about your business.</p>
 
   <div class="outcome-grid">
     <div class="outcome-card">
       <div class="num">01</div>
-      <h3>Niche Analysis</h3>
-      <p>Named competitors. Pricing data. A credibility score from 1 to 10. The specific gap between where you are and where you could dominate.</p>
+      <h3>Competitor + Gap Analysis</h3>
+      <p>Real competitors in your space, researched and ranked. Where they're strong, where they're weak, and exactly where you fit.</p>
     </div>
     <div class="outcome-card">
       <div class="num">02</div>
-      <h3>Three Structured Offers</h3>
-      <p>High, mid, and low ticket. Named, priced, and built with specific deliverables and ascension logic between tiers.</p>
+      <h3>Pricing + Offer Architecture</h3>
+      <p>What the market actually pays. Three structured offers at different price points, built from your unique strengths.</p>
     </div>
     <div class="outcome-card">
       <div class="num">03</div>
-      <h3>Website Blueprint</h3>
-      <p>Full homepage content with real headlines, CTAs, about section, and brand guidelines specific enough that the site won't look AI generated.</p>
+      <h3>Complete Website Blueprint</h3>
+      <p>Every section, headline, and CTA written. Copy you can actually use today. Not a wireframe. A working blueprint.</p>
     </div>
     <div class="outcome-card">
       <div class="num">04</div>
@@ -681,13 +936,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="outcome-card">
       <div class="num">05</div>
-      <h3>90 Day Sales Plan</h3>
-      <p>What you can sell today. What's underpriced. What's missing. Specific outreach strategies matched to your personality.</p>
+      <h3>Credibility Score + Positioning</h3>
+      <p>A scored assessment of your authority markers. What's working, what's missing, and the fastest path to category dominance.</p>
     </div>
     <div class="outcome-card">
       <div class="num">06</div>
-      <h3>Honest Gap Analysis</h3>
-      <p>What's missing from your business: case studies, testimonials, credentials, content. Each gap rated by urgency with next steps.</p>
+      <h3>90 Day Sales Plan</h3>
+      <p>What you can sell today, what's underpriced, what's missing. An offer audit and action plan through the eyes of a world class salesperson.</p>
     </div>
   </div>
 </section>
@@ -695,14 +950,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- SOCIAL PROOF -->
 <section class="proof-section">
   <div class="proof-inner">
-    <div class="section-eyebrow">What People Say</div>
-    <h2>4 people called me crying after this exercise.</h2>
+    <div class="section-eyebrow">What 132 Testimonials Actually Say</div>
+    <h2>The same three things, over and over.</h2>
+
+    <div class="proof-stats">
+      <div class="proof-stat">
+        <div class="num">47<span>/132</span></div>
+        <div class="label">"He sees things I can't see"</div>
+      </div>
+      <div class="proof-stat">
+        <div class="num">38<span>/132</span></div>
+        <div class="label">"He cuts through the noise"</div>
+      </div>
+      <div class="proof-stat">
+        <div class="num">29<span>/132</span></div>
+        <div class="label">"He actually gives a damn"</div>
+      </div>
+    </div>
 
     <div class="testimonial-grid">
       <div class="testimonial">
-        <blockquote>"I spent all day on this. Better than working with business coaches I have paid to talk with me on the phone. I've got real clarity on the next direction. Now I've got clarity on my website and rethink my offers."</blockquote>
-        <div class="author">Chris Van Loan II</div>
-        <div class="author-title">Creative Director & Strategic Media Partner</div>
+        <blockquote>"James helped us build an eight figure company from scratch. He's one of the few people in the online business world who understands how to sell, as well as the tech required to scale a business to that level."</blockquote>
+        <div class="author">Mike Dillard</div>
+        <div class="author-title">Founder, The Mike Dillard Podcast & Self Made Man</div>
+      </div>
+      <div class="testimonial">
+        <blockquote>"There's a reason I chose him and brought him into rooms with Dean Graziosi and Tony Robbins. Every conversation with him is like getting a masterclass in marketing, psychology, and clarity. He sees the thing you don't see."</blockquote>
+        <div class="author">Louis Massaro</div>
+        <div class="author-title">Founder, Moving Mastery. $40M+ in Moving Services</div>
       </div>
       <div class="testimonial">
         <blockquote>"In two weeks James built our entire revenue engine: landing pages, assessment tools, a cost calculator, customer journey map, and tiered partnership packages. We went from $9K engagements to $36K to $150K annually."</blockquote>
@@ -710,16 +985,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="author-title">CEO, High Conflict Institute</div>
       </div>
       <div class="testimonial">
-        <blockquote>"James was not only a great mentor, but also became a great friend. When I met him our business had hit a ceiling. He led us through some game changing discussions that realigned our vision. Months later, we broke through the glass ceiling."</blockquote>
-        <div class="author">Joe Simonds</div>
-        <div class="author-title">Founder</div>
-      </div>
-      <div class="testimonial">
-        <blockquote>"Your voice cuts through the noise. Most people talk about alignment like it's a vibe. You treat it like architecture. Your ability to simplify without shrinking someone's ambition is strategy. It's stewardship."</blockquote>
-        <div class="author">Joshua B Lee</div>
-        <div class="author-title">The Dopamine Dealer of LinkedIn, 800K+ Followers</div>
+        <blockquote>"James's knowledge on scaling is out of this world. He has a rare level of integrity that I have not encountered in any of the work I've experienced with other agencies. This is by far the longest running, most successful agency relationship I have ever had."</blockquote>
+        <div class="author">Dean Pohlman</div>
+        <div class="author-title">Founder, Man Flow Yoga. 1,000%+ Growth Client</div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- WHAT CHANGES -->
+<section class="what-changes">
+  <div class="section-eyebrow">What Changes</div>
+  <h2>When you stop guessing and start building from who you actually are.</h2>
+
+  <div class="case-study">
+    <div class="name">Megan Hunter</div>
+    <div class="title">CEO of High Conflict Institute</div>
+    <p>Megan had spoken at Microsoft, the Israeli Knesset, the Scottish Parliament, and Boston Children's Hospital. She'd authored multiple books. But she was selling $9K consulting engagements one at a time, having totally different conversations with every prospect, with no system underneath any of it.</p>
+    <p class="result">In two weeks, we built the entire revenue engine. Tiered partnership packages from $36K to $150K annually. She went from selling her time to selling a system. That's the difference between a practice and a business.</p>
+  </div>
+
+  <div class="case-study">
+    <div class="name">Re Perez</div>
+    <div class="title">Author, Founder of Higher Love Summit & Branding For The People</div>
+    <p>Re had run a branding agency for 20+ years and worked with thousands of founders. But after the Deep Work process, he realized he'd been operating at 70% alignment. The clarity didn't just change his strategy. It gave him the conviction to launch a brand new event and go all in on the thing he was actually meant to build.</p>
+    <p class="result">Same person, same skills. Different alignment. Completely different trajectory. Higher Love Summit is filling up with founding members at $7,500 each.</p>
   </div>
 </section>
 
@@ -732,7 +1022,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="step-num">01</div>
     <div>
       <h3>Purchase and get instant access</h3>
-      <p>You'll get the full interview prompt delivered immediately on the next page. No waiting, no drip sequence. Just the prompt, ready to go.</p>
+      <p>You'll get the full interview prompt delivered immediately. No waiting, no drip sequence. Just the prompt, ready to go.</p>
     </div>
   </div>
 
@@ -756,8 +1046,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ABOUT JAMES -->
 <section class="about-brief">
   <div class="section-eyebrow">Who Built This</div>
-  <h2>I used to charge $5,000 for this process.</h2>
-  <p>I've done this deep positioning work manually for over a hundred founders. I sat in rooms with Tony Robbins, Dean Graziosi, Peter Diamandis, and Frank Kern. Built the positioning behind offers that generated eight and nine figures. Then I realized the interview itself was the most valuable part. So I turned it into something anyone could access.</p>
+  <h2>I've done this for Tony Robbins, Dean Graziosi, and Frank Kern. Now I do it for founders like you.</h2>
+  <p>I built my first seven figure company by 26. Ran a positioning and brand strategy agency for over a decade. Helped 13 companies hit 1,000%+ growth. Over a billion dollars in client revenue.</p>
+  <p>But the work I'm most proud of is the founder who finally charged what she was worth. The consultant who stopped taking bad clients for the first time in his career. The branding expert who realized he was operating at 70% and launched the thing he was actually meant to build.</p>
+
+  <div class="logo-bar">
+    <span>Tony Robbins</span>
+    <span>Abundance360</span>
+    <span>Dean Graziosi</span>
+    <span>Frank Kern</span>
+  </div>
 
   <div class="cred-stats">
     <div class="cred-stat">
@@ -769,23 +1067,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="label">To 1,000%+ Growth</div>
     </div>
     <div class="cred-stat">
-      <div class="num">15<span>yr</span></div>
-      <div class="label">Brand Strategy</div>
+      <div class="num">132<span>+</span></div>
+      <div class="label">Entrepreneurs Served</div>
     </div>
   </div>
 </section>
 
 <!-- FINAL CTA -->
 <section class="final-cta">
-  <h2>You already know what <em>needs to change.</em></h2>
-  <p class="sub">This interview will tell you exactly what to do about it.</p>
+  <h2>The question isn't whether you can afford to do this work.<br><em>It's how much longer you can afford not to.</em></h2>
+  <p class="sub">Two hours. Ten phases. A complete blueprint. The same process I used to charge $5,000 for.</p>
 
   <div class="hero-cta" style="position:relative;z-index:1;">
     <div class="price-block">
       <div class="price-now"><span>$</span>67</div>
     </div>
-    <a href="https://buy.stripe.com/28EaEXfpkaX855tcyJ6c009" class="cta-button" id="bottom-buy-btn">Get the Interview Now</a>
-    <p class="cta-note">Two hours. Ten phases. A complete blueprint.</p>
+    <a href="https://buy.stripe.com/28EaEXfpkaX855tcyJ6c009" class="cta-button" id="bottom-buy-btn">Start the Deep Work Interview</a>
+    <p class="cta-note">Instant access. No subscriptions. Yours forever.</p>
     <p class="cta-guarantee">100% satisfaction or your money back. No questions.</p>
   </div>
 </section>
@@ -796,19 +1094,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </footer>
 
 <!-- ============================================
-     CONVERSION TRACKING: Form Submissions
-     Fires Lead event on both Facebook Pixel + GA4
-     Passes UTM data to GHL via hidden fields
+     CONVERSION TRACKING
 ============================================ -->
 <script>
 (function() {
-  // Track buy button clicks (both hero and bottom CTA)
   var buyBtns = document.querySelectorAll('.cta-button');
   buyBtns.forEach(function(btn) {
     btn.addEventListener('click', function() {
       var location = btn.id === 'hero-buy-btn' ? 'hero' : 'bottom_cta';
 
-      // Facebook Pixel: InitiateCheckout event
       if (typeof fbq === 'function') {
         fbq('track', 'InitiateCheckout', {
           content_name: 'Deep Work Interview',
@@ -818,7 +1112,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         });
       }
 
-      // GA4: begin_checkout event
       if (typeof gtag === 'function') {
         gtag('event', 'begin_checkout', {
           items: [{ item_name: 'Deep Work Interview', price: 67 }],
@@ -827,7 +1120,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         });
       }
 
-      // GTM data layer push
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
         event: 'initiate_checkout',
@@ -839,7 +1131,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         lead_campaign: window._utmData && window._utmData.utm_campaign || 'none'
       });
 
-      // Append UTM params to checkout URL so GHL captures attribution
       if (window._utmData && Object.keys(window._utmData).length > 0) {
         var url = new URL(btn.href, window.location.origin);
         Object.keys(window._utmData).forEach(function(key) {
@@ -850,7 +1141,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     });
   });
 
-  // Track scroll depth milestones (25%, 50%, 75%, 100%)
   var milestones = [25, 50, 75, 100];
   var fired = {};
   window.addEventListener('scroll', function() {
@@ -867,7 +1157,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     });
   });
 
-  // Track time on page (30s, 60s, 120s, 300s)
   var timeMilestones = [30, 60, 120, 300];
   timeMilestones.forEach(function(seconds) {
     setTimeout(function() {
