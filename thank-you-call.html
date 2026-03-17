@@ -406,6 +406,18 @@
         </footer>
     </div>
 
+    <!-- Purchase value for tracking -->
+    <div data-purchase-value="297" style="display:none;"></div>
+
+    <!-- Facebook Pixel Tracking -->
+    <script>
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init','FB_PIXEL_ID_HERE');
+      fbq('track','PageView');
+      fbq('track','Purchase',{value:297,currency:'USD',content_name:'Strategy Review Call'});
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=FB_PIXEL_ID_HERE&ev=Purchase&noscript=1"/></noscript>
+
     <!-- GHL Chat Widget -->
     <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="69b8c7cec0c16f06497b8408"></script>
 </body>
