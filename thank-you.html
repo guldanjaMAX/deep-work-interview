@@ -6,66 +6,6 @@
 <title>You're In | The Deep Work Interview</title>
 <meta name="robots" content="noindex, nofollow">
 
-<!-- ============================================
-     TRACKING: Google Tag Manager
-     Replace GTM-XXXXXXX with your GTM container ID
-============================================ -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
-
-<!-- Google Analytics 4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-DCD0E6KVCV"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-DCD0E6KVCV');
-</script>
-
-<!-- Facebook Pixel (Replace XXXXXXXXXX with your Pixel ID) -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', 'XXXXXXXXXX');
-fbq('track', 'PageView');
-// CONVERSION: Purchase event fires on thank-you page load (confirms $67 DWI purchase)
-fbq('track', 'Purchase', {
-  content_name: 'Deep Work Interview',
-  content_category: 'Digital Product',
-  value: 67.00,
-  currency: 'USD'
-});
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=XXXXXXXXXX&ev=PageView&noscript=1"/></noscript>
-
-<!-- GA4 Conversion Event: Purchase confirmed on page load -->
-<script>
-  gtag('event', 'purchase', {
-    transaction_id: 'dwi_' + Date.now(),
-    value: 67.00,
-    currency: 'USD',
-    items: [{ item_name: 'Deep Work Interview', price: 67.00, quantity: 1 }]
-  });
-  // GTM data layer
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({
-    event: 'purchase_confirmed',
-    product: 'Deep Work Interview',
-    value: 67.00,
-    page_type: 'thank_you'
-  });
-</script>
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,600&display=swap" rel="stylesheet">
@@ -364,9 +304,6 @@ src="https://www.facebook.com/tr?id=XXXXXXXXXX&ev=PageView&noscript=1"/></noscri
 </style>
 </head>
 <body>
-<!-- GTM noscript fallback -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <section class="hero">
   <div class="container">
@@ -531,44 +468,8 @@ function copyPrompt() {
     var btn = document.querySelector('.copy-btn');
     btn.textContent = 'Copied!';
     setTimeout(function() { btn.textContent = 'Copy Prompt'; }, 2000);
-
-    // Track prompt copy as engagement event
-    if (typeof fbq === 'function') fbq('trackCustom', 'PromptCopied');
-    if (typeof gtag === 'function') gtag('event', 'prompt_copied', { event_category: 'Engagement', event_label: 'DWI Prompt' });
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: 'prompt_copied' });
   });
 }
-
-// Track upsell CTA clicks (Review Call $297)
-document.addEventListener('DOMContentLoaded', function() {
-  var upsellBtn = document.querySelector('.upsell .cta-button');
-  if (upsellBtn) {
-    upsellBtn.addEventListener('click', function() {
-      if (typeof fbq === 'function') {
-        fbq('track', 'InitiateCheckout', {
-          content_name: 'DWI Review Call',
-          content_category: 'Upsell',
-          value: 297,
-          currency: 'USD'
-        });
-      }
-      if (typeof gtag === 'function') {
-        gtag('event', 'begin_checkout', {
-          items: [{ item_name: 'DWI Review Call', price: 297 }],
-          value: 297,
-          currency: 'USD'
-        });
-      }
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({
-        event: 'upsell_click',
-        upsell_product: 'DWI Review Call',
-        upsell_value: 297
-      });
-    });
-  }
-});
 </script>
 
 </body>
