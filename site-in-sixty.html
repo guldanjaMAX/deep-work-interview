@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>You're In | Site in Sixty</title>
+<meta name="robots" content="noindex, nofollow">
+
+<!-- ============================================
+     TRACKING: Google Tag Manager
+     Replace GTM-XXXXXXX with your GTM container ID
+============================================ -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DCD0E6KVCV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-DCD0E6KVCV');
+</script>
+
+<!-- Facebook Pixel (Replace XXXXXXXXXX with your Pixel ID) -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', 'XXXXXXXXXX');
+fbq('track', 'PageView');
+// CONVERSION: Purchase event for SIS ($97)
+fbq('track', 'Purchase', {
+  content_name: 'Site in Sixty',
+  content_category: 'Digital Product',
+  value: 97.00,
+  currency: 'USD'
+});
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=XXXXXXXXXX&ev=PageView&noscript=1"/></noscript>
+
+<!-- GA4 Purchase Conversion -->
+<script>
+  gtag('event', 'purchase', {
+    transaction_id: 'sis_' + Date.now(),
+    value: 97.00,
+    currency: 'USD',
+    items: [{ item_name: 'Site in Sixty', price: 97.00, quantity: 1 }]
+  });
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: 'purchase_confirmed',
+    product: 'Site in Sixty',
+    value: 97.00,
+    page_type: 'thank_you'
+  });
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,500;1,9..144,600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #0A0A0A;
+  --bg-card: #161616;
+  --text: #F5F0EB;
+  --text-muted: rgba(245,240,235,0.55);
+  --text-dim: rgba(245,240,235,0.3);
+  --accent: #BF6D2A;
+  --accent-hover: #D4883F;
+  --accent-soft: rgba(191,109,42,0.15);
+  --border: rgba(191,109,42,0.15);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'DM Sans', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Hero */
+.hero {
+  padding: 80px 0 60px;
+  text-align: center;
+}
+
+.checkmark {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 28px;
+}
+
+.checkmark svg {
+  width: 32px;
+  height: 32px;
+  stroke: var(--accent);
+}
+
+.hero h1 {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+
+.hero h1 em {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.hero p {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+/* Intro Video */
+.intro-video {
+  padding: 0 0 60px;
+  text-align: center;
+}
+
+.video-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 32px;
+}
+
+.video-card h2 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.video-card p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+.video-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 32px;
+  background: var(--accent);
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.video-link:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+/* Module Navigation */
+.module-nav {
+  padding: 40px 0;
+  border-top: 1px solid var(--border);
+}
+
+.module-nav h2 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.module-list {
+  list-style: none;
+}
+
+.module-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+.module-header {
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.module-header:hover {
+  background: rgba(191,109,42,0.05);
+}
+
+.module-num {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--accent-soft);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.module-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  flex: 1;
+}
+
+.module-toggle {
+  color: var(--text-dim);
+  font-size: 1.2rem;
+  transition: transform 0.2s;
+}
+
+.module-item.open .module-toggle {
+  transform: rotate(180deg);
+}
+
+.module-content {
+  padding: 0 24px 24px;
+  display: none;
+}
+
+.module-item.open .module-content {
+  display: block;
+}
+
+.module-content p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.module-content .video-link {
+  padding: 10px 24px;
+  font-size: 0.85rem;
+  margin-bottom: 16px;
+}
+
+.module-content h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  margin-top: 16px;
+  margin-bottom: 8px;
+  color: var(--accent);
+}
+
+.prompt-box {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  position: relative;
+  max-height: 300px;
+  overflow-y: auto;
+  margin-top: 12px;
+}
+
+.prompt-box pre {
+  font-family: 'DM Sans', monospace;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  line-height: 1.55;
+}
+
+.copy-btn {
+  position: sticky;
+  top: 0;
+  float: right;
+  padding: 6px 16px;
+  background: var(--accent);
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  z-index: 2;
+}
+
+.copy-btn:hover {
+  background: var(--accent-hover);
+}
+
+/* DWI Tip */
+.dwi-tip {
+  padding: 40px 0;
+  border-top: 1px solid var(--border);
+}
+
+.tip-card {
+  background: var(--accent-soft);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px;
+}
+
+.tip-card h2 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--accent);
+}
+
+.tip-card p {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* Upsell */
+.upsell {
+  padding: 60px 0;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+
+.upsell-eyebrow {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.upsell h2 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.upsell h2 em {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.upsell p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  max-width: 520px;
+  margin: 0 auto 24px;
+}
+
+.upsell-price {
+  font-family: 'Outfit', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 24px;
+}
+
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 36px;
+  background: var(--accent);
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.cta-button:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 30px rgba(191,109,42,0.3);
+}
+
+.upsell-note {
+  margin-top: 12px;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+footer {
+  text-align: center;
+  padding: 40px 0;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  border-top: 1px solid var(--border);
+}
+
+footer a {
+  color: var(--text-dim);
+  text-decoration: none;
+}
+
+footer a:hover { color: var(--accent); }
+
+@media (max-width: 640px) {
+  .hero { padding: 60px 0 40px; }
+  .cta-button { width: 100%; justify-content: center; }
+}
+</style>
+</head>
+<body>
+<!-- GTM noscript fallback -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="checkmark">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <h1>You're in. Time to <em>build.</em></h1>
+    <p>Your purchase is confirmed. Below is your complete Site in Sixty guide. Six modules, video walkthroughs, and every prompt you need to go from blueprint to live website.</p>
+  </div>
+</section>
+
+<!-- WATCH FIRST -->
+<section class="intro-video">
+  <div class="container">
+    <div class="video-card">
+      <h2>Watch This First</h2>
+      <p>A quick intro video that walks you through how the process works and what to expect. Takes 5 minutes and saves you an hour.</p>
+      <a href="https://www.loom.com/share/714d30178c854bdc9e55a665034a913c" target="_blank" class="video-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        Watch Intro Video
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- DWI TIP -->
+<section class="dwi-tip">
+  <div class="container">
+    <div class="tip-card">
+      <h2>Already did the Deep Work Interview?</h2>
+      <p>Perfect. Your DWI blueprint is the ideal starting material for Site in Sixty. When you start Module 1, paste your entire DWI output into Claude along with your opening message. Claude will already know your niche, offers, brand voice, and visual direction. You'll skip most of the interview questions and go straight to building.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MODULES -->
+<section class="module-nav">
+  <div class="container">
+    <h2>Your Complete Guide</h2>
+
+    <ul class="module-list">
+      <!-- MODULE 1 -->
+      <li class="module-item open">
+        <div class="module-header" onclick="toggleModule(this)">
+          <div class="module-num">1</div>
+          <div class="module-title">The Claude Interview Process</div>
+          <div class="module-toggle">&#9662;</div>
+        </div>
+        <div class="module-content">
+          <p>This is where the magic happens. Instead of filling out forms or sitting on discovery calls with an agency, you're going to have a collaborative conversation with Claude that extracts your vision and turns it into a real website.</p>
+          <p>Your role in this process is to be the editor, not the creator. Claude will generate ideas, options, and directions. Your job is to pick what resonates, discard what does not, and refine until it feels right.</p>
+          <a href="https://www.loom.com/share/cae74c44c8794aeda0f6820a4a8685b4" target="_blank" class="video-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Module 1 Walkthrough (9 min)
+          </a>
+          <a href="https://www.loom.com/share/7bf1cacc02b34aee88de9d1efb48f8d4" target="_blank" class="video-link" style="margin-left:8px;background:var(--bg);border:1px solid var(--border);color:var(--text);">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Full Build Session (Bonus)
+          </a>
+
+          <h3>Step 1: Start the Conversation</h3>
+          <p>Open Claude at claude.ai and start a new conversation. Your opening message should dump everything you have and invite Claude to interview you for what's missing.</p>
+          <div class="prompt-box">
+            <button class="copy-btn" onclick="copyText(this)">Copy</button>
+            <pre>I want to build a website for [YOUR IDEA/BUSINESS/EVENT].
+
+Here's everything I have so far:
+[Paste any existing copy, descriptions, taglines, or your DWI blueprint]
+
+Here's what I want people to do when they visit:
+[Book a call? Buy something? Sign up for an event?]
+
+Here are some websites I like the style of:
+[Paste URLs if you have them]
+
+Interview me to figure out what else you need to build this site.</pre>
+          </div>
+
+          <h3>Don't have brand colors yet?</h3>
+          <p>No problem. Use this prompt to define your visual identity first:</p>
+          <div class="prompt-box">
+            <button class="copy-btn" onclick="copyText(this)">Copy</button>
+            <pre>I need help defining the visual identity for my website before we build it.
+
+My business: [DESCRIBE WHAT YOU DO IN ONE SENTENCE]
+The feeling I want visitors to have: [PICK 3 WORDS]
+Websites I admire the look of: [PASTE 2 TO 3 URLs IF YOU HAVE THEM]
+
+Please suggest: a color palette (5 colors with hex codes), font pairings for headings and body text, and an overall visual direction. Explain your choices so I can give feedback.</pre>
+          </div>
+
+          <h3>Step 2: Upload Your Assets</h3>
+          <p>Testimonials (screenshots or text files), photos (up to 20 at a time), and screenshots of websites you like.</p>
+
+          <h3>Step 3: Answer the Interview Questions</h3>
+          <p>Claude will ask you questions. Answer honestly and thoroughly. At some point, Claude will tell you how confident it is that it understands your vision. That's your signal you're close to ready.</p>
+
+          <h3>Step 4: Focus on Above the Fold First</h3>
+          <p>The hero section (what people see before scrolling) is 90% of your website's impact. Tell Claude: "Let's focus on the hero section first. I want to nail the headline, subheadline, and main call to action before we build the rest."</p>
+          <a href="https://www.loom.com/share/1b0a1fdbcc034983a8579a5e7ced2531" target="_blank" class="video-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Hero Section Walkthrough
+          </a>
+
+          <h3>Step 5: Review the Full Concept</h3>
+          <p>Once the hero feels right, ask Claude to describe the full page layout before generating any code.</p>
+        </div>
+      </li>
+
+      <!-- MODULE 2 -->
+      <li class="module-item">
+        <div class="module-header" onclick="toggleModule(this)">
+          <div class="module-num">2</div>
+          <div class="module-title">Generating the Website Files</div>
+          <div class="module-toggle">&#9662;</div>
+        </div>
+        <div class="module-content">
+          <p>Once you're happy with the concept, it's time to generate the actual website files.</p>
+          <a href="https://www.loom.com/share/4b74e81b9fc842b588f4069dcaba09ee" target="_blank" class="video-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            File Generation Walkthrough
+          </a>
+
+          <h3>The Magic Prompt</h3>
+          <p>Copy this exact prompt to get deployment-ready files:</p>
+          <div class="prompt-box">
+            <button class="copy-btn" onclick="copyText(this)">Copy</button>
+            <pre>Please generate a complete, deployment-ready website as a zip file.
+
+Requirements:
+Single index.html file with embedded CSS (no separate stylesheet)
+Fully responsive design (mobile-first)
+Clean, modern styling that matches the visual direction we discussed
+Include all the sections we discussed
+For images, embed as base64 or include in the zip
+Ready to upload directly to Cloudflare Pages with no modifications
+Smooth scroll behavior between sections
+Subtle hover effects on buttons and links
+Make sure the design does NOT look like a generic AI template. Use the specific colors, fonts, and visual choices we agreed on. Add small design details that make it feel handcrafted.</pre>
+          </div>
+          <p>Claude will generate a zip file containing your index.html and any images. This is your first live draft. It won't be perfect, and that's the point. Get it live, then refine.</p>
+        </div>
+      </li>
+
+      <!-- MODULE 3 -->
+      <li class="module-item">
+        <div class="module-header" onclick="toggleModule(this)">
+          <div class="module-num">3</div>
+          <div class="module-title">Deploying to Cloudflare Pages</div>
+          <div class="module-toggle">&#9662;</div>
+        </div>
+        <div class="module-content">
+          <p>This is the part people think is technical. It's not. It's literally drag and drop.</p>
+          <a href="https://www.loom.com/share/1eee897bca4a409db8cf04a992bfe0b5" target="_blank" class="video-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Deployment Walkthrough
+          </a>
+
+          <h3>The 7 Step Deploy</h3>
+          <p>1. Log into Cloudflare at cloudflare.com</p>
+          <p>2. Navigate to Compute & AI, then Workers & Pages in the left sidebar</p>
+          <p>3. Click Create, then select "Pages" and "Upload assets"</p>
+          <p>4. Name your project (this becomes your temporary URL)</p>
+          <p>5. Upload your files by dragging your zip into the upload area</p>
+          <p>6. Click Deploy and wait 30 to 60 seconds</p>
+          <p>7. View your live site at yourproject.pages.dev</p>
+          <p style="margin-top:16px;color:var(--accent);font-weight:600;">That's it. Your website is now live on the internet.</p>
+        </div>
+      </li>
+
+      <!-- MODULE 4 -->
+      <li class="module-item">
+        <div class="module-header" onclick="toggleModule(this)">
+          <div class="module-num">4</div>
+          <div class="module-title">Connecting Your Custom Domain</div>
+          <div class="module-toggle">&#9662;</div>
+        </div>
+        <div class="module-content">
+          <p>Your site is live on .pages.dev. Now let's connect your real domain.</p>
+          <a href="https://www.loom.com/share/40bf5c196d394103b94ed20d9f9b2e46" target="_blank" class="video-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Domain Connection Walkthrough
+          </a>
+
+          <h3>If You Bought Through Cloudflare</h3>
+          <p>In your Pages project, click "Custom domains," then "Set up a domain," enter your domain, and Cloudflare automatically configures everything. Wait 5 to 15 minutes for the SSL certificate.</p>
+
+          <h3>If Your Domain Is Elsewhere</h3>
+          <p>Add your domain to Cloudflare. Cloudflare gives you two nameservers. Update nameservers at your registrar (GoDaddy, Namecheap, etc.). Wait for propagation (usually under an hour). Then connect to Pages.</p>
+
+          <h3>Setting Up WWW and Non-WWW</h3>
+          <p>Add both as custom domains in Pages, then go to Rules, then Redirect Rules and use the pre-built "Redirect from WWW to Root" snippet.</p>
+        </div>
+      </li>
+
+      <!-- MODULE 5 -->
+      <li class="module-item">
+        <div class="module-header" onclick="toggleModule(this)">
+          <div class="module-num">5</div>
+          <div class="module-title">Making Changes After Launch</div>
+          <div class="module-toggle">&#9662;</div>
+        </div>
+        <div class="module-content">
+          <p>Your site is live but you want to make changes. Here's the simple workflow.</p>
+          <a href="https://www.loom.com/share/7f2c7d9ac31244f998315c4d2b755b55" target="_blank" class="video-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Update Workflow
+          </a>
+
+          <p>Go back to Claude. Describe what you want to change. Ask for an updated zip. In Cloudflare Pages, click "Create new deployment" (not "Create application"). Upload and deploy. Changes go live within seconds.</p>
+          <p>Cloudflare keeps every previous deployment, so if something breaks you can roll back instantly. You will never lose your working site by trying something new.</p>
+        </div>
+      </li>
+
+      <!-- MODULE 6 -->
+      <li class="module-item">
+        <div class="module-header" onclick="toggleModule(this)">
+          <div class="module-num">6</div>
+          <div class="module-title">Level Up Your Site</div>
+          <div class="module-toggle">&#9662;</div>
+        </div>
+        <div class="module-content">
+          <p>Your site is live. Now let's make it great. Use whichever prompt matches what you're feeling right now.</p>
+          <a href="https://www.loom.com/share/d64c3066e27d413b9c03922dec7fb2ec" target="_blank" class="video-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Quality Control Walkthrough
+          </a>
+
+          <h3>"My site looks like every other AI site"</h3>
+          <div class="prompt-box">
+            <button class="copy-btn" onclick="copyText(this)">Copy</button>
+            <pre>Look at my current website [PASTE URL or upload screenshot].
+I want it to feel [PICK 3 WORDS] but right now it feels generic.
+Please audit the design and suggest specific changes: colors, contrast, fonts, white space, and small design details that could make this feel more polished. For each suggestion, give me the specific CSS change. Then generate an updated zip with all your recommendations applied.</pre>
+          </div>
+
+          <h3>"People visit but nobody clicks anything"</h3>
+          <div class="prompt-box">
+            <button class="copy-btn" onclick="copyText(this)">Copy</button>
+            <pre>My website is live at [YOUR URL or upload screenshots].
+The main action I want visitors to take is: [BOOK A CALL / BUY / SIGN UP]
+Right now, not enough people are doing that.
+Please audit this page for conversion issues: headline clarity, CTA visibility, trust signals near decision points, confusing elements, and mobile tap distance. Give me your top 5 changes ranked by impact. Then generate an updated zip.</pre>
+          </div>
+
+          <h3>"I need better images"</h3>
+          <p>Use Nano Banana (nanobanana.io), Google's free AI image generator. No account needed. Describe what you want in plain language and it creates it.</p>
+
+          <h3>"I need to show up on Google"</h3>
+          <div class="prompt-box">
+            <button class="copy-btn" onclick="copyText(this)">Copy</button>
+            <pre>I need to optimize my website for search engines. My primary goal is to rank for [WHAT SOMEONE WOULD SEARCH TO FIND YOU].
+Please add: compelling meta title and description, Open Graph tags, schema markup for [YOUR BUSINESS TYPE], proper heading structure, alt text for every image, and clean URL structure. Also review my content for search keywords. Generate an updated zip with all SEO improvements applied.</pre>
+          </div>
+
+          <h3>"I need a contact form"</h3>
+          <div class="prompt-box">
+            <button class="copy-btn" onclick="copyText(this)">Copy</button>
+            <pre>I need to add a contact form that sends submissions to my email.
+Please add a clean form section using Formspree (formspree.io) as the backend.
+Include fields for: [NAME, EMAIL, MESSAGE]
+Add validation, a success message, and make sure it looks good on mobile.
+Use the action URL: https://formspree.io/f/[I WILL REPLACE THIS]
+Generate an updated zip with the form integrated.</pre>
+          </div>
+
+          <h3>"I want to sell something on my site"</h3>
+          <div class="prompt-box">
+            <button class="copy-btn" onclick="copyText(this)">Copy</button>
+            <pre>I want to add a way for visitors to pay me directly from my website.
+What I am selling: [DESCRIBE PRODUCT/SERVICE AND PRICE]
+Please add a clear Buy Now button, style it to match my design, add supporting text near the button, and make sure it works on mobile.
+I will use a Stripe payment link: [PASTE STRIPE LINK HERE]
+Generate an updated zip with the payment button integrated.</pre>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- UPSELL -->
+<section class="upsell">
+  <div class="container">
+    <div class="upsell-eyebrow">Go Deeper</div>
+    <h2>Want me to review your site <em>personally?</em></h2>
+    <p>Once you've built your site, book a live 1 hour call with me. I'll walk through every page, pressure test your messaging, sharpen your CTAs, and tell you exactly what to fix. Most people leave with 10+ specific improvements they can make that day.</p>
+    <div class="upsell-price">$297</div>
+    <a href="https://buy.stripe.com/aFa28rb94c1c9lJ9mx6c006" class="cta-button" id="upsell-btn">
+      Add the Review Call
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+    <p class="upsell-note">Optional. The guide is powerful on its own. This just makes it sharper.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    &copy; 2026 James Guldan &middot; <a href="https://jamesguldan.com">jamesguldan.com</a> &middot; <a href="mailto:james@jamesguldan.com">james@jamesguldan.com</a>
+  </div>
+</footer>
+
+<script>
+// Toggle module accordion
+function toggleModule(header) {
+  var item = header.parentElement;
+  item.classList.toggle('open');
+  // Track module opens
+  if (item.classList.contains('open')) {
+    var num = header.querySelector('.module-num').textContent;
+    var title = header.querySelector('.module-title').textContent;
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'module_opened', module_number: num, module_title: title });
+    if (typeof gtag === 'function') {
+      gtag('event', 'module_opened', { event_category: 'SIS Engagement', event_label: 'Module ' + num + ': ' + title });
+    }
+  }
+}
+
+// Copy prompt text
+function copyText(btn) {
+  var pre = btn.parentElement.querySelector('pre');
+  navigator.clipboard.writeText(pre.textContent).then(function() {
+    btn.textContent = 'Copied!';
+    setTimeout(function() { btn.textContent = 'Copy'; }, 2000);
+    if (typeof fbq === 'function') fbq('trackCustom', 'PromptCopied', { product: 'Site in Sixty' });
+    if (typeof gtag === 'function') gtag('event', 'prompt_copied', { event_category: 'SIS Engagement' });
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'prompt_copied', product: 'Site in Sixty' });
+  });
+}
+
+// Track upsell click
+document.addEventListener('DOMContentLoaded', function() {
+  var upsellBtn = document.getElementById('upsell-btn');
+  if (upsellBtn) {
+    upsellBtn.addEventListener('click', function() {
+      if (typeof fbq === 'function') {
+        fbq('track', 'InitiateCheckout', { content_name: 'SIS Review Call', value: 297, currency: 'USD' });
+      }
+      if (typeof gtag === 'function') {
+        gtag('event', 'begin_checkout', { items: [{ item_name: 'SIS Review Call', price: 297 }], value: 297, currency: 'USD' });
+      }
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'upsell_click', upsell_product: 'SIS Review Call', upsell_value: 297 });
+    });
+  }
+
+  // Track video clicks
+  document.querySelectorAll('.video-link').forEach(function(link) {
+    link.addEventListener('click', function() {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'video_click', video_url: link.href, product: 'Site in Sixty' });
+    });
+  });
+});
+</script>
+
+</body>
+</html>
