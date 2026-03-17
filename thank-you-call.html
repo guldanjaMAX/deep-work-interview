@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strategy Review Call Confirmed | James Guldan</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Outfit:wght@600;700;800&family=Fraunces:ital,wght@1,600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --accent: #BF6D2A;
+            --accent-hover: #D4883F;
+            --bg-primary: #0A0A0A;
+            --bg-secondary: #111111;
+            --bg-card: #161616;
+            --text-primary: #F5F0EB;
+            --text-secondary: #A89F95;
+            --text-muted: #6B6560;
+            --border: rgba(191, 109, 42, 0.15);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 80px 0 60px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .checkmark {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: rgba(191, 109, 42, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 32px;
+        }
+
+        .checkmark svg {
+            width: 36px;
+            height: 36px;
+            color: var(--accent);
+        }
+
+        .hero h1 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            line-height: 1.15;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero h1 em {
+            font-family: 'Fraunces', serif;
+            font-style: italic;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .hero p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        /* Section */
+        .section {
+            padding: 60px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .eyebrow {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 0.75rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+
+        .section h2 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: clamp(1.4rem, 3vw, 1.8rem);
+            line-height: 1.2;
+            margin-bottom: 20px;
+            letter-spacing: -0.01em;
+        }
+
+        .section p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 16px;
+        }
+
+        .section p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Info Cards */
+        .info-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 28px;
+        }
+
+        .info-card {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            padding: 24px;
+            background: var(--bg-card);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .info-icon {
+            min-width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(191, 109, 42, 0.12);
+            border-radius: 10px;
+            flex-shrink: 0;
+        }
+
+        .info-icon svg {
+            width: 22px;
+            height: 22px;
+            color: var(--accent);
+        }
+
+        .info-card h3 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 1.05rem;
+            margin-bottom: 6px;
+        }
+
+        .info-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
+        /* Prep Box */
+        .prep-box {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-top: 24px;
+        }
+
+        .prep-box h3 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 16px;
+        }
+
+        .prep-item {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            margin-bottom: 14px;
+        }
+
+        .prep-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .prep-check {
+            color: var(--accent);
+            font-size: 1.1rem;
+            line-height: 1.7;
+            flex-shrink: 0;
+        }
+
+        .prep-item p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
+        /* Calendar embed placeholder */
+        .calendar-embed {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 48px 32px;
+            text-align: center;
+            margin-top: 32px;
+        }
+
+        .calendar-embed p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--text-primary);
+            padding: 16px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 1.05rem;
+            letter-spacing: 0.02em;
+            transition: background 0.25s ease, transform 0.25s ease;
+            margin-top: 20px;
+        }
+
+        .cta-button:hover {
+            background: var(--accent-hover);
+            transform: translateY(-1px);
+        }
+
+        /* Quote */
+        .quote-block {
+            padding: 32px;
+            background: var(--bg-card);
+            border-left: 3px solid var(--accent);
+            border-radius: 0 12px 12px 0;
+            margin-top: 32px;
+        }
+
+        .quote-block blockquote {
+            font-family: 'Fraunces', serif;
+            font-style: italic;
+            font-size: 1.15rem;
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .quote-block cite {
+            color: var(--text-muted);
+            font-style: normal;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        @media (max-width: 640px) {
+            .hero { padding: 60px 0 48px; }
+            .section { padding: 48px 0; }
+            .info-card { padding: 20px; gap: 16px; }
+            .calendar-embed { padding: 36px 24px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero -->
+        <section class="hero">
+            <div class="checkmark">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+            </div>
+            <h1>Your <em>Strategy Call</em> is confirmed.</h1>
+            <p>You've taken the most important step. James will be preparing for your call using your Deep Work Interview answers.</p>
+        </section>
+
+        <!-- What Happens Next -->
+        <section class="section">
+            <div class="eyebrow">Next Steps</div>
+            <h2>What happens from here</h2>
+
+            <div class="info-cards">
+                <div class="info-card">
+                    <div class="info-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3>Check your email</h3>
+                        <p>You'll receive a calendar invitation with the Zoom link and all the details for your call. Add it to your calendar so you don't miss it.</p>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3>James reviews your work</h3>
+                        <p>Before the call, James reads through your Deep Work Interview answers and any site work you've done. He comes prepared with specific observations and recommendations.</p>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3>60 minutes, no fluff</h3>
+                        <p>The call is a real conversation about your brand, your positioning, and your next move. Not a pitch for another program. You'll leave with a clear action plan.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Book Your Time -->
+        <section class="section">
+            <div class="eyebrow">Schedule Your Call</div>
+            <h2>Pick a time that works for you</h2>
+            <p>Choose a 60 minute window when you can be fully present. No multitasking, no distractions. This call works best when you show up with your full attention.</p>
+
+            <!-- GHL Calendar Embed will go here -->
+            <div class="calendar-embed" id="calendar-container">
+                <p>Loading calendar...</p>
+                <!-- Replace this div with GHL calendar embed code -->
+                <!-- Example: <iframe src="https://api.leadconnectorhq.com/widget/booking/YOUR_CALENDAR_ID" style="width:100%;border:none;overflow:hidden;min-height:600px;" scrolling="no"></iframe> -->
+                <p style="margin-top: 16px;">If the calendar doesn't load, <a href="mailto:james@jamesguldan.com" style="color: var(--accent);">email James directly</a> to schedule.</p>
+            </div>
+        </section>
+
+        <!-- How to Prepare -->
+        <section class="section">
+            <div class="eyebrow">Before Your Call</div>
+            <h2>How to get the most out of it</h2>
+
+            <div class="prep-box">
+                <h3>Quick prep checklist</h3>
+                <div class="prep-item">
+                    <span class="prep-check">&#10003;</span>
+                    <p>Re-read your Deep Work Interview answers. Highlight anything that surprised you or that you're still thinking about.</p>
+                </div>
+                <div class="prep-item">
+                    <span class="prep-check">&#10003;</span>
+                    <p>Write down your top 2 or 3 questions. What are you still unsure about? Where do you feel stuck?</p>
+                </div>
+                <div class="prep-item">
+                    <span class="prep-check">&#10003;</span>
+                    <p>Have your current website open (if you have one). James will likely reference it during the call.</p>
+                </div>
+                <div class="prep-item">
+                    <span class="prep-check">&#10003;</span>
+                    <p>Be ready to be honest. The more open you are about what's working and what's not, the more valuable the call becomes.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonial -->
+        <section class="section">
+            <div class="quote-block">
+                <blockquote>"The strategy call was the moment everything clicked. James didn't just tell me what to do. He helped me see what I couldn't see on my own. I left that call knowing exactly what my next three months looked like."</blockquote>
+                <cite>Strategy Review Call client</cite>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2026 James Guldan. All rights reserved.</p>
+            <p style="margin-top: 8px;">Questions before your call? <a href="mailto:james@jamesguldan.com">james@jamesguldan.com</a></p>
+        </footer>
+    </div>
+
+    <!-- GHL Chat Widget -->
+    <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="69b8c7cec0c16f06497b8408"></script>
+</body>
+</html>
