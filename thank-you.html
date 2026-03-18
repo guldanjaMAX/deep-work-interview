@@ -301,6 +301,129 @@
     .hero { padding: 72px 0 48px; }
     .cta-button { width: 100%; justify-content: center; }
   }
+
+  /* Testimonial Section */
+  .testimonial-section {
+    padding: 64px 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .testimonial-eyebrow {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  .testimonial-section h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  .testimonial-section h2 em {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .testimonial-section .lead {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  .video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    margin-bottom: 20px;
+  }
+
+  .video-wrapper video {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+
+  .testimonial-attribution {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 32px;
+  }
+
+  .testimonial-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(191, 109, 42, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .testimonial-name {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+  }
+
+  .testimonial-title {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  .testimonial-title a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .sis-bridge {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    text-align: center;
+  }
+
+  .sis-bridge p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+  }
+
+  .sis-bridge .price-tag {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
 </style>
 </head>
 <body>
@@ -440,6 +563,44 @@ Start by welcoming me warmly. Explain what&#x27;s about to happen in a casual, n
   </div>
 </section>
 
+
+<!-- TESTIMONIAL: Graham Youtsey + SIS Upsell -->
+<section class="testimonial-section">
+  <div class="container">
+    <div class="testimonial-eyebrow">Real Result</div>
+    <h2>Graham built a <em>live site in 30 minutes.</em></h2>
+    <p class="lead">This is what happens when you take what you uncovered in the interview and put it to work immediately.</p>
+
+    <div class="video-wrapper">
+      <video
+        controls
+        poster="/media/testimonials/graham-youtsey-thumbnail.jpg"
+        preload="none"
+      >
+        <source src="/media/testimonials/graham-youtsey-site-in-sixty.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div class="testimonial-attribution">
+      <div class="testimonial-avatar">GY</div>
+      <div>
+        <div class="testimonial-name">Graham Youtsey</div>
+        <div class="testimonial-title">Founder, <a href="https://impactglobaltools.com" target="_blank" rel="noopener">Impact Global Mastermind</a></div>
+      </div>
+    </div>
+
+    <div class="sis-bridge">
+      <p>Graham used the exact same process you just went through. The interview gave him clarity. Site in Sixty gave that clarity a home on the internet. In 30 minutes.</p>
+      <div class="price-tag">Site in Sixty &mdash; $97</div>
+      <a href="https://buy.stripe.com/fZuaEX3GC3uG1Th8it6c00a" class="cta-button">
+        Build Your Site Now
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <p style="font-size:0.8rem; color:var(--text-muted); margin-top:12px; margin-bottom:0;">60 minutes. One AI session. A live site.</p>
+    </div>
+  </div>
+</section>
+
 <!-- UPSELL: REVIEW CALL -->
 <section class="upsell">
   <div class="container">
@@ -457,11 +618,11 @@ Start by welcoming me warmly. Explain what&#x27;s about to happen in a casual, n
 
 <footer>
   <div class="container">
-    &copy; 2026 James Guldan &middot; <a href="https://jamesguldan.com">jamesguldan.com</a> &middot; <a href="mailto:james@jamesguldan.com">james@jamesguldan.com</a>
+    &copy; 2026 James Guldan &middot; <a href="https://jamesguldan.com">jamesguldan.com</a> &middot; <a href="/cdn-cgi/l/email-protection#afc5cec2cadcefc5cec2cadcc8dac3cbcec181ccc0c2"><span class="__cf_email__" data-cfemail="751f14181006351f1418100612001911141b5b161a18">[email&#160;protected]</span></a>
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 function copyPrompt() {
   var text = document.getElementById('prompt-text').textContent;
   navigator.clipboard.writeText(text).then(function() {
