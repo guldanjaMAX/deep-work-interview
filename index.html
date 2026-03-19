@@ -141,10 +141,10 @@
     .proc2-h2 { font-family: 'Outfit',sans-serif; font-size: clamp(28px, 3.8vw, 48px); font-weight: 700; color: #fff; line-height: 1.15; margin: 12px 0 10px; }
     .proc2-h2 em { font-family: 'Playfair Display',serif; font-style: italic; color: var(--accent); font-weight: 400; }
     .proc2-sub { font-size: 15px; color: rgba(255,255,255,.32); line-height: 1.7; }
-    .proc2-chat-area { display: flex; flex-direction: column; gap: 40px; }
-    .proc2-turn { opacity: 0; transition: opacity .35s ease; }
-    .proc2-turn.visible { opacity: 1; }
-    .proc2-turn.past { opacity: 0.18; }
+    .proc2-chat-area { position: relative; height: 210px; margin-bottom: 28px; }
+    .proc2-turn { position: absolute; top: 0; left: 0; right: 0; opacity: 0; pointer-events: none; transition: opacity .55s cubic-bezier(.22,1,.36,1); }
+    .proc2-turn.visible { opacity: 1; pointer-events: auto; }
+    .proc2-turn.past { opacity: 0; }
     .proc2-phase-tag { font-family: 'Outfit',sans-serif; font-size: 9.5px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(196,112,63,.7); margin-bottom: 12px; }
     .proc2-q-text { font-family: 'Outfit',sans-serif; font-size: clamp(17px, 2.1vw, 24px); font-weight: 500; color: rgba(255,255,255,.92); line-height: 1.5; min-height: 1.5em; }
     .proc2-cursor { display: inline; color: rgba(196,112,63,.9); font-weight: 300; font-size: 1em; line-height: 1; animation: p2blink .65s ease-in-out infinite; margin-left: 1px; opacity: 0; transition: opacity .2s; }
@@ -152,8 +152,7 @@
     @keyframes p2blink { 0%,100%{opacity:1;} 50%{opacity:0;} }
     .proc2-response-hint { font-family: 'Playfair Display',serif; font-style: italic; font-size: 14.5px; color: rgba(255,255,255,.18); margin-top: 14px; padding-left: 18px; border-left: 1.5px solid rgba(196,112,63,.22); line-height: 1.65; opacity: 0; transition: opacity .6s ease; }
     .proc2-response-hint.show { opacity: 1; }
-    .proc2-sep { width: 48px; height: 1px; background: rgba(255,255,255,.07); margin: 0 auto; opacity: 0; transition: opacity .4s ease; }
-    .proc2-sep.show { opacity: 1; }
+    .proc2-sep { display: none; }
     .proc2-phases-row { display: flex; flex-wrap: wrap; gap: 7px; justify-content: center; margin-top: 40px; opacity: 0; transform: translateY(12px); transition: opacity .6s ease, transform .6s ease; }
     .proc2-phases-row.show { opacity: 1; transform: translateY(0); }
     .proc2-phase-pill { font-family: 'Outfit',sans-serif; font-size: 9.5px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,.32); background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.07); border-radius: 20px; padding: 5px 11px; }
@@ -437,23 +436,17 @@
           <div class="proc2-response-hint" id="proc2-r1">"Everything started when I realized&hellip;"</div>
         </div>
 
-        <div class="proc2-sep" id="proc2-sep1"></div>
-
         <div class="proc2-turn" id="proc2-q2">
           <div class="proc2-phase-tag">Phase 03 &nbsp;&middot;&nbsp; Your Beliefs</div>
           <div class="proc2-q-text" id="proc2-qt2"><span class="proc2-cursor" id="proc2-cur2">|</span></div>
           <div class="proc2-response-hint" id="proc2-r2">"The thing nobody in my space will admit is&hellip;"</div>
         </div>
 
-        <div class="proc2-sep" id="proc2-sep2"></div>
-
         <div class="proc2-turn" id="proc2-q3">
           <div class="proc2-phase-tag">Phase 04 &nbsp;&middot;&nbsp; Your People</div>
           <div class="proc2-q-text" id="proc2-qt3"><span class="proc2-cursor" id="proc2-cur3">|</span></div>
           <div class="proc2-response-hint" id="proc2-r3">"They&rsquo;re usually good at what they do, but&hellip;"</div>
         </div>
-
-        <div class="proc2-sep" id="proc2-sep3"></div>
 
         <div class="proc2-turn" id="proc2-q4">
           <div class="proc2-phase-tag">Phase 06 &nbsp;&middot;&nbsp; Market &amp; Niche</div>
@@ -818,7 +811,6 @@
           qt.childNodes[0] && qt.childNodes[0].nodeType === 3 && (qt.childNodes[0].textContent = '');
           if (cur) cur.classList.remove('show');
           if (rh)  rh.classList.remove('show');
-          if (sep) sep.classList.remove('show');
         } else if (p >= m[0] && p <= m[1]) {
           turn.classList.add('visible'); turn.classList.remove('past');
           var tp = clamp01((p - m[0]) / (m[1] - m[0]));
@@ -831,7 +823,6 @@
           textNode.textContent = questions[i].substring(0, chars);
           if (cur) cur.classList.add('show');
           if (rh)  { if (tp > 0.78) rh.classList.add('show'); else rh.classList.remove('show'); }
-          if (sep) { if (tp > 0.92) sep.classList.add('show'); else sep.classList.remove('show'); }
         } else {
           turn.classList.remove('visible'); turn.classList.add('past');
           var textNode2 = qt.childNodes[0];
@@ -842,7 +833,6 @@
           textNode2.textContent = questions[i];
           if (cur) cur.classList.remove('show');
           if (rh)  rh.classList.add('show');
-          if (sep) sep.classList.add('show');
         }
       }
       // Phases row
