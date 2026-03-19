@@ -795,8 +795,25 @@
       svg.appendChild(path);
     });
   }
-  window.addEventListener('load', function(){ setTimeout(drawConnectors, 150); });
-  window.addEventListener('resize', drawConnectors);
+  // Robust init: IntersectionObserver + retry on load
+  (function() {
+    var drawn = false;
+    if (window.IntersectionObserver) {
+      var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) { if (e.isIntersecting) { drawConnectors(); drawn = true; } });
+      }, { threshold: 0.05 });
+      var el = document.getElementById('bp-layout');
+      if (el) obs.observe(el);
+    }
+    var retries = 0;
+    function retryDraw() {
+      var layout = document.getElementById('bp-layout');
+      if (layout && layout.getBoundingClientRect().width > 0) { drawConnectors(); drawn = true; }
+      else if (retries++ < 12) { setTimeout(retryDraw, 250); }
+    }
+    window.addEventListener('load', function() { setTimeout(retryDraw, 100); });
+    window.addEventListener('resize', drawConnectors);
+  })();
 
 </script>
 </body>
