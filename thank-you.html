@@ -437,6 +437,21 @@
     <p>Your purchase is confirmed. Below is everything you need to start the Deep Work Interview right now.</p>
   </div>
 </section>
+<!-- Welcome Video from James -->
+<section style="max-width:640px;margin:0 auto;padding:0 24px 32px;">
+  <div style="position:relative;border-radius:12px;overflow:hidden;background:#000;border:1px solid rgba(191,109,42,0.15);aspect-ratio:16/9;">
+    <video id="welcome-video" controls preload="metadata" poster="/media/james-welcome-poster.jpg" style="width:100%;height:100%;object-fit:contain;">
+      <source src="/media/james-dwi-welcome.mp4" type="video/mp4">
+    </video>
+    <div onclick="document.getElementById('welcome-video').play();this.style.display='none';" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;cursor:pointer;background:rgba(0,0,0,0.3);">
+      <div style="width:64px;height:64px;border-radius:50%;background:rgba(191,109,42,0.9);display:flex;align-items:center;justify-content:center;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="6,3 20,12 6,21"/></svg>
+      </div>
+    </div>
+  </div>
+  <p style="text-align:center;color:var(--text-muted);font-size:0.82rem;margin-top:10px;">A quick message from James before you start.</p>
+</section>
+
 
 <section class="instructions">
   <div class="container">
@@ -445,7 +460,7 @@
       <div class="step-num">1</div>
       <div>
         <strong>Open Claude</strong>
-        <span>Go to <a href="https://claude.ai" target="_blank">claude.ai</a> and start a new conversation. The free tier works perfectly.</span>
+        <span>Go to <a href="https://claude.ai" target="_blank">claude.ai</a> and start a new conversation. You'll need <strong>Claude Pro</strong> ($20/month) for the full interview. The free tier runs out of juice halfway through. On the Pro plan, select <strong>Sonnet</strong> as your model. If you have a Team or Enterprise account, go with <strong>Opus</strong> for the deepest, richest experience.</span>
       </div>
     </div>
     <div class="step-card">
