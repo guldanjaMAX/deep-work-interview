@@ -142,9 +142,9 @@
     .proc2-h2 em { font-family: 'Playfair Display',serif; font-style: italic; color: var(--accent); font-weight: 400; }
     .proc2-sub { font-size: 15px; color: rgba(255,255,255,.32); line-height: 1.7; }
     .proc2-chat-area { position: relative; height: 210px; margin-bottom: 28px; }
-    .proc2-turn { position: absolute; top: 0; left: 0; right: 0; opacity: 0; pointer-events: none; transition: opacity .55s cubic-bezier(.22,1,.36,1); }
-    .proc2-turn.visible { opacity: 1; pointer-events: auto; }
-    .proc2-turn.past { opacity: 0; }
+    .proc2-turn { position: absolute; top: 0; left: 0; right: 0; opacity: 0; pointer-events: none; transition: none; }
+    .proc2-turn.visible { opacity: 1; pointer-events: auto; transition: opacity .6s cubic-bezier(.22,1,.36,1); }
+    .proc2-turn.past { opacity: 0; transition: opacity .12s ease; }
     .proc2-phase-tag { font-family: 'Outfit',sans-serif; font-size: 9.5px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(196,112,63,.7); margin-bottom: 12px; }
     .proc2-q-text { font-family: 'Outfit',sans-serif; font-size: clamp(17px, 2.1vw, 24px); font-weight: 500; color: rgba(255,255,255,.92); line-height: 1.5; min-height: 1.5em; }
     .proc2-cursor { display: inline; color: rgba(196,112,63,.9); font-weight: 300; font-size: 1em; line-height: 1; animation: p2blink .65s ease-in-out infinite; margin-left: 1px; opacity: 0; transition: opacity .2s; }
