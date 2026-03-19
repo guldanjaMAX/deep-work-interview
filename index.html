@@ -132,33 +132,39 @@
     .sample-offer-name { font-size: 11px; color: rgba(255,255,255,.4); margin-top: 3px; }
     .sample-caption { text-align: center; padding: 20px 28px; font-size: 11px; color: rgba(255,255,255,.2); border-top: 1px solid rgba(255,255,255,.05); font-style: italic; }
 
-    /* PROCESS V2 — Scroll Storytelling */
-    .proc2-outer { position: relative; height: 500vh; z-index: 2; }
-    .proc2-sticky { position: sticky; top: 0; height: 100vh; background: #000; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-    .proc2-inner { position: relative; z-index: 2; width: 100%; max-width: 700px; padding: 0 40px; }
-    .proc2-head { text-align: center; margin-bottom: 56px; opacity: 0; transform: translateY(20px); transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
-    .proc2-head.visible { opacity: 1; transform: translateY(0); }
-    .proc2-h2 { font-family: 'Outfit',sans-serif; font-size: clamp(28px, 3.8vw, 48px); font-weight: 700; color: #fff; line-height: 1.15; margin: 12px 0 10px; }
-    .proc2-h2 em { font-family: 'Playfair Display',serif; font-style: italic; color: var(--accent); font-weight: 400; }
-    .proc2-sub { font-size: 15px; color: rgba(255,255,255,.32); line-height: 1.7; }
-    .proc2-chat-area { position: relative; height: 210px; margin-bottom: 28px; }
-    .proc2-turn { position: absolute; top: 0; left: 0; right: 0; opacity: 0; pointer-events: none; transition: none; }
-    .proc2-turn.visible { opacity: 1; pointer-events: auto; transition: opacity .6s cubic-bezier(.22,1,.36,1); }
-    .proc2-turn.past { opacity: 0; transition: opacity .12s ease; }
-    .proc2-phase-tag { font-family: 'Outfit',sans-serif; font-size: 9.5px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(196,112,63,.7); margin-bottom: 12px; }
-    .proc2-q-text { font-family: 'Outfit',sans-serif; font-size: clamp(17px, 2.1vw, 24px); font-weight: 500; color: rgba(255,255,255,.92); line-height: 1.5; min-height: 1.5em; }
-    .proc2-cursor { display: inline; color: rgba(196,112,63,.9); font-weight: 300; font-size: 1em; line-height: 1; animation: p2blink .65s ease-in-out infinite; margin-left: 1px; opacity: 0; transition: opacity .2s; }
-    .proc2-cursor.show { opacity: 1; }
-    @keyframes p2blink { 0%,100%{opacity:1;} 50%{opacity:0;} }
-    .proc2-response-hint { font-family: 'Playfair Display',serif; font-style: italic; font-size: 14.5px; color: rgba(255,255,255,.18); margin-top: 14px; padding-left: 18px; border-left: 1.5px solid rgba(196,112,63,.22); line-height: 1.65; opacity: 0; transition: opacity .6s ease; }
-    .proc2-response-hint.show { opacity: 1; }
-    .proc2-sep { display: none; }
-    .proc2-phases-row { display: flex; flex-wrap: wrap; gap: 7px; justify-content: center; margin-top: 40px; opacity: 0; transform: translateY(12px); transition: opacity .6s ease, transform .6s ease; }
-    .proc2-phases-row.show { opacity: 1; transform: translateY(0); }
-    .proc2-phase-pill { font-family: 'Outfit',sans-serif; font-size: 9.5px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,.32); background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.07); border-radius: 20px; padding: 5px 11px; }
-    .proc2-final { text-align: center; margin-top: 36px; opacity: 0; transform: translateY(12px); transition: opacity .5s ease, transform .5s ease; }
-    .proc2-final.show { opacity: 1; transform: translateY(0); }
-    .proc2-final p { color: rgba(255,255,255,.25); font-size: 12px; margin-top: 10px; }
+    /* PROCESS V3 — Transcript Chat */
+    .proc3-section { position: relative; z-index: 2; padding: 120px 48px; background: var(--bg); }
+    .proc3-inner { max-width: 800px; margin: 0 auto; }
+    .proc3-header { text-align: center; margin-bottom: 64px; }
+    .proc3-h2 { font-family: 'Outfit',sans-serif; font-size: clamp(28px,3.2vw,46px); font-weight: 700; color: var(--text); line-height: 1.15; margin: 12px 0 14px; }
+    .proc3-h2 em { font-family: 'Playfair Display',serif; font-style: italic; color: var(--accent); font-weight: 400; }
+    .proc3-sub { font-size: 15px; color: var(--muted); line-height: 1.75; max-width: 440px; margin: 0 auto; }
+    .proc3-chat { background: #fff; border: 1px solid var(--border); border-radius: 20px; overflow: hidden; box-shadow: 0 4px 40px rgba(0,0,0,.07), 0 1px 4px rgba(0,0,0,.04); }
+    .proc3-chat-header { padding: 14px 22px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; background: rgba(253,252,250,.9); }
+    .proc3-chat-status { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; flex-shrink: 0; box-shadow: 0 0 6px rgba(34,197,94,.5); }
+    .proc3-chat-title { font-family: 'Outfit',sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; color: rgba(26,26,26,.4); }
+    .proc3-messages { padding: 36px 28px 12px; display: flex; flex-direction: column; gap: 0; }
+    .proc3-exchange { margin-bottom: 44px; }
+    .proc3-exchange:last-child { margin-bottom: 0; }
+    .proc3-phase-divider { text-align: center; margin-bottom: 26px; position: relative; }
+    .proc3-phase-divider::before { content: ''; position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: var(--border); }
+    .proc3-phase-label { font-family: 'Outfit',sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); background: #fff; padding: 0 14px; position: relative; display: inline-block; }
+    .proc3-ai-msg { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 14px; opacity: 0; transform: translateY(14px); transition: opacity .55s cubic-bezier(.22,1,.36,1), transform .55s cubic-bezier(.22,1,.36,1); }
+    .proc3-ai-msg.visible { opacity: 1; transform: translateY(0); }
+    .proc3-ai-avatar { width: 32px; height: 32px; border-radius: 50%; background: rgba(196,112,63,.1); border: 1px solid rgba(196,112,63,.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+    .proc3-ai-icon { width: 11px; height: 11px; border: 1.5px solid var(--accent); transform: rotate(45deg); opacity: .75; }
+    .proc3-ai-bubble { background: #F7F4F0; border: 1px solid rgba(0,0,0,.05); border-radius: 4px 16px 16px 16px; padding: 16px 20px; max-width: 88%; }
+    .proc3-ai-text { font-size: 15px; line-height: 1.74; color: var(--text); }
+    .proc3-user-msg { display: flex; justify-content: flex-end; align-items: flex-start; margin-bottom: 14px; opacity: 0; transform: translateY(14px); transition: opacity .55s cubic-bezier(.22,1,.36,1), transform .55s cubic-bezier(.22,1,.36,1); }
+    .proc3-user-msg.visible { opacity: 1; transform: translateY(0); }
+    .proc3-user-bubble { background: rgba(196,112,63,.08); border: 1px solid rgba(196,112,63,.15); border-radius: 16px 4px 16px 16px; padding: 16px 20px; max-width: 84%; }
+    .proc3-user-text { font-size: 14.5px; line-height: 1.74; color: rgba(26,26,26,.72); font-style: italic; }
+    @keyframes proc3bounce { 0%,60%,100%{transform:translateY(0);} 30%{transform:translateY(-5px);} }
+    .proc3-footer { padding: 28px 28px 32px; border-top: 1px solid var(--border); background: rgba(253,252,250,.7); text-align: center; }
+    .proc3-phases-wrap { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-bottom: 18px; }
+    .proc3-phase-pill { font-family: 'Outfit',sans-serif; font-size: 9px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(26,26,26,.38); background: rgba(0,0,0,.03); border: 1px solid rgba(0,0,0,.07); border-radius: 20px; padding: 5px 10px; }
+    .proc3-footer-note { font-size: 12.5px; color: var(--muted); line-height: 1.7; max-width: 440px; margin: 0 auto 24px; }
+    .proc3-footer-price { font-size: 12px; color: rgba(26,26,26,.35); margin-top: 10px; }
 
     /* WHAT YOU GET */
     .wyg-section { position: relative; z-index: 2; padding: 120px 0; background: #0d0c0b; overflow: hidden; }
@@ -254,8 +260,9 @@
       .logos-list { gap: 20px; }
       .wti-section { padding: 64px 20px; }
       .wti-inner { grid-template-columns: 1fr; gap: 40px; }
-      .proc2-outer { height: 560vh; }
-      .proc2-inner { padding: 0 24px; }
+      .proc3-section { padding: 72px 20px; }
+      .proc3-messages { padding: 24px 16px 8px; }
+      .proc3-footer { padding: 20px 16px 28px; }
       .wyg-section { padding: 72px 20px; }
       .ann-wrap { grid-template-columns: 1fr !important; }
       .ann-doc { display: none; }
@@ -273,7 +280,8 @@
       footer { flex-direction: column; gap: 16px; text-align: center; padding: 24px 20px; }
     }
     @media (max-width: 480px) {
-      .proc2-outer { height: 620vh; }
+      .proc3-ai-bubble { max-width: 95%; }
+      .proc3-user-bubble { max-width: 92%; }
     }
   </style>
 </head>
@@ -418,61 +426,90 @@
 </section>
 
 <!-- THE PROCESS -->
-<section class="proc2-outer" id="process">
-  <div class="proc2-sticky">
-    <div class="proc2-inner">
+<section class="proc3-section" id="process">
+  <div class="proc3-inner">
 
-      <div class="proc2-head" id="proc2-head">
-        <div class="section-eyebrow" style="color:rgba(196,112,63,.7);">The Process</div>
-        <h2 class="proc2-h2">The conversation that<br><em>changes everything.</em></h2>
-        <p class="proc2-sub">Eight phases. One prompt. The AI asks — you answer honestly.</p>
-      </div>
-
-      <div class="proc2-chat-area">
-
-        <div class="proc2-turn" id="proc2-q1">
-          <div class="proc2-phase-tag">Phase 01 &nbsp;&middot;&nbsp; Your Story</div>
-          <div class="proc2-q-text" id="proc2-qt1"><span class="proc2-cursor" id="proc2-cur1">|</span></div>
-          <div class="proc2-response-hint" id="proc2-r1">"Everything started when I realized&hellip;"</div>
-        </div>
-
-        <div class="proc2-turn" id="proc2-q2">
-          <div class="proc2-phase-tag">Phase 03 &nbsp;&middot;&nbsp; Your Beliefs</div>
-          <div class="proc2-q-text" id="proc2-qt2"><span class="proc2-cursor" id="proc2-cur2">|</span></div>
-          <div class="proc2-response-hint" id="proc2-r2">"The thing nobody in my space will admit is&hellip;"</div>
-        </div>
-
-        <div class="proc2-turn" id="proc2-q3">
-          <div class="proc2-phase-tag">Phase 04 &nbsp;&middot;&nbsp; Your People</div>
-          <div class="proc2-q-text" id="proc2-qt3"><span class="proc2-cursor" id="proc2-cur3">|</span></div>
-          <div class="proc2-response-hint" id="proc2-r3">"They&rsquo;re usually good at what they do, but&hellip;"</div>
-        </div>
-
-        <div class="proc2-turn" id="proc2-q4">
-          <div class="proc2-phase-tag">Phase 06 &nbsp;&middot;&nbsp; Market &amp; Niche</div>
-          <div class="proc2-q-text" id="proc2-qt4"><span class="proc2-cursor" id="proc2-cur4">|</span></div>
-          <div class="proc2-response-hint" id="proc2-r4">"Where I&rsquo;m genuinely better than anyone else is&hellip;"</div>
-        </div>
-
-      </div>
-
-      <div class="proc2-phases-row" id="proc2-phases-row">
-        <div class="proc2-phase-pill">01 Your Story</div>
-        <div class="proc2-phase-pill">02 Your Expertise</div>
-        <div class="proc2-phase-pill">03 Your Beliefs</div>
-        <div class="proc2-phase-pill">04 Your People</div>
-        <div class="proc2-phase-pill">05 Voice &amp; Visual</div>
-        <div class="proc2-phase-pill">06 Market &amp; Niche</div>
-        <div class="proc2-phase-pill">07 Your Offers</div>
-        <div class="proc2-phase-pill">08 The Synthesis</div>
-      </div>
-
-      <div class="proc2-final" id="proc2-final">
-        <button class="cta-btn" onclick="document.getElementById('final-cta').scrollIntoView({behavior:'smooth'})">Start the Deep Work Interview &rarr;</button>
-        <p>$67 one time &nbsp;&middot;&nbsp; instant access &nbsp;&middot;&nbsp; no subscription</p>
-      </div>
-
+    <div class="proc3-header">
+      <div class="eyebrow">The Process</div>
+      <h2 class="proc3-h2">The conversation that<br><em>changes everything.</em></h2>
+      <p class="proc3-sub">Eight phases. The AI asks the questions nobody else does.</p>
     </div>
+
+    <div class="proc3-chat">
+      <div class="proc3-chat-header">
+        <div class="proc3-chat-status"></div>
+        <div class="proc3-chat-title">Deep Work Interview &nbsp;&middot;&nbsp; Session in Progress</div>
+      </div>
+
+      <div class="proc3-messages">
+
+        <!-- Exchange 1 -->
+        <div class="proc3-exchange">
+          <div class="proc3-phase-divider"><span class="proc3-phase-label">Phase 01 &nbsp;&middot;&nbsp; Your Story</span></div>
+          <div class="proc3-ai-msg" data-reveal>
+            <div class="proc3-ai-avatar"><div class="proc3-ai-icon"></div></div>
+            <div class="proc3-ai-bubble">
+              <p class="proc3-ai-text">Let&rsquo;s start where it actually started. Not the polished version &mdash; the real one. Walk me through the moment that made you the person who does this work.</p>
+            </div>
+          </div>
+          <div class="proc3-user-msg" data-reveal>
+            <div class="proc3-user-bubble">
+              <p class="proc3-user-text">Honestly? I almost shut my first agency down at 28. No clients, credit cards maxed, about three weeks from walking away. Then I figured out how to position what I was actually good at &mdash; and the whole business changed in 90 days. That&rsquo;s what I teach now.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Exchange 2 -->
+        <div class="proc3-exchange">
+          <div class="proc3-phase-divider"><span class="proc3-phase-label">Phase 03 &nbsp;&middot;&nbsp; Your Beliefs</span></div>
+          <div class="proc3-ai-msg" data-reveal>
+            <div class="proc3-ai-avatar"><div class="proc3-ai-icon"></div></div>
+            <div class="proc3-ai-bubble">
+              <p class="proc3-ai-text">What do you believe that most people in your space are fundamentally wrong about? Give me the real answer &mdash; not the one you&rsquo;d put on LinkedIn.</p>
+            </div>
+          </div>
+          <div class="proc3-user-msg" data-reveal>
+            <div class="proc3-user-bubble">
+              <p class="proc3-user-text">That niching down means turning clients away. Most coaches think specificity costs them business. The opposite is true. The more specific you are, the more you can charge &mdash; and the better the clients you attract.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Exchange 3 -->
+        <div class="proc3-exchange">
+          <div class="proc3-phase-divider"><span class="proc3-phase-label">Phase 06 &nbsp;&middot;&nbsp; Market &amp; Niche</span></div>
+          <div class="proc3-ai-msg" data-reveal>
+            <div class="proc3-ai-avatar"><div class="proc3-ai-icon"></div></div>
+            <div class="proc3-ai-bubble">
+              <p class="proc3-ai-text">You&rsquo;ve described your competitors. Where are you genuinely better &mdash; and where are you still catching up?</p>
+            </div>
+          </div>
+          <div class="proc3-user-msg" data-reveal>
+            <div class="proc3-user-bubble">
+              <p class="proc3-user-text">Better: the depth I go on connecting story to offer. I&rsquo;ve never met anyone who does it at this level. Catching up: my SEO is honestly terrible. I know it. It&rsquo;s next.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="proc3-footer">
+        <div class="proc3-phases-wrap">
+          <div class="proc3-phase-pill">01 Your Story</div>
+          <div class="proc3-phase-pill">02 Your Expertise</div>
+          <div class="proc3-phase-pill">03 Your Beliefs</div>
+          <div class="proc3-phase-pill">04 Your People</div>
+          <div class="proc3-phase-pill">05 Voice &amp; Visual</div>
+          <div class="proc3-phase-pill">06 Market &amp; Niche</div>
+          <div class="proc3-phase-pill">07 Your Offers</div>
+          <div class="proc3-phase-pill">08 The Synthesis</div>
+        </div>
+        <p class="proc3-footer-note">Three of eight phases shown. The full interview covers every dimension of your positioning and synthesizes it into a complete brand blueprint.</p>
+        <button class="cta-btn" onclick="document.getElementById('final-cta').scrollIntoView({behavior:'smooth'})">Start the Deep Work Interview &rarr;</button>
+        <p class="proc3-footer-price">$67 one time &nbsp;&middot;&nbsp; instant access &nbsp;&middot;&nbsp; no subscription</p>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -768,83 +805,23 @@
       requestAnimationFrame(frameMobile); }
     requestAnimationFrame(frameMobile); }
 
-  // PROCESS V2 — Scroll-driven conversation reveal
+  // PROCESS V3 — Transcript reveal via IntersectionObserver
   (function() {
-    var outer = document.getElementById('process');
-    if (!outer) return;
-    var questions = [
-      "Let's start where it actually started. Not the polished version — the real one. Walk me through the moment that made you the person who does this work.",
-      "What do you believe that most people in your space are fundamentally wrong about? Give me the real answer, not the one you'd put on LinkedIn.",
-      "Describe the person you do your absolute best work with. Not their job title — their internal state when they find you. What are they feeling?",
-      "You've described your competitors. Now tell me honestly: where are you genuinely better, and where are you still catching up?"
-    ];
-    // [startProgress, endProgress] for each question's typing window
-    var milestones = [
-      [0.10, 0.28],
-      [0.28, 0.46],
-      [0.46, 0.64],
-      [0.64, 0.80]
-    ];
-    function clamp01(v) { return Math.max(0, Math.min(1, v)); }
-    function getProgress() {
-      var outerTop = outer.getBoundingClientRect().top + window.scrollY;
-      var scrolled = window.scrollY - outerTop;
-      var maxScroll = outer.offsetHeight - window.innerHeight;
-      return maxScroll > 0 ? clamp01(scrolled / maxScroll) : 0;
-    }
-    function onScrollProc() {
-      var p = getProgress();
-      // Header
-      var head = document.getElementById('proc2-head');
-      if (head) { if (p > 0.02) head.classList.add('visible'); else head.classList.remove('visible'); }
-      // Questions
-      for (var i = 0; i < 4; i++) {
-        var m = milestones[i];
-        var turn = document.getElementById('proc2-q' + (i+1));
-        var qt   = document.getElementById('proc2-qt' + (i+1));
-        var cur  = document.getElementById('proc2-cur' + (i+1));
-        var rh   = document.getElementById('proc2-r' + (i+1));
-        var sep  = document.getElementById('proc2-sep' + (i+1));
-        if (!turn || !qt) continue;
-        if (p < m[0]) {
-          turn.classList.remove('visible','past');
-          qt.childNodes[0] && qt.childNodes[0].nodeType === 3 && (qt.childNodes[0].textContent = '');
-          if (cur) cur.classList.remove('show');
-          if (rh)  rh.classList.remove('show');
-        } else if (p >= m[0] && p <= m[1]) {
-          turn.classList.add('visible'); turn.classList.remove('past');
-          var tp = clamp01((p - m[0]) / (m[1] - m[0]));
-          var chars = Math.floor(tp * questions[i].length);
-          var textNode = qt.childNodes[0];
-          if (!textNode || textNode.nodeType !== 3) {
-            textNode = document.createTextNode('');
-            qt.insertBefore(textNode, qt.firstChild);
-          }
-          textNode.textContent = questions[i].substring(0, chars);
-          if (cur) cur.classList.add('show');
-          if (rh)  { if (tp > 0.78) rh.classList.add('show'); else rh.classList.remove('show'); }
-        } else {
-          turn.classList.remove('visible'); turn.classList.add('past');
-          var textNode2 = qt.childNodes[0];
-          if (!textNode2 || textNode2.nodeType !== 3) {
-            textNode2 = document.createTextNode('');
-            qt.insertBefore(textNode2, qt.firstChild);
-          }
-          textNode2.textContent = questions[i];
-          if (cur) cur.classList.remove('show');
-          if (rh)  rh.classList.add('show');
+    var msgs = document.querySelectorAll('[data-reveal]');
+    if (!msgs.length) return;
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          obs.unobserve(e.target);
         }
-      }
-      // Phases row
-      var pr = document.getElementById('proc2-phases-row');
-      if (pr) { if (p > 0.83) pr.classList.add('show'); else pr.classList.remove('show'); }
-      // Final CTA
-      var pf2 = document.getElementById('proc2-final');
-      if (pf2) { if (p > 0.90) pf2.classList.add('show'); else pf2.classList.remove('show'); }
-    }
-    window.addEventListener('scroll', onScrollProc, { passive: true });
-    window.addEventListener('resize', onScrollProc);
-    setTimeout(onScrollProc, 100);
+      });
+    }, { threshold: 0.25, rootMargin: '0px 0px -40px 0px' });
+    msgs.forEach(function(m, i) {
+      // Stagger: user replies delay slightly after AI messages
+      m.style.transitionDelay = (i % 2 === 1 ? '140ms' : '0ms');
+      obs.observe(m);
+    });
   })();
 
   // CTA CANVAS
