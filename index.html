@@ -316,8 +316,12 @@
     }
     @media (max-width: 860px) {
       nav { padding: 0 20px; } .nav-links { display: none; }
-      .hero { display: none; }
-      .mobile-hero-video { display: block; }
+      .hero { display: block; height: auto; min-height: 80vh; }
+      .hero-photo { display: none; }
+      .hero-arrow-label { display: none; }
+      .hero-text-wrap { padding: 48px 24px 40px; }
+      .hero-text { max-width: 100%; }
+      .mobile-hero-video { display: none; }
       .cred-section { padding: 48px 20px; }
       .stats-grid { grid-template-columns: 1fr 1fr; }
       .stat-item:nth-child(2) { border-right: none; }
