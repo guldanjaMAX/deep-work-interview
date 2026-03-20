@@ -1,6 +1,8 @@
 name: Add Phone Field
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - dev
 
 jobs:
   edit:
@@ -16,26 +18,27 @@ jobs:
           with open('index.html', 'r', encoding='utf-8') as f:
               html = f.read()
 
-          # 1. Insert phone field HTML after the email field line
           EMAIL_FIELD = """+ '<div class="op-field"><label for="op-email">Email address</label><input type="email" id="op-email" placeholder="you@example.com" autocomplete="email" required /></div>'"""
           PHONE_FIELD = """+ '<div class="op-field" id="op-phone-field"><label for="op-phone">Mobile number <span style="font-size:0.8em;color:#aaa;font-weight:400;text-transform:none;letter-spacing:0">optional</span></label><input type="tel" id="op-phone" placeholder="+1 (555) 000-0000" autocomplete="tel" /><p style="font-size:11px;color:#999;margin:4px 0 0;line-height:1.4">Transactional SMS from Madison Avenue Revival. Msg &amp; data rates may apply. Reply STOP to opt out. <a href=\\"https://jamesguldan.com/privacy-policy\\" target=\\"_blank\\" style=\\"color:#999\\">Privacy Policy</a></p></div>'"""
+
+          changed = False
 
           if EMAIL_FIELD in html and PHONE_FIELD not in html:
               html = html.replace(EMAIL_FIELD, EMAIL_FIELD + '\n      ' + PHONE_FIELD)
               print('Phone field HTML inserted')
+              changed = True
           else:
-              print('Phone field HTML skipped (already exists or anchor not found)')
+              print('Phone field HTML skipped')
 
-          # 2. Add CSS for phone field hidden state
           CSS_ANCHOR = "'.op-field input:focus{border-color:#c4703f;box-shadow:0 0 0 3px rgba(196,112,63,.12)}'"
           PHONE_CSS = "\n      '#op-phone-field.hidden{display:none}',"
           if CSS_ANCHOR in html and 'op-phone-field.hidden' not in html:
               html = html.replace(CSS_ANCHOR, CSS_ANCHOR + PHONE_CSS)
               print('Phone CSS inserted')
+              changed = True
           else:
               print('Phone CSS skipped')
 
-          # 3. Add phone capture + conditional-hide script before </body>
           PHONE_SCRIPT = """<script>
 (function(){
   var emailEl = document.getElementById('op-email');
@@ -70,20 +73,24 @@ jobs:
           if '</body>' in html and 'check-phone' not in html:
               html = html.replace('</body>', PHONE_SCRIPT)
               print('Phone script inserted')
+              changed = True
           else:
               print('Phone script skipped')
 
-          with open('index.html', 'w', encoding='utf-8') as f:
-              f.write(html)
-
-          print('Done. File size:', len(html))
+          if changed:
+              with open('index.html', 'w', encoding='utf-8') as f:
+                  f.write(html)
+              print('Written. Size:', len(html))
+          else:
+              print('No changes needed')
           PYEOF
 
-      - name: Commit changes
+      - name: Commit and remove workflow
         run: |
           git config user.email "action@github.com"
           git config user.name "GitHub Action"
+          git rm .github/workflows/add-phone-field.yml
           git add index.html
           git diff --cached --stat
-          git commit -m "Add optional phone field to order popup with SMS consent and conditional hide" || echo "Nothing to commit"
+          git commit -m "Add optional phone field to order popup (self-cleaning workflow)" || echo "Nothing to commit"
           git push origin dev
