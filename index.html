@@ -70,8 +70,8 @@
     .vid-halo { position: absolute; bottom: 5%; right: 4%; left: auto; transform: none; width: 336px; height: 214px; border: 1px solid rgba(196,112,63,.22); border-radius: 16px; animation: halo 3.2s ease-in-out infinite; pointer-events: none; z-index: 3; }
     .vid-halo2 { position: absolute; bottom: 3.5%; right: 2.2%; left: auto; transform: none; width: 374px; height: 244px; border: 1px solid rgba(196,112,63,.12); border-radius: 20px; animation: halo 3.2s ease-in-out infinite .75s; pointer-events: none; z-index: 3; }
     @keyframes halo { 0%,100%{opacity:1;transform:scale(1);}50%{opacity:.25;transform:scale(1.03);} }
-    .vid-float { position: absolute; bottom: 7%; right: 6%; left: auto; transform: none; z-index: 4; width: 296px; border-radius: 12px; overflow: hidden; background: #000; border: 2px solid rgba(255,255,255,0.85); box-shadow: 0 12px 48px rgba(0,0,0,0.28), 0 0 0 1px rgba(0,0,0,0.08); }
-    .vid-float video { width: 100%; display: block; aspect-ratio: 16/9; object-fit: contain; }
+    .vid-float { position: absolute; bottom: 4%; right: 5%; left: auto; transform: none; z-index: 4; width: 180px; border-radius: 12px; overflow: hidden; background: #000; border: 2px solid rgba(255,255,255,0.85); box-shadow: 0 12px 48px rgba(0,0,0,0.28), 0 0 0 1px rgba(0,0,0,0.08); }
+    .vid-float video { width: 100%; display: block; aspect-ratio: 9/16; object-fit: cover; }
     .vid-label { background: rgba(0,0,0,0.88); color: rgba(255,255,255,0.9); text-align: center; padding: 8px 12px; font-size: .7rem; font-family: 'Outfit',sans-serif; font-weight: 500; letter-spacing: .04em; }
     .hero-text-wrap { position: relative; z-index: 3; display: flex; align-items: center; height: 100%; max-width: 1280px; margin: 0 auto; padding: 0 48px; }
     .hero-text { max-width: 520px; }
@@ -101,7 +101,7 @@
     @keyframes mring { 0%,100%{opacity:1;transform:scale(1);}50%{opacity:.2;transform:scale(1.03);} }
     .mobile-vid-inner { position: relative; z-index: 2; padding: 28px 20px 0; }
     .mobile-vid-player { border-radius: 14px; overflow: hidden; background: #000; border: 2px solid rgba(255,255,255,.12); box-shadow: 0 20px 80px rgba(0,0,0,.6); }
-    .mobile-vid-player video { width: 100%; display: block; aspect-ratio: 16/9; }
+    .mobile-vid-player video { width: 100%; display: block; aspect-ratio: 9/16; }
     .mobile-vid-caption { background: rgba(0,0,0,.9); color: rgba(255,255,255,.8); text-align: center; padding: 8px; font-size: .68rem; font-family: 'Outfit',sans-serif; font-weight: 500; letter-spacing: .04em; }
     .mobile-bottom-fade { height: 40px; background: linear-gradient(to bottom, #0d0c0b, var(--bg)); }
     .mobile-hero-text { padding: 24px 24px 40px; }
@@ -384,10 +384,10 @@
     <div class="vid-halo"></div>
     <div class="vid-halo2"></div>
     <div class="vid-float">
-      <video controls preload="metadata">
-        <source src="https://jamesguldan.com/deep-work/james-dwi-intro.mp4" type="video/mp4">
+      <video controls preload="metadata" playsinline>
+        <source src="https://pub-d080c466f8504291b98ad793f9eb1f30.r2.dev/james-deepwork-v2.mp4" type="video/mp4">
       </video>
-      <div class="vid-label">2 min · The story behind the Deep Work Process</div>
+      <div class="vid-label">5 min · The Deep Work Process explained</div>
     </div>
   </div>
   <div class="hero-text-wrap">
@@ -412,10 +412,10 @@
     </div>
     <div class="mobile-vid-inner">
       <div class="mobile-vid-player">
-        <video controls preload="metadata">
-          <source src="https://jamesguldan.com/deep-work/james-dwi-intro.mp4" type="video/mp4">
+        <video controls preload="metadata" playsinline>
+          <source src="https://pub-d080c466f8504291b98ad793f9eb1f30.r2.dev/james-deepwork-v2.mp4" type="video/mp4">
         </video>
-        <div class="mobile-vid-caption">2 min · The story behind the Deep Work Process</div>
+        <div class="mobile-vid-caption">5 min · The Deep Work Process explained</div>
       </div>
     </div>
   </div>
