@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- Stripe.js (load early for fastest checkout) -->
+  <script src="https://js.stripe.com/v3/" async></script>
+
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-DCD0E6KVCV"></script>
   <script>
@@ -44,7 +47,7 @@
   <meta name="twitter:description" content="One conversation. Two hours. A complete brand blueprint — clarity, positioning, and a full website outline with real copy. The same process coaches paid $5,000 for, now $67.">
   <meta name="twitter:image" content="https://jamesguldan.com/og-image.png">
 
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     :root { --bg: #FDFCFA; --accent: #c4703f; --text: #1a1a1a; --muted: #666; --border: #EAE7E2; --nav-h: 64px; }
@@ -70,8 +73,8 @@
     .vid-halo { position: absolute; bottom: 5%; right: 4%; left: auto; transform: none; width: 336px; height: 214px; border: 1px solid rgba(196,112,63,.22); border-radius: 16px; animation: halo 3.2s ease-in-out infinite; pointer-events: none; z-index: 3; }
     .vid-halo2 { position: absolute; bottom: 3.5%; right: 2.2%; left: auto; transform: none; width: 374px; height: 244px; border: 1px solid rgba(196,112,63,.12); border-radius: 20px; animation: halo 3.2s ease-in-out infinite .75s; pointer-events: none; z-index: 3; }
     @keyframes halo { 0%,100%{opacity:1;transform:scale(1);}50%{opacity:.25;transform:scale(1.03);} }
-    .vid-float { position: absolute; bottom: 4%; right: 5%; left: auto; transform: none; z-index: 4; width: 180px; border-radius: 12px; overflow: hidden; background: #000; border: 2px solid rgba(255,255,255,0.85); box-shadow: 0 12px 48px rgba(0,0,0,0.28), 0 0 0 1px rgba(0,0,0,0.08); }
-    .vid-float video { width: 100%; display: block; aspect-ratio: 9/16; object-fit: cover; }
+    .vid-float { position: absolute; bottom: 7%; right: 6%; left: auto; transform: none; z-index: 4; width: 296px; border-radius: 12px; overflow: hidden; background: #000; border: 2px solid rgba(255,255,255,0.85); box-shadow: 0 12px 48px rgba(0,0,0,0.28), 0 0 0 1px rgba(0,0,0,0.08); }
+    .vid-float video { width: 100%; display: block; aspect-ratio: 16/9; object-fit: contain; }
     .vid-label { background: rgba(0,0,0,0.88); color: rgba(255,255,255,0.9); text-align: center; padding: 8px 12px; font-size: .7rem; font-family: 'Outfit',sans-serif; font-weight: 500; letter-spacing: .04em; }
     .hero-text-wrap { position: relative; z-index: 3; display: flex; align-items: center; height: 100%; max-width: 1280px; margin: 0 auto; padding: 0 48px; }
     .hero-text { max-width: 520px; }
@@ -101,7 +104,7 @@
     @keyframes mring { 0%,100%{opacity:1;transform:scale(1);}50%{opacity:.2;transform:scale(1.03);} }
     .mobile-vid-inner { position: relative; z-index: 2; padding: 28px 20px 0; }
     .mobile-vid-player { border-radius: 14px; overflow: hidden; background: #000; border: 2px solid rgba(255,255,255,.12); box-shadow: 0 20px 80px rgba(0,0,0,.6); }
-    .mobile-vid-player video { width: 100%; display: block; aspect-ratio: 9/16; }
+    .mobile-vid-player video { width: 100%; display: block; aspect-ratio: 16/9; }
     .mobile-vid-caption { background: rgba(0,0,0,.9); color: rgba(255,255,255,.8); text-align: center; padding: 8px; font-size: .68rem; font-family: 'Outfit',sans-serif; font-weight: 500; letter-spacing: .04em; }
     .mobile-bottom-fade { height: 40px; background: linear-gradient(to bottom, #0d0c0b, var(--bg)); }
     .mobile-hero-text { padding: 24px 24px 40px; }
@@ -316,12 +319,8 @@
     }
     @media (max-width: 860px) {
       nav { padding: 0 20px; } .nav-links { display: none; }
-      .hero { display: block; height: auto; min-height: 80vh; }
-      .hero-photo { display: none; }
-      .hero-arrow-label { display: none; }
-      .hero-text-wrap { padding: 48px 24px 40px; }
-      .hero-text { max-width: 100%; }
-      .mobile-hero-video { display: none; }
+      .hero { display: none; }
+      .mobile-hero-video { display: block; }
       .cred-section { padding: 48px 20px; }
       .stats-grid { grid-template-columns: 1fr 1fr; }
       .stat-item:nth-child(2) { border-right: none; }
@@ -363,12 +362,6 @@
       .proc3-ai-bubble { max-width: 95%; }
       .proc3-user-bubble { max-width: 92%; }
     }
-
-    /* HAND-DRAWN ARROW LABEL */
-    .hero-arrow-label { position: absolute; bottom: 44%; right: 14%; z-index: 6; pointer-events: none; display: flex; flex-direction: column; align-items: center; gap: 4px; }
-    .hero-arrow-label span { font-family: 'Caveat', cursive; font-size: 1.15rem; font-weight: 600; color: #c4703f; display: block; transform: rotate(-6deg); white-space: nowrap; text-shadow: 0 1px 4px rgba(255,255,255,0.4); }
-    .hero-arrow-label svg { width: 52px; opacity: 0.85; }
-
   </style>
 </head>
 <body>
@@ -394,22 +387,11 @@
     <div class="vid-halo"></div>
     <div class="vid-halo2"></div>
     <div class="vid-float">
-      <video controls preload="metadata" playsinline id="hero-vid">
-        <source src="https://pub-d080c466f8504291b98ad793f9eb1f30.r2.dev/james-deepwork-v2.mp4" type="video/mp4">
+      <video controls preload="metadata">
+        <source src="https://jamesguldan.com/deep-work/james-dwi-intro.mp4" type="video/mp4">
       </video>
-      <div class="vid-label">5 min &middot; The Deep Work Process explained</div>
+      <div class="vid-label">2 min · The story behind the Deep Work Process</div>
     </div>
-
-    <!-- HAND-DRAWN ARROW LABEL -->
-    <div class="hero-arrow-label">
-      <span>Hear my story</span>
-      <svg viewBox="0 0 55 85" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M8,6 C10,18 18,38 28,55 C34,65 40,72 48,78" stroke="#c4703f" stroke-width="2.3" stroke-linecap="round" fill="none"/>
-        <path d="M48,78 L37,74" stroke="#c4703f" stroke-width="2.3" stroke-linecap="round"/>
-        <path d="M48,78 L46,66" stroke="#c4703f" stroke-width="2.3" stroke-linecap="round"/>
-      </svg>
-    </div>
-
   </div>
   <div class="hero-text-wrap">
     <div class="hero-text">
@@ -433,10 +415,10 @@
     </div>
     <div class="mobile-vid-inner">
       <div class="mobile-vid-player">
-        <video controls preload="metadata" playsinline>
-          <source src="https://pub-d080c466f8504291b98ad793f9eb1f30.r2.dev/james-deepwork-v2.mp4" type="video/mp4">
+        <video controls preload="metadata">
+          <source src="https://jamesguldan.com/deep-work/james-dwi-intro.mp4" type="video/mp4">
         </video>
-        <div class="mobile-vid-caption">5 min · The Deep Work Process explained</div>
+        <div class="mobile-vid-caption">2 min · The story behind the Deep Work Process</div>
       </div>
     </div>
   </div>
@@ -1100,6 +1082,37 @@
       '.op-trust{text-align:center;margin-top:14px;font-size:11px;color:#bbb;font-weight:400}',
       '.op-guarantee{text-align:center;margin-top:10px;font-size:11.5px;color:#999;font-weight:500}',
       '@media(max-width:560px){#order-popup{width:96%;border-radius:12px}.op-header{padding:22px 20px 0}.op-scroll{padding:14px 20px 0}.op-footer{padding:0 20px 20px}.op-main-item{padding:14px 14px}.op-bump{padding:14px 14px 14px 46px}.op-bump input{left:14px}}',
+      /* ── Payment view ── */
+      '.op-payment-view{display:none;flex-direction:column;overflow:hidden;flex:1;min-height:0}',
+      '.op-pay-scroll{overflow-y:auto;flex:1;min-height:0;padding:20px 32px 0}',
+      '.op-pay-footer{flex-shrink:0;padding:0 32px 24px;background:#fff}',
+      '.op-order-bar{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:#faf8f5;border-radius:10px;margin-bottom:18px;border:1.5px solid #e8e2d9}',
+      '.op-order-bar-label{font-size:13px;color:#777;font-weight:500}',
+      '.op-order-bar-price{font-weight:800;font-size:18px;color:#1a1a1a;font-family:Outfit,sans-serif}',
+      '.op-field{margin-bottom:16px}',
+      '.op-field label{display:block;font-size:12px;font-weight:600;color:#555;text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px}',
+      '.op-field input{width:100%;box-sizing:border-box;padding:13px 14px;border:1.5px solid #e5e7eb;border-radius:8px;font-size:15px;font-family:Outfit,sans-serif;color:#1a1a1a;outline:none;transition:border-color .2s,box-shadow .2s}',
+      '.op-field input:focus{border-color:#c4703f;box-shadow:0 0 0 3px rgba(196,112,63,.12)}',
+      '.op-field input.error{border-color:#e53e3e}',
+      '#stripe-element{min-height:44px;margin-bottom:4px}',
+      '.op-pay-error{background:#fff5f5;border:1px solid #fed7d7;color:#c53030;padding:10px 14px;border-radius:8px;font-size:13px;margin-bottom:14px;line-height:1.5;display:none}',
+      '.op-back-btn{background:none;border:none;color:#bbb;font-size:12px;cursor:pointer;padding:6px 0 0;width:100%;text-align:center;font-family:Outfit,sans-serif;transition:color .2s;display:block}',
+      '.op-back-btn:hover{color:#c4703f}',
+      /* ── Success view ── */
+      '.op-success-view{display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:32px 32px 36px;flex:1}',
+      '.op-success-icon{width:68px;height:68px;background:linear-gradient(135deg,#f0fdf4,#dcfce7);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 22px;font-size:30px}',
+      '.op-success-view h3{font-family:Outfit,sans-serif;font-size:24px;font-weight:700;color:#1a1a1a;margin:0 0 10px}',
+      '.op-success-view p{font-size:14px;color:#555;margin:0 0 6px;line-height:1.65}',
+      '.op-success-view .op-success-email{font-weight:700;color:#1a1a1a}',
+      '.op-success-view .op-success-sub{font-size:12px;color:#aaa;margin-top:4px}',
+      '.op-success-cta{display:inline-block;margin-top:26px;padding:15px 36px;background:#1a1a1a;color:#fff;border-radius:50px;font-weight:700;font-size:14px;text-decoration:none;transition:background .2s;font-family:Inter,sans-serif}',
+      '.op-success-cta:hover{background:#c4703f}',
+      '@keyframes opcheckbounce{0%{transform:scale(.5);opacity:0}70%{transform:scale(1.15)}100%{transform:scale(1);opacity:1}}',
+      '.op-success-icon{animation:opcheckbounce .5s cubic-bezier(.2,.9,.3,1) .1s both}',
+      '.op-session-loading{display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:48px 32px;flex:1;gap:20px}',
+      '.op-session-loading p{font-size:15px;color:#555;margin:0;font-family:Outfit,sans-serif}',
+      '.op-session-spinner{width:44px;height:44px;border:3px solid #f0e8e0;border-top-color:#c4703f;border-radius:50%;animation:opspin .8s linear infinite}',
+      '@keyframes opspin{to{transform:rotate(360deg)}}',
     ].join('');
     document.head.appendChild(style);
 
@@ -1111,19 +1124,19 @@
     // Create popup
     var popup = document.createElement('div');
     popup.id = 'order-popup';
-    popup.innerHTML = '<button class="op-close" aria-label="Close">&times;</button>'
-      + '<div class="op-header">'
-      + '<h3>Your Order</h3>'
-      + '<p>Complete your Deep Work session</p>'
+    popup.innerHTML = '<button class="op-close" aria-label="Close" id="op-close-btn">&times;</button>'
+
+      /* ── STEP 1: Order selection ── */
+      + '<div class="op-header" id="op-header">'
+      + '<h3 id="op-header-title">Your Order</h3>'
+      + '<p id="op-header-sub">Complete your Deep Work session</p>'
       + '</div>'
-      + '<div class="op-body">'
+      + '<div class="op-body" id="op-order-body">'
       + '<div class="op-scroll">'
-      // Main item
       + '<div class="op-main-item">'
       + '<div><div class="op-included">Included</div><div class="op-item-name">Deep Work Blueprint</div><div class="op-item-desc">2hr AI positioning session + full blueprint</div></div>'
       + '<div class="op-item-price">$67</div>'
       + '</div>'
-      // Bump 1 — Website Build
       + '<div class="op-bump" id="bump-site">'
       + '<input type="checkbox" id="cb-site">'
       + '<div class="op-bump-tag">Most Popular</div>'
@@ -1131,7 +1144,6 @@
       + '<div class="op-bump-desc">After your session, AI takes your blueprint and builds your entire site with real copy, real structure, and deploys it live. No code. No designers. No waiting weeks.</div>'
       + '<div class="op-bump-price">+ $130</div>'
       + '</div>'
-      // Bump 2 — Strategy Call
       + '<div class="op-bump" id="bump-call">'
       + '<input type="checkbox" id="cb-call">'
       + '<div class="op-bump-tag">Go Deeper</div>'
@@ -1140,7 +1152,6 @@
       + '<div class="op-bump-price">+ $130</div>'
       + '</div>'
       + '</div>'
-      // Sticky footer — always visible
       + '<div class="op-footer">'
       + '<div class="op-divider"></div>'
       + '<div class="op-total-row">'
@@ -1151,31 +1162,60 @@
       + '<div class="op-guarantee">7 day satisfaction guarantee. If the process does not deliver, email James and he will make it right.</div>'
       + '<div class="op-trust">Powered by Stripe &middot; 256 bit encryption</div>'
       + '</div>'
+      + '</div>'
+
+      /* ── STEP 2: Payment form ── */
+      + '<div class="op-payment-view" id="op-payment-view">'
+      + '<div class="op-pay-scroll">'
+      + '<div class="op-order-bar"><span class="op-order-bar-label" id="op-order-bar-label">Deep Work Blueprint</span><span class="op-order-bar-price" id="op-order-bar-price">$67</span></div>'
+      + '<div class="op-field"><label for="op-email">Email address</label><input type="email" id="op-email" placeholder="you@example.com" autocomplete="email" required /></div>'
+      + '<div id="stripe-element"></div>'
+      + '</div>'
+      + '<div class="op-pay-footer">'
+      + '<div class="op-pay-error" id="op-pay-error"></div>'
+      + '<form id="op-pay-form"><button type="submit" class="op-pay-btn" id="op-pay-submit"><span id="op-pay-spinner" class="btn-spinner" style="display:none"></span><span class="btn-text">Pay $67</span></button></form>'
+      + '<div class="op-guarantee">7 day guarantee &middot; Cancel anytime &middot; Instant access</div>'
+      + '<button class="op-back-btn" id="op-back-btn">← Change order</button>'
+      + '</div>'
+      + '</div>'
+
+      /* ── STEP 3: Success ── */
+      /* ── STEP 2b: Loading (magic link in progress) ── */
+      + '<div class="op-session-loading" id="op-session-loading">'
+      + '<div class="op-session-spinner"></div>'
+      + '<p>Setting up your session&hellip;</p>'
+      + '</div>'
+
+      /* ── STEP 3: Success ── */
+      + '<div class="op-success-view" id="op-success-view">'
+      + '<div class="op-success-icon">✓</div>'
+      + '<h3>You&#39;re in!</h3>'
+      + '<p>Click below to start your session right now.</p>'
+      + '<a href="https://app.jamesguldan.com" id="op-start-session" class="op-success-cta" target="_blank" rel="noopener">Start the Interview &#8594;</a>'
+      + '<p class="op-success-sub">A magic link is also on its way to <span class="op-success-email" id="op-success-email">your email</span> so you can return anytime.</p>'
       + '</div>';
     document.body.appendChild(popup);
 
-    // Pricing logic
-    var BASE = 67;
-    var BUMP_SITE = 130;
-    var BUMP_CALL = 130;
-    var FULL_SITE = 197;
-    var FULL_CALL = 197;
-
-    var cbSite = document.getElementById('cb-site');
-    var cbCall = document.getElementById('cb-call');
+    // ── Pricing ─────────────────────────────────────────────────────────────
+    var BASE = 67, BUMP_SITE = 130, BUMP_CALL = 130, FULL_SITE = 197, FULL_CALL = 197;
+    var cbSite   = document.getElementById('cb-site');
+    var cbCall   = document.getElementById('cb-call');
     var bumpSite = document.getElementById('bump-site');
     var bumpCall = document.getElementById('bump-call');
-    var totalEl = document.getElementById('op-total');
+    var totalEl  = document.getElementById('op-total');
     var originalEl = document.getElementById('op-original');
-    var savingsEl = document.getElementById('op-savings');
+    var savingsEl  = document.getElementById('op-savings');
+
+    function getTotal() {
+      var t = BASE;
+      if (cbSite.checked) t += BUMP_SITE;
+      if (cbCall.checked) t += BUMP_CALL;
+      return t;
+    }
 
     function updateTotal() {
-      var total = BASE;
-      var fullPrice = BASE;
-      if (cbSite.checked) { total += BUMP_SITE; fullPrice += FULL_SITE; }
-      if (cbCall.checked) { total += BUMP_CALL; fullPrice += FULL_CALL; }
+      var total = getTotal();
       totalEl.textContent = '$' + total;
-      // Show savings when both bumps selected
       if (cbSite.checked && cbCall.checked) {
         originalEl.textContent = '$' + (BASE + FULL_SITE + FULL_CALL);
         originalEl.style.display = 'inline';
@@ -1184,30 +1224,22 @@
         originalEl.style.display = 'none';
         savingsEl.style.display = 'none';
       }
-      // Toggle checked class
       bumpSite.classList.toggle('checked', cbSite.checked);
       bumpCall.classList.toggle('checked', cbCall.checked);
     }
 
-    // Click anywhere on bump card to toggle
-    bumpSite.addEventListener('click', function(e) {
-      if (e.target !== cbSite) cbSite.checked = !cbSite.checked;
-      updateTotal();
-    });
-    bumpCall.addEventListener('click', function(e) {
-      if (e.target !== cbCall) cbCall.checked = !cbCall.checked;
-      updateTotal();
-    });
+    bumpSite.addEventListener('click', function(e) { if (e.target !== cbSite) cbSite.checked = !cbSite.checked; updateTotal(); });
+    bumpCall.addEventListener('click', function(e) { if (e.target !== cbCall) cbCall.checked = !cbCall.checked; updateTotal(); });
     cbSite.addEventListener('change', updateTotal);
     cbCall.addEventListener('change', updateTotal);
 
-    // Open popup
+    // ── Popup open / close ───────────────────────────────────────────────────
     function openPopup(e) {
-      e.preventDefault();
-      // Reset state
+      if (e) e.preventDefault();
       cbSite.checked = false;
       cbCall.checked = false;
       updateTotal();
+      showStep('order');
       backdrop.style.display = 'block';
       popup.style.display = 'flex';
       document.body.style.overflow = 'hidden';
@@ -1217,66 +1249,363 @@
       });
     }
 
-    // Close popup
+    var canClosePopup = true;
     function closePopup() {
+      if (!canClosePopup) return;
       backdrop.classList.remove('visible');
       popup.classList.remove('visible');
       document.body.style.overflow = '';
       setTimeout(function() {
         backdrop.style.display = 'none';
         popup.style.display = 'none';
+        resetPaymentView();
       }, 350);
     }
 
-    popup.querySelector('.op-close').addEventListener('click', closePopup);
+    document.getElementById('op-close-btn').addEventListener('click', closePopup);
     backdrop.addEventListener('click', closePopup);
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closePopup(); });
 
-    // Close on escape
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') closePopup();
-    });
+    // ── Step management ──────────────────────────────────────────────────────
+    function showStep(step) {
+      var orderBody    = document.getElementById('op-order-body');
+      var paymentView  = document.getElementById('op-payment-view');
+      var loadingView  = document.getElementById('op-session-loading');
+      var successView  = document.getElementById('op-success-view');
+      var header       = document.getElementById('op-header');
+      var headerTitle  = document.getElementById('op-header-title');
+      var headerSub    = document.getElementById('op-header-sub');
 
-    // Checkout
-    var isProcessing = false;
+      orderBody.style.display   = step === 'order'   ? 'flex' : 'none';
+      paymentView.style.display = step === 'payment' ? 'flex' : 'none';
+      if (loadingView) loadingView.style.display = step === 'loading' ? 'flex' : 'none';
+      successView.style.display = step === 'success' ? 'flex' : 'none';
+
+      if (step === 'order') {
+        header.style.display = '';
+        headerTitle.textContent = 'Your Order';
+        headerSub.textContent   = 'Complete your Deep Work session';
+      } else if (step === 'payment') {
+        header.style.display = '';
+        headerTitle.textContent = 'Secure Checkout';
+        headerSub.textContent   = '256-bit encryption · Powered by Stripe';
+      } else if (step === 'loading' || step === 'success') {
+        header.style.display = 'none';
+        canClosePopup = false; // prevent accidental close after payment
+      }
+    }
+
+    // ── Stripe state ─────────────────────────────────────────────────────────
+    var stripeInstance   = null;
+    var stripeElements   = null;
+    var stripePayEl      = null;
+    var currentPiId      = null;
+    var currentPiEmail   = '';
+    var currentTiers     = ['blueprint'];
+
+    function resetPaymentView() {
+      canClosePopup = true;
+      if (stripePayEl) { try { stripePayEl.unmount(); } catch(e){} }
+      stripePayEl    = null;
+      stripeElements = null;
+      currentPiId    = null;
+      currentPiEmail = '';
+      document.getElementById('op-email').value = '';
+      document.getElementById('stripe-element').innerHTML = '';
+      hidePayError();
+      setPayLoading(false);
+    }
+
+    // ── "Complete Purchase" → go to payment step ─────────────────────────────
     document.getElementById('op-pay').addEventListener('click', function() {
-      if (isProcessing) return;
-      isProcessing = true;
-      var btn = this;
-      btn.classList.add('loading');
-      btn.innerHTML = '<span class="btn-spinner"></span>Preparing checkout...';
-
       var tiers = ['blueprint'];
       if (cbSite.checked) tiers.push('site');
       if (cbCall.checked) tiers.push('call');
+      currentTiers = tiers;
 
-      fetch('https://app.jamesguldan.com/api/checkout', {
+      // Update order summary bar
+      var labels = ['Deep Work Blueprint'];
+      if (cbSite.checked) labels.push('+ Website');
+      if (cbCall.checked) labels.push('+ Strategy Call');
+      var totalText = '$' + getTotal();
+      document.getElementById('op-order-bar-label').textContent = labels.join(' ');
+      document.getElementById('op-order-bar-price').textContent = totalText;
+      document.querySelector('#op-pay-submit .btn-text').textContent = 'Pay ' + totalText;
+
+      showStep('payment');
+      initStripePaymentElement(tiers);
+    });
+
+    // ── Back button ──────────────────────────────────────────────────────────
+    document.getElementById('op-back-btn').addEventListener('click', function() {
+      showStep('order');
+      resetPaymentView();
+    });
+
+    // ── Init Stripe Payment Element ──────────────────────────────────────────
+    function initStripePaymentElement(tiers) {
+      var mountEl = document.getElementById('stripe-element');
+      mountEl.innerHTML = '<div style="text-align:center;padding:24px 0;color:#aaa;font-size:13px">'
+        + '<span style="display:inline-block;width:20px;height:20px;border:2px solid #e5e7eb;border-top-color:#c4703f;border-radius:50%;animation:opspin .7s linear infinite;vertical-align:middle;margin-right:8px"></span>'
+        + 'Loading payment form…</div>';
+
+      fetch('https://app.jamesguldan.com/api/create-payment-intent', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ tier: tiers[0], tiers: tiers })
+        body: JSON.stringify({ tiers: tiers })
       })
       .then(function(r) { return r.json(); })
       .then(function(data) {
-        if (data.url) {
-          window.location.href = data.url;
+        if (!data.clientSecret) throw new Error(data.error || 'Could not initialize payment');
+        currentPiId = data.paymentIntentId;
+
+        if (!stripeInstance) {
+          if (!data.publishableKey) throw new Error('Payment provider not configured. Please contact support.');
+          stripeInstance = Stripe(data.publishableKey);
+        }
+
+        var appearance = {
+          theme: 'flat',
+          variables: {
+            colorPrimary:     '#c4703f',
+            colorBackground:  '#ffffff',
+            colorText:        '#1a1a1a',
+            colorDanger:      '#e53e3e',
+            fontFamily:       '"Outfit", "Inter", system-ui, sans-serif',
+            borderRadius:     '8px',
+            spacingUnit:      '4px',
+            fontSizeBase:     '15px',
+          },
+          rules: {
+            '.Input': { border: '1.5px solid #e5e7eb', boxShadow: 'none', padding: '12px 14px', fontSize: '15px' },
+            '.Input:focus': { border: '1.5px solid #c4703f', boxShadow: '0 0 0 3px rgba(196,112,63,.12)' },
+            '.Input--invalid': { border: '1.5px solid #e53e3e' },
+            '.Label': { fontWeight: '600', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.8px', color: '#555', marginBottom: '6px' },
+            '.Tab': { border: '1.5px solid #e5e7eb', boxShadow: 'none' },
+            '.Tab--selected': { border: '1.5px solid #c4703f', color: '#c4703f', boxShadow: 'none' },
+            '.Tab--selected:focus': { boxShadow: '0 0 0 3px rgba(196,112,63,.12)' },
+            '.Error': { fontSize: '12.5px', marginTop: '6px' },
+          }
+        };
+
+        var userEmail = (document.getElementById('op-email') || {}).value || '';
+        stripeElements = stripeInstance.elements({
+          clientSecret: data.clientSecret,
+          appearance: appearance,
+          fonts: [{ cssSrc: 'https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap' }],
+          defaultValues: { billingDetails: { email: userEmail } },
+        });
+
+        mountEl.innerHTML = '';
+        stripePayEl = stripeElements.create('payment', {
+          layout: { type: 'tabs', defaultCollapsed: false },
+          fields: { billingDetails: { email: 'never' } },
+          wallets: { applePay: 'auto', googlePay: 'auto' },
+        });
+        stripePayEl.mount(mountEl);
+
+        stripePayEl.on('loaderstart', function() {
+          setTimeout(function() { document.getElementById('op-email').focus(); }, 150);
+        });
+      })
+      .catch(function(err) {
+        console.error('Stripe init error:', err);
+        mountEl.innerHTML = '';
+        showPayError(err.message || 'Failed to load payment form. Please refresh and try again.');
+      });
+    }
+
+    // ── Pay form submit ───────────────────────────────────────────────────────
+    document.getElementById('op-pay-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (!stripeElements || !stripeInstance) {
+        showPayError('Payment form is still loading. Please wait a moment and try again.');
+        return;
+      }
+
+      var emailInput = document.getElementById('op-email');
+      var email = emailInput.value.trim();
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        emailInput.classList.add('error');
+        emailInput.focus();
+        showPayError('Please enter a valid email address so we can send your access link.');
+        return;
+      }
+      emailInput.classList.remove('error');
+      currentPiEmail = email;
+
+      setPayLoading(true);
+      hidePayError();
+
+      stripeInstance.confirmPayment({
+        elements: stripeElements,
+        confirmParams: {
+          return_url: window.location.origin + window.location.pathname + '?pi_return=1&pi=' + (currentPiId || ''),
+          payment_method_data: { billing_details: { email: email } },
+        },
+        redirect: 'if_required',
+      })
+      .then(function(result) {
+        if (result.error) {
+          setPayLoading(false);
+          var code = result.error.code || '';
+          var type = result.error.type || '';
+          var msg = result.error.message || 'Payment failed. Please try a different card.';
+          // Friendly messages for common decline codes
+          if (code === 'card_declined' || code === 'do_not_honor' || code === 'generic_decline')
+            msg = 'Your card was declined. Please try a different payment method.';
+          if (code === 'insufficient_funds')
+            msg = 'Insufficient funds on this card. Please try a different one.';
+          if (code === 'expired_card')
+            msg = 'Your card has expired. Please use an updated card.';
+          if (code === 'incorrect_cvc' || code === 'invalid_cvc')
+            msg = 'Incorrect security code (CVC). Please double-check and try again.';
+          if (code === 'incorrect_number' || code === 'invalid_number')
+            msg = 'Your card number doesn&#39;t look right. Please check it and try again.';
+          if (code === 'processing_error')
+            msg = 'Your bank had a temporary issue processing this. Please try again in a moment.';
+          if (code === 'card_velocity_exceed')
+            msg = 'Too many attempts on this card. Please wait a few minutes or try a different card.';
+          if (type === 'validation_error')
+            msg = result.error.message || 'Please check your card details and try again.';
+          showPayError(msg);
+        } else if (result.paymentIntent && result.paymentIntent.status === 'succeeded') {
+          fulfillAndShowSuccess(email);
+        } else if (result.paymentIntent && result.paymentIntent.status === 'requires_action') {
+          // 3DS mid-flow — confirmPayment should handle this, but just in case
+          setPayLoading(false);
+          showPayError('Your bank requires additional verification. Please follow the prompt.');
         } else {
-          throw new Error(data.error || 'No checkout URL returned');
+          setPayLoading(false);
+          showPayError('Unexpected payment state. Please contact james@jamesguldan.com if you were charged.');
         }
       })
       .catch(function(err) {
-        console.error('Checkout error:', err);
-        btn.classList.remove('loading');
-        btn.innerHTML = 'Complete Purchase';
-        isProcessing = false;
-        alert('Something went wrong starting checkout. Please try again.');
+        setPayLoading(false);
+        var msg = 'An unexpected error occurred. Please try again.';
+        if (err && (err.message || '').toLowerCase().includes('network'))
+          msg = 'Network error — please check your connection and try again.';
+        showPayError(msg);
+        console.error('confirmPayment error:', err);
       });
     });
 
-    // Attach to all checkout buttons
+    // Clear error styling on email re-type
+    document.getElementById('op-email').addEventListener('input', function() {
+      this.classList.remove('error');
+      hidePayError();
+    });
+
+    // ── Fulfillment + success ────────────────────────────────────────────────
+    function fulfillAndShowSuccess(email) {
+      // Show spinner while we generate the magic link
+      showStep('loading');
+
+      fetch('https://app.jamesguldan.com/api/fulfill-payment', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ paymentIntentId: currentPiId, email: email, tiers: currentTiers })
+      })
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        var sessionUrl = data.sessionUrl || 'https://app.jamesguldan.com';
+        showSuccess(email, sessionUrl);
+        // Auto-redirect after a brief thank-you moment
+        setTimeout(function() { window.location.href = sessionUrl; }, 3500);
+      })
+      .catch(function(err) {
+        console.error('Fulfill error:', err);
+        // Payment succeeded — send them to the app and they can log in there
+        var fallback = 'https://app.jamesguldan.com';
+        showSuccess(email, fallback);
+        setTimeout(function() { window.location.href = fallback; }, 3500);
+      });
+    }
+
+    function showSuccess(email, sessionUrl) {
+      var emailEl = document.getElementById('op-success-email');
+      if (emailEl) emailEl.textContent = email || 'your email';
+      var cta = document.getElementById('op-start-session');
+      if (cta && sessionUrl) cta.href = sessionUrl;
+      showStep('success');
+    }
+
+    // ── Helpers ──────────────────────────────────────────────────────────────
+    function showPayError(msg) {
+      var err = document.getElementById('op-pay-error');
+      err.textContent = msg;
+      err.style.display = 'block';
+      err.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function hidePayError() {
+      var err = document.getElementById('op-pay-error');
+      err.style.display = 'none';
+      err.textContent = '';
+    }
+
+    function setPayLoading(loading) {
+      var btn     = document.getElementById('op-pay-submit');
+      var spinner = document.getElementById('op-pay-spinner');
+      var text    = btn.querySelector('.btn-text');
+      btn.disabled = loading;
+      btn.style.pointerEvents = loading ? 'none' : '';
+      spinner.style.display   = loading ? 'inline-block' : 'none';
+      text.textContent = loading ? 'Processing…' : ('Pay $' + getTotal());
+    }
+
+    // ── Handle 3DS / bank redirect return ────────────────────────────────────
+    (function checkPiReturn() {
+      var params = new URLSearchParams(window.location.search);
+      if (params.get('pi_return') !== '1') return;
+      var piId = params.get('pi') || '';
+      window.history.replaceState({}, '', window.location.pathname);
+      if (!piId) return;
+      // Open popup in payment view → show loading → fulfill
+      fetch('https://app.jamesguldan.com/api/payment-status?pi=' + piId)
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          if (data.status === 'succeeded') {
+            // Open popup and show success after 3DS redirect
+            backdrop.style.display = 'block';
+            popup.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            backdrop.classList.add('visible');
+            popup.classList.add('visible');
+            currentPiId    = piId;
+            currentPiEmail = data.email || '';
+            currentTiers   = (data.tiers || 'blueprint').split(',');
+            if (data.sessionUrl) {
+              showSuccess(data.email || '', data.sessionUrl);
+            } else {
+              fulfillAndShowSuccess(data.email || '');
+            }
+          } else if (data.status === 'requires_payment_method') {
+            // 3DS failed — reopen popup at payment step so they can retry
+            backdrop.style.display = 'block';
+            popup.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            backdrop.classList.add('visible');
+            popup.classList.add('visible');
+            currentPiId  = piId;
+            currentTiers = (data.tiers || 'blueprint').split(',');
+            showStep('payment');
+            showPayError('Authentication failed or was cancelled. Please try again.');
+          }
+        })
+        .catch(function(e) {
+          console.error('pi_return check failed:', e);
+        });
+    })();
+
+    // ── Attach CTA buttons ───────────────────────────────────────────────────
     document.querySelectorAll('a[data-checkout]').forEach(function(btn) {
       btn.addEventListener('click', openPopup);
     });
   })();
 
 </script>
+
+<script src="https://deep-work-support.james-d13.workers.dev/widget.js" defer></script>
 </body>
 </html>
