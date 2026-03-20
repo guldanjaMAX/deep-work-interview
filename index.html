@@ -44,7 +44,7 @@
   <meta name="twitter:description" content="One conversation. Two hours. A complete brand blueprint — clarity, positioning, and a full website outline with real copy. The same process coaches paid $5,000 for, now $67.">
   <meta name="twitter:image" content="https://jamesguldan.com/og-image.png">
 
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     :root { --bg: #FDFCFA; --accent: #c4703f; --text: #1a1a1a; --muted: #666; --border: #EAE7E2; --nav-h: 64px; }
@@ -359,6 +359,18 @@
       .proc3-ai-bubble { max-width: 95%; }
       .proc3-user-bubble { max-width: 92%; }
     }
+
+    /* HAND-DRAWN ARROW LABEL */
+    .hero-arrow-label { position: absolute; bottom: 44%; right: 14%; z-index: 6; pointer-events: none; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    .hero-arrow-label span { font-family: 'Caveat', cursive; font-size: 1.15rem; font-weight: 600; color: #c4703f; display: block; transform: rotate(-6deg); white-space: nowrap; text-shadow: 0 1px 4px rgba(255,255,255,0.4); }
+    .hero-arrow-label svg { width: 52px; opacity: 0.85; }
+
+    /* CUSTOM PLAY OVERLAY */
+    .vid-video-wrap { position: relative; }
+    .vid-play-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.28) 100%); cursor: pointer; z-index: 5; border-radius: 0; transition: opacity 0.25s; }
+    .vid-play-overlay:hover .vid-play-btn { transform: scale(1.12); box-shadow: 0 6px 28px rgba(0,0,0,0.45); }
+    .vid-play-btn { width: 50px; height: 50px; background: rgba(255,255,255,0.96); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(0,0,0,0.35); transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .vid-play-btn svg { margin-left: 4px; }
   </style>
 </head>
 <body>
@@ -384,11 +396,29 @@
     <div class="vid-halo"></div>
     <div class="vid-halo2"></div>
     <div class="vid-float">
-      <video controls preload="metadata" playsinline>
-        <source src="https://pub-d080c466f8504291b98ad793f9eb1f30.r2.dev/james-deepwork-v2.mp4" type="video/mp4">
-      </video>
-      <div class="vid-label">5 min · The Deep Work Process explained</div>
+      <div class="vid-video-wrap">
+        <video controls preload="metadata" playsinline id="hero-vid">
+          <source src="https://pub-d080c466f8504291b98ad793f9eb1f30.r2.dev/james-deepwork-v2.mp4" type="video/mp4">
+        </video>
+        <div class="vid-play-overlay" id="hero-play-overlay" onclick="document.getElementById('hero-play-overlay').style.display='none';document.getElementById('hero-vid').play();">
+          <div class="vid-play-btn">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><polygon points="5,2 16,9 5,16" fill="#c4703f"/></svg>
+          </div>
+        </div>
+      </div>
+      <div class="vid-label">5 min &middot; The Deep Work Process explained</div>
     </div>
+
+    <!-- HAND-DRAWN ARROW LABEL -->
+    <div class="hero-arrow-label">
+      <span>Hear my story</span>
+      <svg viewBox="0 0 55 85" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8,6 C10,18 18,38 28,55 C34,65 40,72 48,78" stroke="#c4703f" stroke-width="2.3" stroke-linecap="round" fill="none"/>
+        <path d="M48,78 L37,74" stroke="#c4703f" stroke-width="2.3" stroke-linecap="round"/>
+        <path d="M48,78 L46,66" stroke="#c4703f" stroke-width="2.3" stroke-linecap="round"/>
+      </svg>
+    </div>
+
   </div>
   <div class="hero-text-wrap">
     <div class="hero-text">
