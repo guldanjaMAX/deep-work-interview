@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brand Blueprint — Sarah Chen</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #0d0c0b;
+    color: rgba(255,255,255,0.88);
+    line-height: 1.7;
+    padding: 0;
+  }
+
+  .doc {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 60px 56px 80px;
+  }
+
+  /* Header */
+  .doc-header {
+    text-align: center;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    margin-bottom: 56px;
+  }
+  .doc-logo {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.2em;
+    text-transform: uppercase; color: #c4703f; margin-bottom: 32px;
+  }
+  .doc-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px; font-weight: 700; color: #fff;
+    margin-bottom: 8px;
+  }
+  .doc-subtitle {
+    font-size: 15px; color: rgba(255,255,255,0.4);
+    font-weight: 400;
+  }
+  .doc-meta {
+    margin-top: 24px; font-size: 12px; color: rgba(255,255,255,0.25);
+    letter-spacing: 0.05em;
+  }
+
+  /* Sections */
+  .section {
+    margin-bottom: 56px;
+    padding-bottom: 56px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .section:last-child { border-bottom: none; }
+  .section-num {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.15em;
+    text-transform: uppercase; color: #c4703f; margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px; font-weight: 700; color: #fff;
+    margin-bottom: 24px;
+  }
+  .section-body {
+    font-size: 15px; color: rgba(255,255,255,0.72);
+    line-height: 1.85;
+  }
+  .section-body p { margin-bottom: 16px; }
+  .section-body p:last-child { margin-bottom: 0; }
+
+  /* Highlight quote */
+  .highlight {
+    font-size: 19px; color: #fff; line-height: 1.65;
+    padding: 28px 32px;
+    background: rgba(196,112,63,0.08);
+    border-left: 3px solid #c4703f;
+    border-radius: 0 12px 12px 0;
+    margin: 24px 0;
+    font-weight: 500;
+  }
+
+  /* Ideal client card */
+  .client-card {
+    background: rgba(255,255,255,0.03);
+    border-radius: 14px;
+    padding: 32px;
+    margin: 24px 0;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .client-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; font-weight: 700; color: #fff;
+    margin-bottom: 4px;
+  }
+  .client-title {
+    font-size: 13px; color: #c4703f; margin-bottom: 16px;
+    font-weight: 500; letter-spacing: 0.03em;
+  }
+
+  /* Score bar */
+  .score-section {
+    display: flex; align-items: center; gap: 20px;
+    margin: 24px 0;
+  }
+  .score-bar {
+    flex: 1; height: 8px; background: rgba(255,255,255,0.08);
+    border-radius: 4px; overflow: hidden;
+  }
+  .score-fill {
+    height: 100%; background: linear-gradient(90deg, #c4703f, #e8a06a);
+    border-radius: 4px;
+  }
+  .score-num {
+    font-size: 32px; font-weight: 700; color: #c4703f;
+    font-family: 'Playfair Display', serif;
+  }
+
+  /* Offer grid */
+  .offer-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 16px; margin: 24px 0;
+  }
+  .offer-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px; padding: 24px;
+    text-align: center;
+  }
+  .offer-tier {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.15em;
+    text-transform: uppercase; color: rgba(255,255,255,0.4);
+    margin-bottom: 8px;
+  }
+  .offer-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px; font-weight: 700; color: #fff;
+    margin-bottom: 4px;
+  }
+  .offer-name {
+    font-size: 13px; color: #c4703f; font-weight: 500;
+  }
+  .offer-desc {
+    font-size: 12px; color: rgba(255,255,255,0.4);
+    margin-top: 8px; line-height: 1.5;
+  }
+
+  /* Headlines list */
+  .headline-option {
+    padding: 20px 24px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 10px;
+    margin-bottom: 12px;
+    display: flex; align-items: flex-start; gap: 16px;
+  }
+  .headline-num {
+    font-size: 12px; font-weight: 700; color: #c4703f;
+    background: rgba(196,112,63,0.12);
+    width: 28px; height: 28px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 2px;
+  }
+  .headline-text {
+    font-size: 16px; color: rgba(255,255,255,0.9);
+    font-weight: 500; line-height: 1.5;
+  }
+
+  /* Advantage callout */
+  .advantage-box {
+    background: linear-gradient(135deg, rgba(196,112,63,0.12), rgba(196,112,63,0.04));
+    border: 1px solid rgba(196,112,63,0.2);
+    border-radius: 16px;
+    padding: 36px;
+    margin: 24px 0;
+    text-align: center;
+  }
+  .advantage-box p {
+    font-size: 17px; color: rgba(255,255,255,0.85);
+    line-height: 1.75; max-width: 560px; margin: 0 auto;
+  }
+  .advantage-box strong { color: #fff; }
+
+  /* Footer */
+  .doc-footer {
+    text-align: center;
+    padding-top: 40px;
+    margin-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .doc-footer p {
+    font-size: 12px; color: rgba(255,255,255,0.2);
+    line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+
+<div class="doc">
+
+  <div class="doc-header">
+    <div class="doc-logo">Deep Work Interview</div>
+    <div class="doc-title">Brand Blueprint</div>
+    <div class="doc-subtitle">Sarah Chen — Leadership & Career Transition Coach</div>
+    <div class="doc-meta">Generated March 2026 · Confidential</div>
+  </div>
+
+  <!-- 1. POSITIONING STATEMENT -->
+  <div class="section">
+    <div class="section-num">01 — Your Voice</div>
+    <div class="section-title">Your Positioning Statement</div>
+    <div class="highlight">
+      "Sarah Chen is the only leadership coach who uses 12 years at McKinsey to help burned-out executives redesign their careers without sacrificing income or identity."
+    </div>
+    <div class="section-body">
+      <p>This is the sentence you've been trying to write for four years. It came directly from the conversation. No one else in your market can claim this combination of deep corporate experience and genuine empathy for the human cost of success.</p>
+      <p>Use this everywhere: your website header, your LinkedIn summary, podcast introductions, and speaking bios. It does the work of a paragraph in a single breath.</p>
+    </div>
+  </div>
+
+  <!-- 2. IDEAL CLIENT -->
+  <div class="section">
+    <div class="section-num">02 — Your Person</div>
+    <div class="section-title">The Person Who Needs You Most</div>
+    <div class="client-card">
+      <div class="client-name">Marcus, 44</div>
+      <div class="client-title">SVP, Technology · Bay Area</div>
+      <div class="section-body">
+        <p>At 11pm on a Tuesday he's scrolling LinkedIn watching people ten years younger get promoted around him. His wife knows something's off. He tells people he's "evaluating options." He's too proud to admit he doesn't know what comes next.</p>
+        <p>He has never paid less than $500/hr for advice. He doesn't want a cheerleader. He wants someone who's been in the room and can tell him the truth without flinching.</p>
+        <p><strong style="color:#c4703f;">He's been waiting for someone like you.</strong></p>
+      </div>
+    </div>
+    <div class="section-body">
+      <p>This portrait isn't imaginary. You described three variations of Marcus during our conversation. The pattern was unmistakable. When you speak directly to this person, the right clients will feel like you're reading their mind.</p>
+    </div>
+  </div>
+
+  <!-- 3. AUTHORITY SCORE -->
+  <div class="section">
+    <div class="section-num">03 — Your Authority</div>
+    <div class="section-title">Authority Level — And What Changes Next</div>
+    <div class="score-section">
+      <div class="score-bar"><div class="score-fill" style="width:74%"></div></div>
+      <div class="score-num">7.4</div>
+    </div>
+    <div class="section-body">
+      <p>Your background puts you at a 7.4 out of 10 for category authority. That's strong enough to lead, with one gap that's fixable in 90 days: no published case studies with named outcomes.</p>
+      <p>You have the experience. You have the transformations. You just haven't documented them in a way that creates undeniable proof. Close that gap and you're commanding top-tier rates with full confidence.</p>
+    </div>
+  </div>
+
+  <!-- 4. OFFER SUITE -->
+  <div class="section">
+    <div class="section-num">04 — Your Offers</div>
+    <div class="section-title">Complete Offer Suite — Built From Your Story</div>
+    <div class="section-body">
+      <p>Three offers. Named, priced, and structured from what you said during the conversation. These aren't templates. They came directly from your answers about how you actually work with people.</p>
+    </div>
+    <div class="offer-grid">
+      <div class="offer-card">
+        <div class="offer-tier">Entry</div>
+        <div class="offer-price">$297</div>
+        <div class="offer-name">Career Clarity Audit</div>
+        <div class="offer-desc">90-min assessment. Clear next steps. Low commitment entry point.</div>
+      </div>
+      <div class="offer-card">
+        <div class="offer-tier">Core</div>
+        <div class="offer-price">$3,500</div>
+        <div class="offer-name">Transition Sprint</div>
+        <div class="offer-desc">6-week intensive. Full career redesign with accountability.</div>
+      </div>
+      <div class="offer-card">
+        <div class="offer-tier">Premium</div>
+        <div class="offer-price">$18K</div>
+        <div class="offer-name">Full Rebuild</div>
+        <div class="offer-desc">6-month partnership. Identity, strategy, and execution.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. UNFAIR ADVANTAGE -->
+  <div class="section">
+    <div class="section-num">05 — Your Edge</div>
+    <div class="section-title">Your Unfair Advantage</div>
+    <div class="advantage-box">
+      <p>After reviewing your experience and the language you used to describe your work, one thing is unmistakable: <strong>nobody in your market combines McKinsey rigor with genuine emotional intelligence.</strong></p>
+      <p style="margin-top:16px;">That gap belongs to you. Own it in everything you say. Stop qualifying yourself. Charge accordingly.</p>
+    </div>
+  </div>
+
+  <!-- 6. HEADLINES -->
+  <div class="section">
+    <div class="section-num">06 — Your Headlines</div>
+    <div class="section-title">Site Headlines — 5 Versions, Ready to Use</div>
+    <div class="headline-option">
+      <div class="headline-num">1</div>
+      <div class="headline-text">"You built a career everyone admires. Now you need someone who'll tell you the truth about what comes next."</div>
+    </div>
+    <div class="headline-option">
+      <div class="headline-num">2</div>
+      <div class="headline-text">"Stop performing success. Start designing the career that actually fits."</div>
+    </div>
+    <div class="headline-option">
+      <div class="headline-num">3</div>
+      <div class="headline-text">"You don't need another strategy. You need someone who's been where you are."</div>
+    </div>
+    <div class="headline-option">
+      <div class="headline-num">4</div>
+      <div class="headline-text">"The career pivot nobody sees coming — designed by someone who made it."</div>
+    </div>
+    <div class="headline-option">
+      <div class="headline-num">5</div>
+      <div class="headline-text">"Twelve years at McKinsey taught me what breaks people. Now I help them rebuild."</div>
+    </div>
+    <div class="section-body" style="margin-top:20px;">
+      <p>Each version targets a different emotional angle — same truth, different entry point. Test them. The one that makes you slightly uncomfortable is probably the one that works best.</p>
+    </div>
+  </div>
+
+  <!-- 7. MESSAGING PILLARS -->
+  <div class="section">
+    <div class="section-num">07 — Your Core Messages</div>
+    <div class="section-title">Three Messaging Pillars</div>
+    <div class="section-body">
+      <p><strong style="color:#fff;">1. "I've been in the room."</strong> You're not theorizing about corporate pressure. You lived it. Twelve years of it. This is your permission to speak with authority that most coaches can't touch.</p>
+      <p><strong style="color:#fff;">2. "Success without identity is a prison."</strong> Your clients don't need more achievement. They need to remember who they were before the title defined them. This is the emotional core of everything you do.</p>
+      <p><strong style="color:#fff;">3. "The pivot is the point."</strong> Career transitions aren't failures. They're the bravest thing a successful person can do. You're not helping people leave — you're helping them arrive.</p>
+    </div>
+  </div>
+
+  <div class="doc-footer">
+    <p>Deep Work Interview · Brand Blueprint · Generated for Sarah Chen<br>
+    This document is confidential and built exclusively from your conversation.<br>
+    Every word came from what you said. Nothing was templated.</p>
+  </div>
+
+</div>
+
+</body>
+</html>
