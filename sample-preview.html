@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sample Output Section — Two Options</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: #FDFCFA; color: #1a1a1a; }
+
+  /* Tab switcher */
+  .tab-bar {
+    position: sticky; top: 0; z-index: 100;
+    display: flex; justify-content: center; gap: 0;
+    background: #1a1917; padding: 16px 24px;
+    border-bottom: 2px solid #c4703f;
+  }
+  .tab-btn {
+    font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 12px 32px; border: none; cursor: pointer;
+    background: transparent; color: rgba(255,255,255,0.5);
+    transition: all 0.3s;
+  }
+  .tab-btn.active { color: #fff; background: #c4703f; border-radius: 6px; }
+  .tab-btn:hover:not(.active) { color: rgba(255,255,255,0.8); }
+
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* Shared styles */
+  .section-wrap {
+    max-width: 900px; margin: 0 auto; padding: 80px 48px;
+  }
+  .eyebrow {
+    font-size: 12px; font-weight: 600; letter-spacing: 0.15em;
+    text-transform: uppercase; color: #c4703f; margin-bottom: 20px;
+    text-align: center;
+  }
+  .section-headline {
+    font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 700;
+    line-height: 1.25; text-align: center; margin-bottom: 20px; color: #1a1a1a;
+  }
+  .section-headline em {
+    font-style: italic; color: #c4703f;
+  }
+  .section-intro {
+    text-align: center; font-size: 16px; color: #666; line-height: 1.7;
+    max-width: 600px; margin: 0 auto 48px;
+  }
+
+  /* Dark sample box */
+  .sample-box {
+    background: #0d0c0b; border-radius: 20px; overflow: hidden;
+    margin-bottom: 32px;
+  }
+  .sample-header {
+    background: #1a1917; padding: 14px 24px; display: flex; align-items: center; gap: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .dot { width: 12px; height: 12px; border-radius: 50%; }
+  .file-name {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: rgba(255,255,255,0.4); margin-left: 8px;
+  }
+  .sample-body { padding: 48px 40px; }
+
+  /* Option 1 specific */
+  .moment { margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .moment:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+  .moment-setup {
+    font-family: 'Playfair Display', serif; font-size: 18px; font-style: italic;
+    color: #c4703f; line-height: 1.6; margin-bottom: 24px;
+  }
+  .moment-quote {
+    font-size: 17px; color: rgba(255,255,255,0.92); line-height: 1.75;
+    padding: 24px 28px; background: rgba(255,255,255,0.03);
+    border-left: 3px solid #c4703f; border-radius: 0 12px 12px 0;
+    margin-bottom: 20px;
+  }
+  .moment-quote strong { color: #fff; }
+  .moment-reflection {
+    font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.7;
+    font-style: italic;
+  }
+
+  /* Option 2 specific */
+  .ba-moment { margin-bottom: 56px; padding-bottom: 56px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .ba-moment:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+  .ba-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.18em;
+    text-transform: uppercase; margin-bottom: 14px;
+  }
+  .ba-label.before { color: rgba(255,255,255,0.3); }
+  .ba-label.after { color: #c4703f; }
+  .ba-before {
+    font-size: 15px; color: rgba(255,255,255,0.4); line-height: 1.8;
+    font-style: italic; padding: 20px 24px;
+    background: rgba(255,255,255,0.02); border-radius: 10px;
+    margin-bottom: 28px;
+  }
+  .ba-arrow {
+    text-align: center; margin-bottom: 28px; color: rgba(255,255,255,0.15);
+    font-size: 24px;
+  }
+  .ba-after {
+    font-size: 17px; color: rgba(255,255,255,0.92); line-height: 1.75;
+    padding: 24px 28px; background: rgba(196,112,63,0.08);
+    border-left: 3px solid #c4703f; border-radius: 0 12px 12px 0;
+    margin-bottom: 16px;
+  }
+  .ba-after strong { color: #fff; }
+  .ba-result {
+    font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.7;
+    font-style: italic;
+  }
+
+  /* Closing */
+  .sample-caption {
+    text-align: center; font-size: 13px; color: #999; padding: 12px 24px 0;
+    line-height: 1.6; margin-bottom: 8px;
+  }
+  .closing-emotional {
+    text-align: center; font-size: 17px; color: #1a1a1a; line-height: 1.7;
+    max-width: 640px; margin: 32px auto 40px;
+    font-family: 'Playfair Display', serif;
+  }
+  .closing-emotional strong { color: #c4703f; }
+
+  /* CTA */
+  .cta-btn {
+    display: block; width: fit-content; margin: 0 auto;
+    padding: 18px 48px; background: #1a1917; color: #fff;
+    font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600;
+    letter-spacing: 0.03em; border: none; border-radius: 50px;
+    cursor: pointer; text-decoration: none;
+    transition: background 0.2s;
+  }
+  .cta-btn:hover { background: #c4703f; }
+
+  /* Label badge */
+  .option-label {
+    text-align: center; padding: 20px; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.15em; text-transform: uppercase; color: #999;
+    background: #f5f4f2;
+  }
+</style>
+</head>
+<body>
+
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="switchTab('opt1')">Option 1: "The Reading"</button>
+  <button class="tab-btn" onclick="switchTab('opt2')">Option 2: "Before / After"</button>
+</div>
+
+<!-- ============================================ -->
+<!-- OPTION 1: THE READING                        -->
+<!-- ============================================ -->
+<div class="tab-content active" id="opt1">
+  <div class="option-label">Option 1 — "The Reading": Narrative, cinematic, watching Sarah open her blueprint</div>
+  <div class="section-wrap">
+    <div class="eyebrow">What Comes Out</div>
+    <h2 class="section-headline">She opened this document at 11pm on a Tuesday.<br>She didn't close it until <em>2am.</em></h2>
+    <p class="section-intro">Sarah Chen spent six years building a coaching practice. She could transform a client's career in three months. She could not explain what she did in three sentences. This is the document that changed that.</p>
+
+    <div class="sample-box">
+      <div class="sample-header">
+        <div class="dot" style="background:#ff5f57"></div>
+        <div class="dot" style="background:#febc2e"></div>
+        <div class="dot" style="background:#28c840"></div>
+        <span class="file-name">Brand Blueprint — Sarah Chen — Deep Work Interview Output</span>
+      </div>
+      <div class="sample-body">
+
+        <div class="moment">
+          <div class="moment-setup">She read this line four times. Then she sent it to her business partner with no context. His reply: "Where has this been?"</div>
+          <div class="moment-quote">
+            <strong>"Sarah Chen is the only leadership coach who uses 12 years at McKinsey to help burned-out executives redesign their careers without sacrificing income or identity."</strong>
+          </div>
+          <div class="moment-reflection">One conversation. That's all it took. The words were already inside her. She just needed someone to find them.</div>
+        </div>
+
+        <div class="moment">
+          <div class="moment-setup">This is the part that made her cry.</div>
+          <div class="moment-quote">
+            Marcus, 44. SVP at a tech company. At 11pm on a Tuesday he's scrolling LinkedIn watching people ten years younger get promoted around him. His wife knows something's off. He tells people he's "evaluating options." He's too proud to admit he doesn't know what comes next. <strong>He has never paid less than $500/hr for advice. He's been waiting for someone like you.</strong>
+          </div>
+          <div class="moment-reflection">She had never described her ideal client like this. She had never needed to. After reading it, she couldn't unsee him. He was already in her inbox. She just hadn't known how to speak to him.</div>
+        </div>
+
+        <div class="moment">
+          <div class="moment-setup">This is the line she put on her website the next morning.</div>
+          <div class="moment-quote">
+            <strong>"You built a career everyone admires. Now you need someone who'll tell you the truth about what comes next."</strong>
+          </div>
+          <div class="moment-reflection">Five headline options. Five different emotional angles. She picked this one because it sounded like something she would actually say — except sharper, braver, and more honest than she'd ever allowed herself to be.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="sample-caption">Every word in this document came from what Sarah said during the conversation. Nothing was invented. Nothing was templated.</div>
+
+    <div class="closing-emotional">
+      Your version will be different. Your story is different. But the feeling — <strong>the feeling of finally reading words that sound like the version of you that's been waiting to exist</strong> — that part is the same.
+    </div>
+
+    <a href="#" class="cta-btn">Get Clear Now →</a>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- OPTION 2: BEFORE / AFTER                     -->
+<!-- ============================================ -->
+<div class="tab-content" id="opt2">
+  <div class="option-label">Option 2 — "Before / After": Showing the raw interview alongside the synthesized output</div>
+  <div class="section-wrap">
+    <div class="eyebrow">What Comes Out</div>
+    <h2 class="section-headline">You already know who you are.<br>You just can't <em>say it</em> yet.</h2>
+    <p class="section-intro">Here's what happens when the process takes what's buried inside you and turns it into language you can finally use.</p>
+
+    <div class="sample-box">
+      <div class="sample-header">
+        <div class="dot" style="background:#ff5f57"></div>
+        <div class="dot" style="background:#febc2e"></div>
+        <div class="dot" style="background:#28c840"></div>
+        <span class="file-name">Brand Blueprint — Sarah Chen — Deep Work Interview Output</span>
+      </div>
+      <div class="sample-body">
+
+        <div class="ba-moment">
+          <div class="ba-label before">What She Said</div>
+          <div class="ba-before">"I help executives... well, mostly senior leaders who are kind of burned out. I used to be at McKinsey so I understand the corporate thing. I guess what makes me different is I've actually been in their shoes? It's hard to explain."</div>
+          <div class="ba-arrow">↓</div>
+          <div class="ba-label after">What the Process Found</div>
+          <div class="ba-after">
+            <strong>"Sarah Chen is the only leadership coach who uses 12 years at McKinsey to help burned-out executives redesign their careers without sacrificing income or identity."</strong>
+          </div>
+          <div class="ba-result">She'd been trying to write that sentence for four years. It took one conversation.</div>
+        </div>
+
+        <div class="ba-moment">
+          <div class="ba-label before">What She Said</div>
+          <div class="ba-before">"My clients are usually like... successful people who feel stuck. They're senior, they make good money, but something feels off. They don't really know what they want next."</div>
+          <div class="ba-arrow">↓</div>
+          <div class="ba-label after">What the Process Found</div>
+          <div class="ba-after">
+            Marcus, 44. SVP at a tech company. At 11pm on a Tuesday he's scrolling LinkedIn watching people ten years younger get promoted around him. His wife knows something's off. He tells people he's "evaluating options." He's too proud to admit he doesn't know what comes next. <strong>He has never paid less than $500/hr for advice. He's been waiting for someone like you.</strong>
+          </div>
+          <div class="ba-result">She read this and realized she had three Marcuses already in her inbox. She just hadn't known how to talk to them.</div>
+        </div>
+
+        <div class="ba-moment">
+          <div class="ba-label before">What She Said</div>
+          <div class="ba-before">"I want my website to feel... I don't know, honest? Like not salesy. I want someone to land on it and think 'okay, this person gets it.'"</div>
+          <div class="ba-arrow">↓</div>
+          <div class="ba-label after">What the Process Found</div>
+          <div class="ba-after">
+            <strong>"You built a career everyone admires. Now you need someone who'll tell you the truth about what comes next."</strong>
+          </div>
+          <div class="ba-result">She put it on her homepage the same night.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="sample-caption">This is a dramatized example, but every output is built the same way. The process listens for what you mean underneath what you say. Then it gives you the words.</div>
+
+    <div class="closing-emotional">
+      You already have the answers. <strong>You just haven't had the right conversation yet.</strong>
+    </div>
+
+    <a href="#" class="cta-btn">Get Clear Now →</a>
+  </div>
+</div>
+
+<script>
+function switchTab(id) {
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo(0, 0);
+}
+</script>
+
+</body>
+</html>
