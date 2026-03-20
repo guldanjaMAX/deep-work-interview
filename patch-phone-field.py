@@ -1,0 +1,69 @@
+with open('index.html', 'r', encoding='utf-8') as f:
+    html = f.read()
+
+EMAIL_FIELD = '+ \'<div class="op-field"><label for="op-email">Email address</label><input type="email" id="op-email" placeholder="you@example.com" autocomplete="email" required /></div>\''
+
+PHONE_FIELD = '+ \'<div class="op-field" id="op-phone-field"><label for="op-phone">Mobile number <span style="font-size:0.8em;color:#aaa;font-weight:400;text-transform:none;letter-spacing:0">optional</span></label><input type="tel" id="op-phone" placeholder="+1 (555) 000-0000" autocomplete="tel" /><p style="font-size:11px;color:#999;margin:4px 0 0;line-height:1.4">Transactional SMS from Madison Avenue Revival. Msg &amp; data rates may apply. Reply STOP to opt out. <a href=\\"https://jamesguldan.com/privacy-policy\\" target=\\"_blank\\" style=\\"color:#999\\">Privacy Policy</a></p></div>\''
+
+changed = False
+
+if EMAIL_FIELD in html and PHONE_FIELD not in html:
+    html = html.replace(EMAIL_FIELD, EMAIL_FIELD + '\n      ' + PHONE_FIELD)
+    print('Phone field HTML inserted')
+    changed = True
+else:
+    print('Phone field HTML skipped (anchor not found or already present)')
+
+CSS_ANCHOR = "'.op-field input:focus{border-color:#c4703f;box-shadow:0 0 0 3px rgba(196,112,63,.12)}'"
+PHONE_CSS = "\n      '#op-phone-field.hidden{display:none}',"
+if CSS_ANCHOR in html and 'op-phone-field.hidden' not in html:
+    html = html.replace(CSS_ANCHOR, CSS_ANCHOR + PHONE_CSS)
+    print('Phone CSS inserted')
+    changed = True
+else:
+    print('Phone CSS skipped')
+
+PHONE_JS = '''<script>
+(function(){
+  var emailEl = document.getElementById('op-email');
+  var phoneField = document.getElementById('op-phone-field');
+  if (emailEl && phoneField) {
+    emailEl.addEventListener('blur', function() {
+      var email = emailEl.value.trim();
+      if (!email || !email.includes('@')) return;
+      fetch('https://email-drip-worker.james-d13.workers.dev/check-phone?email=' + encodeURIComponent(email))
+        .then(function(r){ return r.json(); })
+        .then(function(d){ if (d && d.hasPhone) phoneField.classList.add('hidden'); })
+        .catch(function(){});
+    });
+  }
+  var form = document.getElementById('op-pay-form');
+  if (form) {
+    form.addEventListener('submit', function() {
+      var phone = (document.getElementById('op-phone') || {}).value || '';
+      var email = (document.getElementById('op-email') || {}).value || '';
+      if (phone && email) {
+        navigator.sendBeacon(
+          'https://email-drip-worker.james-d13.workers.dev/save-lead',
+          JSON.stringify({email: email, phone: phone})
+        );
+      }
+    }, true);
+  }
+})();
+</script>
+</body>'''
+
+if '</body>' in html and 'check-phone' not in html:
+    html = html.replace('</body>', PHONE_JS)
+    print('Phone JS inserted')
+    changed = True
+else:
+    print('Phone JS skipped')
+
+if changed:
+    with open('index.html', 'w', encoding='utf-8') as f:
+        f.write(html)
+    print('Done. File size:', len(html))
+else:
+    print('No changes needed')
