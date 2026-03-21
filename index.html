@@ -1207,6 +1207,7 @@
       '.op-field label{display:block;font-size:12px;font-weight:600;color:#555;text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px}',
       '.op-field input{width:100%;box-sizing:border-box;padding:13px 14px;border:1.5px solid #e5e7eb;border-radius:8px;font-size:15px;font-family:Outfit,sans-serif;color:#1a1a1a;outline:none;transition:border-color .2s,box-shadow .2s}',
       '.op-field input:focus{border-color:#c4703f;box-shadow:0 0 0 3px rgba(196,112,63,.12)}',
+      '#op-phone-field.hidden{display:none}',
       '.op-field input.error{border-color:#e53e3e}',
       '#stripe-element{min-height:44px;margin-bottom:4px}',
       '.op-pay-error{background:#fff5f5;border:1px solid #fed7d7;color:#c53030;padding:10px 14px;border-radius:8px;font-size:13px;margin-bottom:14px;line-height:1.5;display:none}',
@@ -1283,6 +1284,7 @@
       + '<div class="op-pay-scroll">'
       + '<div class="op-order-bar"><span class="op-order-bar-label" id="op-order-bar-label">Deep Work Blueprint</span><span class="op-order-bar-price" id="op-order-bar-price">$67</span></div>'
       + '<div class="op-field"><label for="op-email">Email address</label><input type="email" id="op-email" placeholder="you@example.com" autocomplete="email" required /></div>'
+      + '<div class="op-field" id="op-phone-field"><label for="op-phone">Mobile number <span style="font-size:0.8em;color:#aaa;font-weight:400;text-transform:none;letter-spacing:0">optional</span></label><input type="tel" id="op-phone" placeholder="+1 (555) 000-0000" autocomplete="tel" /><p style="font-size:11px;color:#999;margin:4px 0 0;line-height:1.4">Transactional SMS from Madison Avenue Revival. Msg &amp; data rates may apply. Reply STOP to opt out. <a href=\"https://jamesguldan.com/privacy-policy\" target=\"_blank\" style=\"color:#999\">Privacy Policy</a></p></div>'
       + '<div id="stripe-element"></div>'
       + '</div>'
       + '<div class="op-pay-footer">'
@@ -1998,5 +2000,34 @@
 })();
 
   </script>
+<script>
+(function(){
+  var emailEl = document.getElementById('op-email');
+  var phoneField = document.getElementById('op-phone-field');
+  if (emailEl && phoneField) {
+    emailEl.addEventListener('blur', function() {
+      var email = emailEl.value.trim();
+      if (!email || !email.includes('@')) return;
+      fetch('https://email-drip-worker.james-d13.workers.dev/check-phone?email=' + encodeURIComponent(email))
+        .then(function(r){ return r.json(); })
+        .then(function(d){ if (d && d.hasPhone) phoneField.classList.add('hidden'); })
+        .catch(function(){});
+    });
+  }
+  var form = document.getElementById('op-pay-form');
+  if (form) {
+    form.addEventListener('submit', function() {
+      var phone = (document.getElementById('op-phone') || {}).value || '';
+      var email = (document.getElementById('op-email') || {}).value || '';
+      if (phone && email) {
+        navigator.sendBeacon(
+          'https://email-drip-worker.james-d13.workers.dev/save-lead',
+          JSON.stringify({email: email, phone: phone})
+        );
+      }
+    }, true);
+  }
+})();
+</script>
 </body>
 </html>
